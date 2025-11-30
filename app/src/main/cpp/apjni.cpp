@@ -254,13 +254,13 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void * /*reserved*/) {
     JNIEnv* env{};
     if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) [[unlikely]] {
         LOGE("Get JNIEnv error!");
-        return JNI_FALSE;
+        return -1;
     }
 
     auto clazz = JNI_FindClass(env, "me/bmax/apatch/Natives");
     if (clazz.get() == nullptr) [[unlikely]] {
         LOGE("Failed to find Natives class");
-        return JNI_FALSE;
+        return -1;
     }
 
     const static JNINativeMethod gMethods[] = {
@@ -286,7 +286,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void * /*reserved*/) {
 
     if (JNI_RegisterNatives(env, clazz, gMethods, sizeof(gMethods) / sizeof(gMethods[0])) < 0) [[unlikely]] {
         LOGE("Failed to register native methods");
-        return JNI_FALSE;
+        return -1;
     }
     
     LOGI("JNI_OnLoad Done!");

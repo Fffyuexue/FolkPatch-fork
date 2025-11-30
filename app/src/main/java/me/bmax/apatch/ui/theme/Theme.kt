@@ -9,17 +9,35 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.MutableLiveData
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
+import android.net.Uri
 import me.bmax.apatch.APApplication
+import androidx.compose.ui.draw.paint
+import androidx.compose.ui.zIndex
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.ramcosta.composedestinations.generated.destinations.SettingScreenDestination
 
 @Composable
 private fun SystemBarStyle(
@@ -53,6 +71,7 @@ val refreshTheme = MutableLiveData(false)
 
 @Composable
 fun APatchTheme(
+    isSettingsScreen: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
@@ -103,7 +122,7 @@ fun APatchTheme(
         nightModeEnabled
     }
 
-    val colorScheme = if (!dynamicColor) {
+    val baseColorScheme = if (!dynamicColor) {
         if (darkTheme) {
             when (customColorScheme) {
                 "amber" -> DarkAmberTheme
@@ -161,6 +180,32 @@ fun APatchTheme(
             else -> LightBlueTheme
         }
     }
+    
+    val colorScheme = baseColorScheme.copy(
+        background = if (BackgroundConfig.isCustomBackgroundEnabled && !isSettingsScreen) Color.Transparent else baseColorScheme.background,
+        surface = if (BackgroundConfig.isCustomBackgroundEnabled && !isSettingsScreen) {
+            // 在自定义背景模式下，为surface添加半透明效果
+            baseColorScheme.surface.copy(alpha = 0.75f)
+        } else {
+            baseColorScheme.surface
+        },
+        // 同样处理primary和secondary颜色，确保KStatusCard也有半透明效果
+        primary = if (BackgroundConfig.isCustomBackgroundEnabled && !isSettingsScreen) {
+            baseColorScheme.primary.copy(alpha = 0.75f)
+        } else {
+            baseColorScheme.primary
+        },
+        secondary = if (BackgroundConfig.isCustomBackgroundEnabled && !isSettingsScreen) {
+            baseColorScheme.secondary.copy(alpha = 0.75f)
+        } else {
+            baseColorScheme.secondary
+        },
+        secondaryContainer = if (BackgroundConfig.isCustomBackgroundEnabled && !isSettingsScreen) {
+            baseColorScheme.secondaryContainer.copy(alpha = 0.75f)
+        } else {
+            baseColorScheme.secondaryContainer
+        }
+    )
 
     SystemBarStyle(
         darkMode = darkTheme
@@ -169,4 +214,107 @@ fun APatchTheme(
     MaterialTheme(
         colorScheme = colorScheme, typography = Typography, content = content
     )
+}
+
+@Composable
+fun APatchThemeWithBackground(
+    navController: NavHostController? = null,
+    content: @Composable () -> Unit
+) {
+    val context = LocalContext.current
+    
+    // 检查当前是否在设置页面
+    val isSettingsScreen = navController?.currentBackStackEntryAsState()?.value?.destination?.route == SettingScreenDestination.route
+    
+    // 立即加载背景配置，不使用LaunchedEffect
+    BackgroundManager.loadCustomBackground(context)
+    android.util.Log.d("APatchThemeWithBackground", "加载背景配置完成")
+    
+    // 监听refreshTheme的变化，重新加载背景配置
+    val refreshThemeObserver by refreshTheme.observeAsState(false)
+    if (refreshThemeObserver) {
+        BackgroundManager.loadCustomBackground(context)
+        android.util.Log.d("APatchThemeWithBackground", "重新加载背景配置")
+        refreshTheme.postValue(false)
+    }
+    
+    APatchTheme(isSettingsScreen = isSettingsScreen) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            // 只有不在设置页面时才显示背景层
+            if (!isSettingsScreen) {
+                BackgroundLayer()
+            }
+            // 内容层 - 添加zIndex确保在背景之上
+            Box(modifier = Modifier.fillMaxSize().zIndex(1f)) {
+                content()
+            }
+        }
+    }
+}
+
+@Composable
+fun BackgroundLayer() {
+    val context = LocalContext.current
+    
+    // 获取当前主题模式
+    val prefs = APApplication.sharedPreferences
+    val darkThemeFollowSys = prefs.getBoolean("night_mode_follow_sys", true)
+    val nightModeEnabled = prefs.getBoolean("night_mode_enabled", false)
+    val darkTheme = if (darkThemeFollowSys) {
+        isSystemInDarkTheme()
+    } else {
+        nightModeEnabled
+    }
+    
+    // 添加日志以便调试
+    android.util.Log.d("BackgroundLayer", "背景状态: 启用=${BackgroundConfig.isCustomBackgroundEnabled}, URI=${BackgroundConfig.customBackgroundUri}, 深色模式=$darkTheme")
+    
+    // 默认背景
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .zIndex(-2f)
+            .background(MaterialTheme.colorScheme.background)
+    )
+    
+    // 如果启用了自定义背景，显示背景图片
+    if (BackgroundConfig.isCustomBackgroundEnabled && !BackgroundConfig.customBackgroundUri.isNullOrEmpty()) {
+        android.util.Log.d("BackgroundLayer", "显示自定义背景图片")
+        
+        // 使用AsyncImagePainter加载图片
+        val painter = rememberAsyncImagePainter(
+            model = BackgroundConfig.customBackgroundUri,
+            onError = { error ->
+                android.util.Log.e("BackgroundLayer", "背景加载失败: ${error.result.throwable.message}")
+            },
+            onSuccess = {
+                android.util.Log.d("BackgroundLayer", "背景加载成功")
+            }
+        )
+        
+        // 背景图片
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .zIndex(-1f)
+                .paint(painter = painter, contentScale = ContentScale.Crop)
+        )
+        
+        // 只在暗色模式下添加半透明遮罩层，白天模式下不添加
+        if (darkTheme) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .zIndex(-1f)
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Black.copy(alpha = 0.4f),
+                                Color.Black.copy(alpha = 0.2f)
+                            )
+                        )
+                    )
+            )
+        }
+    }
 }

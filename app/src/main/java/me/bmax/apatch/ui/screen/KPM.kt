@@ -192,8 +192,8 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                     onClick = {
                         expanded = !expanded
                     },
-                    contentColor = MaterialTheme.colorScheme.onPrimary,
-                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                    containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.package_import),

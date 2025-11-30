@@ -14,6 +14,18 @@
 # Keep ini4j Service Provider Interface
 -keep,allowobfuscation,allowoptimization public class org.ini4j.spi.*
 
+# Keep native methods and JNI classes
+-keep class me.bmax.apatch.Natives {
+    *;
+}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keep class me.bmax.apatch.Natives$Profile { *; }
+-keep class me.bmax.apatch.Natives$KPMCtlRes { *; }
+
 # Kotlin
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {
     public static void check*(...);

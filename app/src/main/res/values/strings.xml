@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">APatch Ultra</string>
 
     <string name="home">Home</string>
 
@@ -26,11 +26,12 @@
     <string name="settings_global_namespace_mode_summary">All root sessions use the global mount namespace</string>
     <string name="settings_clear_super_key_dialog">Do you really want to proceed?</string>
 
-    <string name="settings_check_update">Check for updates</string>
-    <string name="settings_check_update_summary">Automatically check for updates when opening the app</string>
+
 
     <string name="home_learn_apatch">Learn APatch</string>
     <string name="home_click_to_learn_apatch">Learn about the features of APatch and how to use</string>
+    <string name="settings_hide_apatch_card">Hide Learn APatch card</string>
+    <string name="settings_hide_apatch_card_summary">Hide the Learn APatch card on the home screen</string>
 
     <string name="about_source_code"><![CDATA[<p>View source code at %1$s<p/>Join our %2$s channel<p/>Join our %3$s group]]></string>
     <string name="send_log">Send logs</string>
@@ -49,12 +50,14 @@
     <string name="home_install_unknown_summary">Click to install</string>
     <string name="home_click_to_install">Click to install</string>
     <string name="home_working">Working 😋</string>
+    <string name="home_kp_need_update">New version available</string>
+    <string name="home_kp_cando_update">Update</string>
 
     <string name="home_installing">Installing</string>
-    <string name="home_need_update">New version available</string>
+
     <string name="kpatch_version">Version: %s</string>
     <string name="apatch_version">Version: %s</string>
-    <string name="apatch_version_update">Version: %s -&gt; %s</string>
+
     <string name="kpatch_version_update">Version: %s -&gt; %s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_auth_key_title">Enter SuperKey</string>
@@ -62,7 +65,7 @@
     <string name="home_kpatch_info_title">Info</string>
 
     <string name="home_ap_cando_install">Install</string>
-    <string name="home_ap_cando_update">Update</string>
+
     <string name="home_ap_cando_uninstall">Uninstall</string>
     <string name="home_ap_cando_reboot">Reboot</string>
 
@@ -180,7 +183,7 @@
     <string name="settings_donot_store_superkey">Don\'t store SuperKey in local</string>
     <string name="settings_donot_store_superkey_summary">Authenticate the SuperKey every time the manager starts</string>
 
-    <string name="home_new_apatch_found">New version %s is available, click to upgrade.</string>
+
 
     <string name="mode_select_page_title">Install</string>
     <string name="mode_select_page_patch_and_install">Patch and install</string>
@@ -248,4 +251,20 @@
     <string name="settings_lite_mode_mode_summary">APModule functions may exhibit failures after being enabled, but in some cases they can still effectively avoid detection. Reboot required.</string>
     <string name="settings_force_overlayfs_mode">Force use of OverlayFS</string>
     <string name="settings_force_overlayfs_mode_summary">Use OverlayFS to mount APModules instead of Magic Mount when kernel support is available. Reboot required.</string>
+    
+    <!-- Custom Background Settings -->
+    <string name="settings_custom_background">Custom background</string>
+    <string name="settings_custom_background_summary">Set a custom background image for the app</string>
+    <string name="settings_custom_background_enabled">Enable custom background</string>
+    <string name="settings_custom_background_disabled">Disable custom background</string>
+    <string name="settings_select_background_image">Select background image</string>
+    <string name="settings_clear_background">Clear background</string>
+    <string name="settings_clear_background_image">Clear background image</string>
+    <string name="settings_clear_background_confirm">Are you sure you want to clear the background image?</string>
+    <string name="settings_background_image_saved">Background image saved</string>
+    <string name="settings_custom_background_saved">Custom background saved</string>
+    <string name="settings_custom_background_error">Failed to save custom background</string>
+    <string name="settings_background_selected">Background image selected</string>
+    <string name="settings_background_image_cleared">Background image cleared</string>
+    <string name="settings_background_image_error">Failed to save background image</string>
 </resources>

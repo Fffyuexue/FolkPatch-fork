@@ -23,12 +23,13 @@ fun SwitchItem(
     summary: String? = null,
     checked: Boolean,
     enabled: Boolean = true,
+    modifier: Modifier = Modifier,
     onCheckedChange: (Boolean) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
 
     ListItem(
-        modifier = Modifier.toggleable(
+        modifier = modifier.toggleable(
             value = checked,
             interactionSource = interactionSource,
             role = Role.Switch,

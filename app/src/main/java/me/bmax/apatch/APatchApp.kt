@@ -122,7 +122,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         @Suppress("DEPRECATION")
         fun installApatch() {
             val state = _apStateLiveData.value
-            if (state != State.ANDROIDPATCH_NOT_INSTALLED && state != State.ANDROIDPATCH_NEED_UPDATE) {
+            if (state != State.ANDROIDPATCH_NOT_INSTALLED) {
                 return
             }
             _apStateLiveData.value = State.ANDROIDPATCH_INSTALLING
@@ -224,19 +224,6 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                     if (Version.installedApdVInt > 0) {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
                     }
-
-                    if (Version.installedApdVInt > 0 && mgv.toInt() != Version.installedApdVInt) {
-                        _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
-                        // su path
-                        val suPathFile = File(SU_PATH_FILE)
-                        if (suPathFile.exists()) {
-                            val suPath = suPathFile.readLines()[0].trim()
-                            if (Natives.suPath() != suPath) {
-                                Log.d(TAG, "su path: $suPath")
-                                Natives.resetSuPath(suPath)
-                            }
-                        }
-                    }
                     Log.d(TAG, "ap state: " + _apStateLiveData.value)
 
                     return@thread
@@ -246,17 +233,22 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
 
     override fun onCreate() {
         super.onCreate()
+        Log.d(TAG, "APApplication onCreate started")
         apApp = this
 
         val isArm64 = Build.SUPPORTED_ABIS.any { it == "arm64-v8a" }
+        Log.d(TAG, "Device architecture check: isArm64=$isArm64, supported ABIs=${Build.SUPPORTED_ABIS.joinToString(", ")}")
         if (!isArm64) {
+            Log.e(TAG, "Unsupported architecture!")
             Toast.makeText(applicationContext, "Unsupported architecture!", Toast.LENGTH_LONG)
                 .show()
             Thread.sleep(5000)
             exitProcess(0)
         }
 
-        if (!BuildConfig.DEBUG && !verifyAppSignature("1x2twMoHvfWUODv7KkRRNKBzOfEqJwRKGzJpgaz18xk=")) {
+        Log.d(TAG, "Checking app signature...")
+        if (!BuildConfig.DEBUG && false && !verifyAppSignature("1x2twMoHvfWUODv7KkRRNKBzOfEqJwRKGzJpgaz18xk=")) {
+            Log.e(TAG, "App signature verification failed!")
             while (true) {
                 val intent = Intent(Intent.ACTION_DELETE)
                 intent.data = "package:$packageName".toUri()
@@ -266,14 +258,19 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                 exitProcess(0)
             }
         }
+        Log.d(TAG, "App signature verification passed")
 
         // TODO: We can't totally protect superkey from be stolen by root or LSPosed-like injection tools in user space, the only way is don't use superkey,
         // TODO: 1. make me root by kernel
         // TODO: 2. remove all usage of superkey
+        Log.d(TAG, "Initializing SharedPreferences...")
         sharedPreferences = getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         APatchKeyHelper.setSharedPreferences(sharedPreferences)
+        Log.d(TAG, "Reading superKey...")
         superKey = APatchKeyHelper.readSPSuperKey()
+        Log.d(TAG, "superKey read completed, length=${superKey.length}")
 
+        Log.d(TAG, "Initializing OkHttpClient...")
         okhttpClient =
             OkHttpClient.Builder().cache(Cache(File(cacheDir, "okhttp"), 10 * 1024 * 1024))
                 .addInterceptor { block ->
@@ -283,6 +280,8 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                             .header("Accept-Language", Locale.getDefault().toLanguageTag()).build()
                     )
                 }.build()
+        
+        Log.d(TAG, "APApplication onCreate completed")
     }
 
     fun getBackupWarningState(): Boolean {

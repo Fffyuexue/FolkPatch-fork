@@ -48,6 +48,9 @@ import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.ui.screen.BottomBarDestination
 import me.bmax.apatch.ui.theme.APatchTheme
+import me.bmax.apatch.ui.theme.APatchThemeWithBackground
+import me.bmax.apatch.util.PermissionRequestHandler
+import me.bmax.apatch.util.PermissionUtils
 import me.bmax.apatch.util.ui.LocalSnackbarHost
 import me.zhanghai.android.appiconloader.coil.AppIconFetcher
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
@@ -55,6 +58,7 @@ import me.zhanghai.android.appiconloader.coil.AppIconKeyer
 class MainActivity : AppCompatActivity() {
 
     private var isLoading = true
+    private lateinit var permissionHandler: PermissionRequestHandler
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,14 +71,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+        
+        // 初始化权限处理器
+        permissionHandler = PermissionRequestHandler(this)
+        
+        // 检查并请求权限
+        if (!PermissionUtils.hasExternalStoragePermission(this) || 
+            !PermissionUtils.hasWriteExternalStoragePermission(this)) {
+            permissionHandler.requestPermissions(
+                onGranted = {
+                    // 权限已授予
+                },
+                onDenied = {
+                    // 权限被拒绝，可以显示一个提示
+                }
+            )
+        }
 
         setContent {
-            APatchTheme {
-                val navController = rememberNavController()
-                val snackBarHostState = remember { SnackbarHostState() }
-                val bottomBarRoutes = remember {
-                    BottomBarDestination.entries.map { it.direction.route }.toSet()
-                }
+            val navController = rememberNavController()
+            val snackBarHostState = remember { SnackbarHostState() }
+            val bottomBarRoutes = remember {
+                BottomBarDestination.entries.map { it.direction.route }.toSet()
+            }
+
+            APatchThemeWithBackground(navController = navController) {
 
                 Scaffold(
                     bottomBar = { BottomBar(navController) }

@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
@@ -103,6 +104,8 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
                 },
                 icon = { Icon(Icons.Filled.Refresh, reboot) },
                 text = { Text(text = reboot) },
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
             )
         }
     }) { innerPadding ->
@@ -110,6 +113,7 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp)
+                .padding(top = 16.dp)
                 .verticalScroll(scrollState),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -261,6 +265,10 @@ private fun StartButton(text: String, onClick: () -> Unit) {
     ) {
         Button(
             onClick = onClick,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f)
+            ),
             content = {
                 Text(text = text)
             }
@@ -272,7 +280,7 @@ private fun StartButton(text: String, onClick: () -> Unit) {
 private fun ExtraItem(extra: KPModel.IExtraInfo, existed: Boolean, onDelete: () -> Unit) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         }),
     ) {
         Column(
@@ -374,7 +382,7 @@ private fun SetSuperKeyView(viewModel: PatchesViewModel) {
     var keyVisible by remember { mutableStateOf(false) }
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         })
     ) {
         Column(
@@ -448,7 +456,7 @@ private fun KernelPatchImageView(kpImgInfo: KPModel.KPImgInfo) {
     if (kpImgInfo.version.isEmpty()) return
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         })
     ) {
         Column(
@@ -487,7 +495,7 @@ private fun KernelPatchImageView(kpImgInfo: KPModel.KPImgInfo) {
 private fun BootimgView(slot: String, boot: String) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         })
     ) {
         Column(
@@ -523,7 +531,7 @@ private fun BootimgView(slot: String, boot: String) {
 private fun KernelImageView(kImgInfo: KPModel.KImgInfo) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         })
     ) {
         Column(
@@ -571,6 +579,10 @@ private fun SelectFileButton(text: String, onSelected: (data: Intent, uri: Uri) 
                 intent.type = "*/*"
                 selectFileLauncher.launch(intent)
             },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f)
+            ),
             content = { Text(text = text) }
         )
     }
@@ -581,7 +593,7 @@ private fun ErrorView(error: String) {
     if (error.isEmpty()) return
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.error
+            MaterialTheme.colorScheme.error.copy(alpha = 1f)
         })
     ) {
         Column(
@@ -603,7 +615,7 @@ private fun ErrorView(error: String) {
 private fun PatchMode(mode: PatchesViewModel.PatchMode) {
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
-            MaterialTheme.colorScheme.secondaryContainer
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
         })
     ) {
         Column(

@@ -19,7 +19,7 @@ fn parse_single_word(input: &str) -> IResult<&str, &str> {
     take_while1(is_sepolicy_char).parse(input)
 }
 
-fn parse_bracket_objs(input: &str) -> IResult<&str, SeObject> {
+fn parse_bracket_objs(input: &str) -> IResult<&str, SeObject<'_>> {
     let (input, (_, words, _)) = (
         tag("{"),
         take_while_m_n(1, 100, |c: char| is_sepolicy_char(c) || c.is_whitespace()),
@@ -29,12 +29,12 @@ fn parse_bracket_objs(input: &str) -> IResult<&str, SeObject> {
     Ok((input, words.split_whitespace().collect()))
 }
 
-fn parse_single_obj(input: &str) -> IResult<&str, SeObject> {
+fn parse_single_obj(input: &str) -> IResult<&str, SeObject<'_>> {
     let (input, word) = take_while1(is_sepolicy_char).parse(input)?;
     Ok((input, vec![word]))
 }
 
-fn parse_star(input: &str) -> IResult<&str, SeObject> {
+fn parse_star(input: &str) -> IResult<&str, SeObject<'_>> {
     let (input, _) = tag("*").parse(input)?;
     Ok((input, vec!["*"]))
 }
@@ -42,12 +42,12 @@ fn parse_star(input: &str) -> IResult<&str, SeObject> {
 // 1. a single sepolicy word
 // 2. { obj1 obj2 obj3 ...}
 // 3. *
-fn parse_seobj(input: &str) -> IResult<&str, SeObject> {
+fn parse_seobj(input: &str) -> IResult<&str, SeObject<'_>> {
     let (input, strs) = alt((parse_single_obj, parse_bracket_objs, parse_star)).parse(input)?;
     Ok((input, strs))
 }
 
-fn parse_seobj_no_star(input: &str) -> IResult<&str, SeObject> {
+fn parse_seobj_no_star(input: &str) -> IResult<&str, SeObject<'_>> {
     let (input, strs) = alt((parse_single_obj, parse_bracket_objs)).parse(input)?;
     Ok((input, strs))
 }
@@ -379,7 +379,7 @@ const CMD_GENFSCON: u32 = 9;
 #[derive(Debug, Default)]
 enum PolicyObject {
     All, // for "*", stand for all objects, and is NULL in ffi
-    One([u8; SEPOLICY_MAX_LEN]),
+    One(#[allow(dead_code)] [u8; SEPOLICY_MAX_LEN]), // Field is used in to_c_ptr function
     #[default]
     None,
 }
@@ -406,13 +406,13 @@ impl TryFrom<&str> for PolicyObject {
 struct AtomicStatement {
     cmd: u32,
     subcmd: u32,
-    sepol1: PolicyObject,
-    sepol2: PolicyObject,
-    sepol3: PolicyObject,
-    sepol4: PolicyObject,
-    sepol5: PolicyObject,
-    sepol6: PolicyObject,
-    sepol7: PolicyObject,
+    #[allow(dead_code)] sepol1: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol2: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol3: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol4: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol5: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol6: PolicyObject, // Used in FfiPolicy conversion
+    #[allow(dead_code)] sepol7: PolicyObject, // Used in FfiPolicy conversion
 }
 
 impl<'a> TryFrom<&'a NormalPerm<'a>> for Vec<AtomicStatement> {
@@ -656,6 +656,7 @@ impl<'a> TryFrom<&'a PolicyStatement<'a>> for Vec<AtomicStatement> {
 
 #[derive(Debug)]
 #[repr(C)]
+#[allow(dead_code)] // Used for FFI interface
 struct FfiPolicy {
     cmd: u32,
     subcmd: u32,
@@ -668,6 +669,7 @@ struct FfiPolicy {
     sepol7: *const ffi::c_char,
 }
 
+#[allow(dead_code)] // Used in FfiPolicy conversion
 fn to_c_ptr(pol: &PolicyObject) -> *const ffi::c_char {
     match pol {
         PolicyObject::None | PolicyObject::All => std::ptr::null(),
