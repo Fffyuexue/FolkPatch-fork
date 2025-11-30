@@ -125,6 +125,8 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
                 },
                 icon = { Icon(Icons.Filled.Refresh, reboot) },
                 text = { Text(text = reboot) },
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
             )
         }
 

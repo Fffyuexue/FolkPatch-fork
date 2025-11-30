@@ -22,6 +22,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
@@ -118,7 +119,9 @@ private fun CrashHandleScreen(
             Icon(
                 imageVector = Icons.Outlined.ContentCopy, contentDescription = null
             )
-        }, modifier = Modifier.windowInsetsPadding(
+        }, containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+        contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+        modifier = Modifier.windowInsetsPadding(
             WindowInsets.safeDrawing.only(WindowInsetsSides.End)
         )
         )

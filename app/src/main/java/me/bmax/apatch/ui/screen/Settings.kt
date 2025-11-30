@@ -34,13 +34,16 @@ import androidx.compose.material.icons.filled.DeveloperMode
 import androidx.compose.material.icons.filled.Engineering
 import androidx.compose.material.icons.filled.FilePresent
 import androidx.compose.material.icons.filled.FormatColorFill
+import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.InvertColors
 import androidx.compose.material.icons.filled.Key
 import androidx.compose.material.icons.filled.RemoveFromQueue
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Translate
-import androidx.compose.material.icons.filled.Update
+
+import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -92,8 +95,12 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.SwitchItem
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
+import me.bmax.apatch.ui.theme.BackgroundConfig
+import me.bmax.apatch.ui.theme.BackgroundManager
 import me.bmax.apatch.ui.theme.refreshTheme
 import me.bmax.apatch.util.APatchKeyHelper
+import me.bmax.apatch.util.PermissionRequestHandler
+import me.bmax.apatch.util.PermissionUtils
 import me.bmax.apatch.util.getBugreportFile
 import me.bmax.apatch.util.isForceUsingOverlayFS
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
@@ -303,22 +310,25 @@ fun SettingScreen() {
                 }
             }
 
-            // Check Update
-            var checkUpdate by rememberSaveable {
+            // Hide Learn APatch card
+            var hideApatchCard by rememberSaveable {
                 mutableStateOf(
-                    prefs.getBoolean("check_update", true)
+                    prefs.getBoolean("hide_apatch_card", true) // 默认隐藏
                 )
             }
-
             SwitchItem(
-                icon = Icons.Filled.Update,
-                title = stringResource(id = R.string.settings_check_update),
-                summary = stringResource(id = R.string.settings_check_update_summary),
-                checked = checkUpdate
+                icon = Icons.Filled.Info,
+                title = stringResource(id = R.string.settings_hide_apatch_card),
+                summary = stringResource(id = R.string.settings_hide_apatch_card_summary),
+                checked = hideApatchCard
             ) {
-                prefs.edit { putBoolean("check_update", it) }
-                checkUpdate = it
+                APApplication.sharedPreferences.edit {
+                    putBoolean("hide_apatch_card", it)
+                }
+                hideApatchCard = it
             }
+
+
 
             // Night Mode Follow System
             var nightFollowSystem by rememberSaveable {
@@ -402,6 +412,138 @@ fun SettingScreen() {
                         color = MaterialTheme.colorScheme.outline
                     )
                 }, leadingContent = { Icon(Icons.Filled.FormatColorFill, null) })
+            }
+
+            // Custom Background Settings
+            var isCustomBackgroundEnabled by rememberSaveable {
+                mutableStateOf(
+                    BackgroundConfig.isCustomBackgroundEnabled
+                )
+            }
+            var customBackgroundUri by rememberSaveable {
+                mutableStateOf(
+                    BackgroundConfig.customBackgroundUri ?: ""
+                )
+            }
+            
+            // Custom background toggle
+            SwitchItem(
+                icon = Icons.Filled.FormatColorFill,
+                title = stringResource(id = R.string.settings_custom_background),
+                summary = if (isCustomBackgroundEnabled) {
+                    if (customBackgroundUri.isNotEmpty()) {
+                        stringResource(id = R.string.settings_custom_background_enabled)
+                    } else {
+                        stringResource(id = R.string.settings_select_background_image)
+                    }
+                } else {
+                    stringResource(id = R.string.settings_custom_background_summary)
+                },
+                checked = isCustomBackgroundEnabled
+            ) {
+                isCustomBackgroundEnabled = it
+                BackgroundConfig.setCustomBackgroundEnabledState(it)
+                BackgroundConfig.save(context)
+                refreshTheme.value = true
+            }
+            
+            // Select background image (only show when custom background is enabled)
+            if (isCustomBackgroundEnabled) {
+                val pickImageLauncher = rememberLauncherForActivityResult(
+                    ActivityResultContracts.GetContent()
+                ) { uri: Uri? ->
+                    uri?.let {
+                        scope.launch {
+                            loadingDialog.show()
+                            val success = BackgroundManager.saveAndApplyCustomBackground(context, it)
+                            loadingDialog.hide()
+                            if (success) {
+                                // 使用保存后的URI，而不是原始URI
+                                customBackgroundUri = BackgroundConfig.customBackgroundUri ?: ""
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.settings_custom_background_saved)
+                                )
+                                refreshTheme.value = true
+                            } else {
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.settings_custom_background_error)
+                                )
+                            }
+                        }
+                    }
+                }
+                
+                // 权限请求处理器
+                val permissionHandler = remember { 
+                    // 这里需要获取当前Activity，但在Compose中我们无法直接获取
+                    // 所以我们需要使用一个不同的方法
+                    null 
+                }
+                
+                ListItem(
+                    headlineContent = { 
+                        Text(text = stringResource(id = R.string.settings_select_background_image))
+                    },
+                    supportingContent = {
+                        if (customBackgroundUri.isNotEmpty()) {
+                            Text(
+                                text = stringResource(id = R.string.settings_background_selected),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        }
+                    },
+                    leadingContent = { Icon(painterResource(id = R.drawable.ic_custom_background), null) },
+                    modifier = Modifier.clickable {
+                        // 检查权限
+                        if (PermissionUtils.hasExternalStoragePermission(context) && 
+                            PermissionUtils.hasWriteExternalStoragePermission(context)) {
+                            // 有权限，直接启动图片选择器
+                            pickImageLauncher.launch("image/*")
+                        } else {
+                            // 无权限，显示提示信息
+                            Toast.makeText(
+                                context, 
+                                "请先授予存储权限才能选择背景图片", 
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                )
+                
+                // Clear background button (only show when there's a background set)
+                if (customBackgroundUri.isNotEmpty()) {
+                    val clearBackgroundDialog = rememberConfirmDialog(
+                        onConfirm = {
+                            scope.launch {
+                                loadingDialog.show()
+                                BackgroundManager.clearCustomBackground(context)
+                                customBackgroundUri = ""
+                                loadingDialog.hide()
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.settings_background_image_cleared)
+                                )
+                                refreshTheme.value = true
+                            }
+                        }
+                    )
+                    
+                    val clearTitle = stringResource(id = R.string.settings_clear_background)
+                    val clearConfirm = stringResource(id = R.string.settings_clear_background_confirm)
+                    ListItem(
+                        headlineContent = { 
+                            Text(text = clearTitle)
+                        },
+                        leadingContent = { Icon(painterResource(id = R.drawable.ic_clear_background), null) },
+                        modifier = Modifier.clickable {
+                            clearBackgroundDialog.showConfirm(
+                                title = clearTitle,
+                                content = clearConfirm,
+                                markdown = false
+                            )
+                        }
+                    )
+                }
             }
 
             // su path

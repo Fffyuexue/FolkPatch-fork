@@ -1,88 +1,43 @@
 <div align="center">
-<a href="https://github.com/bmax121/APatch/releases/latest"><img src="https://images.weserv.nl/?url=https://raw.githubusercontent.com/bmax121/APatch/main/app/src/main/ic_launcher-playstore.png&mask=circle" style="width: 128px;" alt="logo"></a>
+<a href="https://github.com/matsuzaka-yuki/APatch-Ultra/releases/latest"><img src="logo.png" style="width: 128px;" alt="logo"></a>
 
-<h1 align="center">APatch</h1>
+<h1 align="center">APatch Ultra</h1>
 
-[![Latest Release](https://img.shields.io/github/v/release/bmax121/APatch?label=Release&logo=github)](https://github.com/bmax121/APatch/releases/latest)
-[![Nightly Release](https://img.shields.io/badge/Nightly%20release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/bmax121/APatch/workflows/build/main/APatch)
-[![Weblate](https://img.shields.io/badge/Localization-Weblate-teal?logo=weblate)](https://hosted.weblate.org/engage/APatch)
-[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/APatchGroup)
+[![Latest Release](https://img.shields.io/github/v/release/matsuzaka-yuki/APatch-Ultra?label=Release&logo=github)](https://github.com/matsuzaka-yuki/APatch-Ultra/releases/latest)
+[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/APatchUltra)
 [![GitHub License](https://img.shields.io/github/license/bmax121/APatch?logo=gnu)](/LICENSE)
 
 </div>
 
-The patching of Android kernel and Android system.
+**语言 / Language:** [中文](README.md) | [English](README_EN.md)
 
-- A new kernel-based root solution for Android devices.
-- APM: Support for modules similar to Magisk.
-- KPM: Support for modules that allow you to inject any code into the kernel (Provides kernel function `inline-hook` and `syscall-table-hook`).
-- APatch relies on [KernelPatch](https://github.com/bmax121/KernelPatch/).
-- The APatch UI and the APModule source code have been derived and modified from [KernelSU](https://github.com/tiann/KernelSU).
+**APatch Ultra** 是基于 [APatch](https://github.com/bmax121/APatch) 开发的增强版本，提供了更强大的功能和更好的用户体验。
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/me.bmax.apatch/)
+## 主要特性
 
-Or download the latest APK from the [Releases Section](https://github.com/bmax121/APatch/releases/latest).
+- 基于内核的Android设备Root解决方案
+- APM：支持类似Magisk的模块系统
+- KPM：支持将任何代码注入内核的模块（提供内核函数`inline-hook`和`syscall-table-hook`）
+- 移除了自动更新功能，提供更稳定的用户体验
+- 更好的自定义系统,支持自定义壁纸
 
-## Supported Versions
+## 下载安装
 
-- Only supports the ARM64 architecture.
-- Only supports Android kernel versions 3.18 - 6.12
+从 [发布页面](https://github.com/matsuzaka-yuki/APatch-Ultra/releases/latest) 下载最新的APK。
 
-Support for Samsung devices with security protection: Planned
+## 系统要求
 
-## Requirement
+- 支持ARM64架构
+- 支持Android内核版本 3.18 - 6.6
 
-Kernel configs:
+## 开源信息
 
-- `CONFIG_KALLSYMS=y` and `CONFIG_KALLSYMS_ALL=y`
+本项目基于以下开源项目：
 
-- `CONFIG_KALLSYMS=y` and `CONFIG_KALLSYMS_ALL=n`: Initial support
+- [KernelPatch](https://github.com/bmax121/KernelPatch/) - 核心组件
+- [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot和magiskpolicy
+- [KernelSU](https://github.com/tiann/KernelSU) - 应用UI和类似Magisk的模块支持
 
-## Security Alert
+## 许可证
 
-The **SuperKey** has higher privileges than root access.  
-Weak or compromised keys can lead to unauthorized control of your device.  
-It is critical to use robust keys and safeguard them from exposure to maintain the security of your device.
-
-## Translation
-
-To help translate APatch or improve existing translations, please use [Weblate](https://hosted.weblate.org/engage/apatch/). PR of APatch translation is no longer accepted, because it will conflict with Weblate.
-
-<div align="center">
-
-[![Translation Status](https://hosted.weblate.org/widget/APatch/open-graph.png)](https://hosted.weblate.org/engage/APatch/)
-
-</div>
-
-## Get Help
-
-### Usage
-
-For usage, please refer to [our official documentation](https://apatch.dev).  
-It's worth noting that the documentation is currently not quite complete, and the content may change at any time.  
-Furthermore, we need more volunteers to [contribute to the documentation](https://github.com/AndroidPatch/APatchDocs) in other languages.
-
-### Updates
-
-- Telegram Channel: [@APatchUpdates](https://t.me/APatchChannel)
-
-### Discussions
-
-- Telegram Group: [@APatchDiscussions(EN/CN)](https://t.me/Apatch_discuss)
-- Telegram Group: [中文](https://t.me/APatch_CN_Group)
-
-### More Information
-
-- [Documents](docs/)
-
-## Credits
-
-- [KernelPatch](https://github.com/bmax121/KernelPatch/): The core.
-- [Magisk](https://github.com/topjohnwu/Magisk): magiskboot and magiskpolicy.
-- [KernelSU](https://github.com/tiann/KernelSU): App UI, and Magisk module like support.
-
-## License
-
-APatch is licensed under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+APatch Ultra 遵循 GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html) 许可证开源。

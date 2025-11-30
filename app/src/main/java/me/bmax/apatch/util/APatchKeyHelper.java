@@ -128,15 +128,28 @@ public class APatchKeyHelper {
     }
 
     public static String readSPSuperKey() {
+        Log.d(TAG, "Reading superKey from SharedPreferences");
         String encKey = prefs.getString(SUPER_KEY_ENC, "");
+        Log.d(TAG, "Encrypted key length: " + encKey.length());
+        
         if (!encKey.isEmpty()) {
-            return decrypt(encKey);
+            Log.d(TAG, "Decrypting superKey");
+            String decryptedKey = decrypt(encKey);
+            Log.d(TAG, "SuperKey decrypted successfully, length: " + decryptedKey.length());
+            return decryptedKey;
         }
 
+        Log.d(TAG, "Encrypted key is empty, trying deprecated key");
         @Deprecated()
         String key = prefs.getString(SUPER_KEY, "");
-        writeSPSuperKey(key);
-        prefs.edit().remove(SUPER_KEY).apply();
+        if (!key.isEmpty()) {
+            Log.d(TAG, "Found deprecated key, migrating to encrypted storage");
+            writeSPSuperKey(key);
+            prefs.edit().remove(SUPER_KEY).apply();
+            Log.d(TAG, "Key migration completed");
+        } else {
+            Log.d(TAG, "No superKey found in SharedPreferences");
+        }
         return key;
     }
 

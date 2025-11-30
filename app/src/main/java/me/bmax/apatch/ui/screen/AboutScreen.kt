@@ -68,7 +68,7 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                 shape = CircleShape
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    painter = painterResource(id = R.drawable.icon2),
                     contentDescription = "icon",
                     modifier = Modifier.scale(1.4f)
                 )
@@ -102,12 +102,11 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             Spacer(modifier = Modifier.height(20.dp))
 
             Row(
-                modifier = Modifier.padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
             ) {
                 FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://github.com/bmax121/APatch") }
+                    onClick = { uriHandler.openUri("https://github.com/matsuzaka-yuki/APatch-Ultra") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.github),
@@ -117,8 +116,10 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                     Text(text = stringResource(id = R.string.about_github))
                 }
 
+                Spacer(modifier = Modifier.width(10.dp))
+
                 FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://t.me/APatchChannel") }
+                    onClick = { uriHandler.openUri("https://t.me/APatchUltra") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.telegram),
@@ -126,35 +127,6 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                     )
                     Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                     Text(text = stringResource(id = R.string.about_telegram_channel))
-                }
-            }
-
-            Row(
-                modifier = Modifier.padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://hosted.weblate.org/engage/APatch") }
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.weblate),
-                        contentDescription = null,
-                        modifier = Modifier.size(ButtonDefaults.IconSize)
-                    )
-                    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                    Text(text = stringResource(id = R.string.about_weblate))
-                }
-
-                FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://t.me/apatch_discuss") }
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.telegram),
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                    Text(text = stringResource(id = R.string.about_telegram_group))
                 }
             }
 

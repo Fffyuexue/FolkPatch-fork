@@ -160,8 +160,8 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
             }
 
             FloatingActionButton(
-                contentColor = MaterialTheme.colorScheme.onPrimary,
-                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary.copy(alpha = 1f),
+                containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
                 onClick = {
                     // select the zip file to install
                     val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -563,9 +563,7 @@ private fun ModuleItem(
 
                         Spacer(modifier = Modifier.width(12.dp))
                     }
-
-                    Spacer(modifier = Modifier.weight(1f))
-
+                        Spacer(modifier = Modifier.weight(1f))
                     if (module.hasActionScript) {
                         FilledTonalButton(
                             onClick = {
