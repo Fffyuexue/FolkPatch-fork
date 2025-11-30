@@ -11,7 +11,7 @@
 
 **Language / 语言:** [English](README_EN.md) | [中文](README.md)
 
-**APatch Ultra** is an enhanced version based on [APatch](https://github.com/bmax121/APatch), providing more powerful features and a better user experience.
+**APatch Ultra** is an extended non-parallel branch based on [APatch](https://github.com/bmax121/APatch), only through optimizing the interface design and extending the features, without introducing new core functions.
 
 ## Key Features
 
