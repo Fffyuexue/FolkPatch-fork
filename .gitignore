@@ -8,6 +8,10 @@ captures
 .cxx
 key.jks
 key.jks.base64.txt
+keystore.jks
+keystore.properties
+*.keystore
+*.jks
 .vscode
 .kotlin
 app/src/main/resources/
