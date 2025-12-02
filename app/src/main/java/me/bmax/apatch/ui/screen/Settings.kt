@@ -45,6 +45,8 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Label
 import androidx.compose.material.icons.filled.Translate
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
@@ -361,6 +363,58 @@ fun SettingScreen() {
                     putBoolean("hide_apatch_card", it)
                 }
                 hideApatchCard = it
+            }
+            
+            // Home Page Hide Settings
+            var hideSuPath by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("hide_su_path", false)
+                )
+            }
+            SwitchItem(
+                icon = if (hideSuPath) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                title = stringResource(id = R.string.home_hide_su_path),
+                summary = stringResource(id = R.string.home_hide_su_path_summary),
+                checked = hideSuPath
+            ) {
+                APApplication.sharedPreferences.edit {
+                    putBoolean("hide_su_path", it)
+                }
+                hideSuPath = it
+            }
+            
+            var hideKpatchVersion by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("hide_kpatch_version", false)
+                )
+            }
+            SwitchItem(
+                icon = if (hideKpatchVersion) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                title = stringResource(id = R.string.home_hide_kpatch_version),
+                summary = stringResource(id = R.string.home_hide_kpatch_version_summary),
+                checked = hideKpatchVersion
+            ) {
+                APApplication.sharedPreferences.edit {
+                    putBoolean("hide_kpatch_version", it)
+                }
+                hideKpatchVersion = it
+            }
+            
+            var hideFingerprint by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("hide_fingerprint", false)
+                )
+            }
+            SwitchItem(
+                icon = if (hideFingerprint) Icons.Filled.VisibilityOff else Icons.Filled.Visibility,
+                title = stringResource(id = R.string.home_hide_fingerprint),
+                summary = stringResource(id = R.string.home_hide_fingerprint_summary),
+                checked = hideFingerprint
+            ) {
+                APApplication.sharedPreferences.edit {
+                    putBoolean("hide_fingerprint", it)
+                }
+                hideFingerprint = it
             }
 
 

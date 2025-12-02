@@ -37,6 +37,8 @@ This project is based on the following open source projects:
 - [KernelPatch](https://github.com/bmax121/KernelPatch/) - The core
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot and magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - App UI, and Magisk module like support
+- [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - Reference some UI designs
+- [APatch](https://github.com/bmax121/APatch) - Upstream branch
 
 ## License
 

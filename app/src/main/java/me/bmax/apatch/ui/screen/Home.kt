@@ -842,6 +842,11 @@ private fun getDeviceInfo(): String {
 
 @Composable
 private fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
+    // 隐藏设定状态
+    val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
+    val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
+    val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+    
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
@@ -867,12 +872,15 @@ private fun InfoCard(kpState: APApplication.State, apState: APApplication.State)
                 Text(text = content, style = MaterialTheme.typography.bodyMedium)
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE) {
+            if (kpState != APApplication.State.UNKNOWN_STATE && !hideKpatchVersion.value) {
                 InfoCardItem(
                     stringResource(R.string.home_kpatch_version), Version.installedKPVString()
                 )
 
                 Spacer(Modifier.height(16.dp))
+            }
+            
+            if (kpState != APApplication.State.UNKNOWN_STATE && !hideSuPath.value) {
                 InfoCardItem(stringResource(R.string.home_su_path), Natives.suPath())
 
                 Spacer(Modifier.height(16.dp))
@@ -894,9 +902,12 @@ private fun InfoCard(kpState: APApplication.State, apState: APApplication.State)
             InfoCardItem(stringResource(R.string.home_system_version), getSystemVersion())
 
             Spacer(Modifier.height(16.dp))
-            InfoCardItem(stringResource(R.string.home_fingerprint), Build.FINGERPRINT)
+            if (!hideFingerprint.value) {
+                InfoCardItem(stringResource(R.string.home_fingerprint), Build.FINGERPRINT)
 
-            Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(16.dp))
+            }
+            
             InfoCardItem(stringResource(R.string.home_selinux_status), getSELinuxStatus())
 
         }
