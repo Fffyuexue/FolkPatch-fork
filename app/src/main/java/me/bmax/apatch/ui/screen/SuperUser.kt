@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.PlaylistAddCheck
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -57,6 +58,7 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.ProvideMenuShape
 import me.bmax.apatch.ui.component.SearchAppBar
 import me.bmax.apatch.ui.component.SwitchItem
+import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.viewmodel.SuperUserViewModel
 import me.bmax.apatch.util.PkgConfig
 
@@ -67,6 +69,12 @@ import me.bmax.apatch.util.PkgConfig
 fun SuperUserScreen() {
     val viewModel = viewModel<SuperUserViewModel>()
     val scope = rememberCoroutineScope()
+
+    val confirmDialog = rememberConfirmDialog(onConfirm = {
+        viewModel.excludeAll()
+    })
+    val excludeAllTitle = stringResource(id = R.string.su_exclude_all_title)
+    val excludeAllConfirm = stringResource(id = R.string.su_exclude_all_confirm)
 
     LaunchedEffect(Unit) {
         if (viewModel.appList.isEmpty()) {
@@ -81,6 +89,17 @@ fun SuperUserScreen() {
                 searchText = viewModel.search,
                 onSearchTextChange = { viewModel.search = it },
                 onClearClick = { viewModel.search = "" },
+                leadingActions = {
+                    IconButton(onClick = {
+                        confirmDialog.showConfirm(
+                            title = excludeAllTitle,
+                            content = excludeAllConfirm,
+                            markdown = false
+                        )
+                    }) {
+                        Icon(Icons.Filled.PlaylistAddCheck, contentDescription = excludeAllTitle)
+                    }
+                },
                 dropdownContent = {
                     var showDropdown by remember { mutableStateOf(false) }
 
@@ -93,9 +112,11 @@ fun SuperUserScreen() {
                         )
 
                         ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                            DropdownMenu(expanded = showDropdown, onDismissRequest = {
-                                showDropdown = false
-                            }) {
+                            DropdownMenu(
+                                expanded = showDropdown,
+                                onDismissRequest = { showDropdown = false },
+                                containerColor = MaterialTheme.colorScheme.surfaceContainer
+                            ) {
                                 DropdownMenuItem(text = {
                                     Text(stringResource(R.string.su_refresh))
                                 }, onClick = {

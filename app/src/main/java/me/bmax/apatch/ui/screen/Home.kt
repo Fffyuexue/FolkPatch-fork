@@ -411,9 +411,11 @@ private fun TopBar(
                 )
 
                 ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                    DropdownMenu(expanded = showDropdownReboot, onDismissRequest = {
-                        showDropdownReboot = false
-                    }) {
+                    DropdownMenu(
+                        expanded = showDropdownReboot,
+                        onDismissRequest = { showDropdownReboot = false },
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    ) {
                         RebootDropdownItem(id = R.string.reboot)
                         RebootDropdownItem(id = R.string.reboot_recovery, reason = "recovery")
                         RebootDropdownItem(id = R.string.reboot_bootloader, reason = "bootloader")
@@ -431,9 +433,11 @@ private fun TopBar(
                     contentDescription = stringResource(id = R.string.settings)
                 )
                 ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                    DropdownMenu(expanded = showDropdownMoreOptions, onDismissRequest = {
-                        showDropdownMoreOptions = false
-                    }) {
+                    DropdownMenu(
+                        expanded = showDropdownMoreOptions,
+                        onDismissRequest = { showDropdownMoreOptions = false },
+                        containerColor = MaterialTheme.colorScheme.surfaceContainer
+                    ) {
                         DropdownMenuItem(text = {
                             Text(stringResource(R.string.home_more_menu_feedback_or_suggestion))
                         }, onClick = {
