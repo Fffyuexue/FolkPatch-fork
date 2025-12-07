@@ -377,4 +377,13 @@
     <string name="settings_clear_font_confirm">確定要恢復預設字體嗎？</string>
     <string name="settings_font_cleared">已恢復預設字體</string>
     <string name="settings_font_select_hint">請選擇一個 TTF 字體檔案</string>
+    
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">自動備份系統模組</string>
+    <string name="settings_auto_backup_module_summary">安裝模組時自動備份檔案到私有目錄</string>
+    <string name="settings_open_backup_dir">打開備份目錄</string>
+    <string name="backup_dir_empty">備份目錄為空</string>
+    <string name="backup_dir_open_failed">打開備份目錄失敗</string>
+    <string name="auto_backup_failed">自動備份失敗: %s</string>
+    <string name="auto_backup_success">自動備份成功: %s</string>
 </resources>

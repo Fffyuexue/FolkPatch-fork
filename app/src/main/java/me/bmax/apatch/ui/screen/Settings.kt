@@ -49,6 +49,7 @@ import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.DeleteSweep
+import androidx.compose.material.icons.filled.Folder
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
@@ -379,6 +380,62 @@ fun SettingScreen() {
                 ) {
                     prefs.edit { putBoolean("apm_action_stay_on_page", it) }
                     stayOnPage = it
+                }
+
+                // Auto Backup Module
+                var autoBackupModule by rememberSaveable {
+                    mutableStateOf(
+                        prefs.getBoolean("auto_backup_module", false)
+                    )
+                }
+                SwitchItem(
+                    icon = Icons.Filled.Save,
+                    title = stringResource(id = R.string.settings_auto_backup_module),
+                    summary = stringResource(id = R.string.settings_auto_backup_module_summary) + "\n" + android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS).absolutePath + "/FolkPatch/ModuleBackups",
+                    checked = autoBackupModule
+                ) {
+                    prefs.edit { putBoolean("auto_backup_module", it) }
+                    autoBackupModule = it
+                }
+
+                if (autoBackupModule) {
+                    ListItem(
+                        headlineContent = { Text(stringResource(id = R.string.settings_open_backup_dir)) },
+                        modifier = Modifier.clickable {
+                            val backupDir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "FolkPatch/ModuleBackups")
+                            if (!backupDir.exists()) backupDir.mkdirs()
+
+                            try {
+                                val intent = Intent(android.app.DownloadManager.ACTION_VIEW_DOWNLOADS)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                context.startActivity(intent)
+                            } catch (e: Exception) {
+                                try {
+                                    val uri = FileProvider.getUriForFile(
+                                        context,
+                                        "${BuildConfig.APPLICATION_ID}.fileprovider",
+                                        backupDir
+                                    )
+                                    val intent = Intent(Intent.ACTION_VIEW)
+                                    intent.setDataAndType(uri, "resource/folder")
+                                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    try {
+                                        context.startActivity(intent)
+                                    } catch (e2: Exception) {
+                                        val intent2 = Intent(Intent.ACTION_VIEW)
+                                        intent2.setDataAndType(uri, "*/*")
+                                        intent2.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        context.startActivity(Intent.createChooser(intent2, context.getString(R.string.settings_open_backup_dir)))
+                                    }
+                                } catch (e3: Exception) {
+                                    Toast.makeText(context, R.string.backup_dir_open_failed, Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        },
+                        leadingContent = { Icon(Icons.Filled.Folder, null) }
+                    )
                 }
             }
 

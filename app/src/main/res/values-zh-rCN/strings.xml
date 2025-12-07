@@ -390,4 +390,13 @@
     <string name="apm_restore_failed">恢复失败</string>
     <string name="apm_backup_failed_msg">备份失败：%s</string>
     <string name="apm_restore_failed_msg">恢复失败：%s</string>
+    
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">自动备份系统模块</string>
+    <string name="settings_auto_backup_module_summary">安装模块时自动备份文件到私有目录</string>
+    <string name="settings_open_backup_dir">打开备份目录</string>
+    <string name="backup_dir_empty">备份目录为空</string>
+    <string name="backup_dir_open_failed">打开备份目录失败</string>
+    <string name="auto_backup_failed">自动备份失败: %s</string>
+    <string name="auto_backup_success">自动备份成功: %s</string>
 </resources>

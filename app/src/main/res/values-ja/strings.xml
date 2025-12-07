@@ -346,4 +346,13 @@
     <string name="settings_clear_font_confirm">デフォルトフォントに戻してもよろしいですか？</string>
     <string name="settings_font_cleared">デフォルトフォントに戻しました</string>
     <string name="settings_font_select_hint">TTFフォントファイルを選択してください</string>
+
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">システムモジュールの自動バックアップ</string>
+    <string name="settings_auto_backup_module_summary">インストール時にモジュールファイルのコピーをプライベートディレクトリに自動保存する</string>
+    <string name="settings_open_backup_dir">バックアップディレクトリを開く</string>
+    <string name="backup_dir_empty">バックアップディレクトリは空です</string>
+    <string name="backup_dir_open_failed">バックアップディレクトリを開けませんでした</string>
+    <string name="auto_backup_failed">自動バックアップに失敗しました: %s</string>
+    <string name="auto_backup_success">自動バックアップに成功しました: %s</string>
 </resources>

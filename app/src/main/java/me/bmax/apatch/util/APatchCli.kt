@@ -24,6 +24,7 @@ import java.security.MessageDigest
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
 import java.util.zip.ZipFile
+import kotlinx.coroutines.runBlocking
 
 private const val TAG = "APatchCli"
 
@@ -190,6 +191,21 @@ fun installModule(
         val file = File(apApp.cacheDir, "module_$type.zip")
         file.outputStream().use { output ->
             this?.copyTo(output)
+        }
+
+        // Auto Backup Logic
+        if (type == MODULE_TYPE.APM) {
+            val fileName = getFileNameFromUri(apApp, uri)
+            runBlocking {
+                 val result = ModuleBackupUtils.autoBackupModule(apApp, file, fileName)
+                 if (result != null && !result.startsWith("Duplicate")) {
+                     onStdout("Auto backup failed: $result\n")
+                 } else if (result != null && result.startsWith("Duplicate")) {
+                      // onStdout("Auto backup skipped: Duplicate found\n")
+                 } else {
+                      onStdout("Auto backup success\n")
+                 }
+            }
         }
 
         val stdoutCallback: CallbackList<String?> = object : CallbackList<String?>() {

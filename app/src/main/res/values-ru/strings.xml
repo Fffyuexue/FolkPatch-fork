@@ -396,4 +396,13 @@
     <string name="settings_clear_font_confirm">Вы уверены, что хотите восстановить шрифт по умолчанию?</string>
     <string name="settings_font_cleared">Шрифт по умолчанию восстановлен</string>
     <string name="settings_font_select_hint">Выберите файл шрифта TTF</string>
+
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">Автоматическое резервное копирование модулей</string>
+    <string name="settings_auto_backup_module_summary">Автоматически сохранять копию модуля в личный каталог при установке</string>
+    <string name="settings_open_backup_dir">Открыть каталог резервных копий</string>
+    <string name="backup_dir_empty">Каталог резервных копий пуст</string>
+    <string name="backup_dir_open_failed">Не удалось открыть каталог резервных копий</string>
+    <string name="auto_backup_failed">Ошибка резервного копирования: %s</string>
+    <string name="auto_backup_success">Резервная копия создана: %s</string>
 </resources>

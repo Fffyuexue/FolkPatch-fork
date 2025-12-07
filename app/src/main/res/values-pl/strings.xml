@@ -391,4 +391,13 @@
     <string name="settings_clear_font_confirm">Czy na pewno chcesz przywrócić domyślną czcionkę?</string>
     <string name="settings_font_cleared">Przywrócono domyślną czcionkę</string>
     <string name="settings_font_select_hint">Wybierz plik czcionki TTF</string>
+    
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">Automatyczna kopia zapasowa modułów systemowych</string>
+    <string name="settings_auto_backup_module_summary">Automatycznie twórz kopię zapasową pliku modułu w katalogu prywatnym podczas instalacji</string>
+    <string name="settings_open_backup_dir">Otwórz katalog kopii zapasowych</string>
+    <string name="backup_dir_empty">Katalog kopii zapasowych jest pusty</string>
+    <string name="backup_dir_open_failed">Nie udało się otworzyć katalogu kopii zapasowych</string>
+    <string name="auto_backup_failed">Automatyczna kopia zapasowa nie powiodła się: %s</string>
+    <string name="auto_backup_success">Automatyczna kopia zapasowa zakończona sukcesem: %s</string>
 </resources>

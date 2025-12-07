@@ -387,4 +387,13 @@
     <string name="settings_clear_font_confirm">确欲复归原初字体乎？</string>
     <string name="settings_font_cleared">已复归原初字体</string>
     <string name="settings_font_select_hint">请择一 TTF 仙府字体</string>
+    
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">自动拓印天道仙符</string>
+    <string name="settings_auto_backup_module_summary">凝符入体时自动拓印仙符至乾坤戒</string>
+    <string name="settings_open_backup_dir">观乾坤戒</string>
+    <string name="backup_dir_empty">乾坤戒空空如也</string>
+    <string name="backup_dir_open_failed">观乾坤戒受阻</string>
+    <string name="auto_backup_failed">自动拓印受阻: %s</string>
+    <string name="auto_backup_success">自动拓印圆满: %s</string>
 </resources>

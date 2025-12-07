@@ -10,10 +10,73 @@ import me.bmax.apatch.R
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
 import java.io.File
+import java.security.MessageDigest
+
+import android.os.Environment
 
 object ModuleBackupUtils {
 
     private const val MODULE_DIR = "/data/adb/modules"
+
+    suspend fun autoBackupModule(context: Context, file: File, originalFileName: String?): String? {
+        return withContext(Dispatchers.IO) {
+            try {
+                if (!APApplication.sharedPreferences.getBoolean("auto_backup_module", false)) {
+                    return@withContext null
+                }
+
+                val backupDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "FolkPatch/ModuleBackups")
+                if (!backupDir.exists()) backupDir.mkdirs()
+
+                // Calculate hash of the incoming file
+                val digest = MessageDigest.getInstance("SHA-256")
+                val buffer = ByteArray(8192)
+                var bytesRead: Int
+                file.inputStream().use { input ->
+                    while (input.read(buffer).also { bytesRead = it } != -1) {
+                        digest.update(buffer, 0, bytesRead)
+                    }
+                }
+                val fileHash = digest.digest().joinToString("") { "%02x".format(it) }
+
+                val baseName = originalFileName ?: file.name
+                val nameWithoutExt = baseName.substringBeforeLast(".")
+                val ext = baseName.substringAfterLast(".", "")
+                val extWithDot = if (ext.isNotEmpty()) ".$ext" else ""
+
+                var counter = 0
+                while (true) {
+                    val candidateName = if (counter == 0) baseName else "$nameWithoutExt ($counter)$extWithDot"
+                    val candidateFile = File(backupDir, candidateName)
+
+                    if (candidateFile.exists()) {
+                        // Check hash
+                        val existingDigest = MessageDigest.getInstance("SHA-256")
+                        candidateFile.inputStream().use { input ->
+                            while (input.read(buffer).also { bytesRead = it } != -1) {
+                                existingDigest.update(buffer, 0, bytesRead)
+                            }
+                        }
+                        val existingHash = existingDigest.digest().joinToString("") { "%02x".format(it) }
+
+                        if (fileHash == existingHash) {
+                            return@withContext "Duplicate found: $candidateName"
+                        }
+                        // Hash mismatch, try next name
+                        counter++
+                    } else {
+                        // File doesn't exist, save here
+                        file.copyTo(candidateFile)
+                        return@withContext null // Success
+                    }
+                }
+                @Suppress("UNREACHABLE_CODE")
+                null
+            } catch (e: Exception) {
+                e.message
+            }
+        }
+    }
 
     suspend fun backupModules(context: Context, snackBarHost: SnackbarHostState, uri: Uri) {
         withContext(Dispatchers.IO) {

@@ -397,4 +397,13 @@
 
     <string name="kpm_page_first_time_title">Warning</string>
     <string name="kpm_page_first_time_message">Kernel modules directly modify the Boot implementation. Unlike system modules, they lack a good recovery mechanism. If issues arise, you can only fix them by entering Fastboot. It is recommended to load the module first to ensure there are no problems before embedding it into Boot. If a module can only be used by loading, you can try the automatic KPM module loading feature. If you do not understand kernel modules, please do not use this feature!</string>
+    
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">Auto Backup System Modules</string>
+    <string name="settings_auto_backup_module_summary">Automatically backup module file to private directory when installing</string>
+    <string name="settings_open_backup_dir">Open Backup Directory</string>
+    <string name="backup_dir_empty">Backup directory is empty</string>
+    <string name="backup_dir_open_failed">Failed to open backup directory</string>
+    <string name="auto_backup_failed">Auto backup failed: %s</string>
+    <string name="auto_backup_success">Auto backup success: %s</string>
 </resources>

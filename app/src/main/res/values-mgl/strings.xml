@@ -75,7 +75,7 @@
     <string name="patch_mode_install_to_next_slot">模式：转移到备用星之容器 (OTA仪式后)</string>
     <string name="patch_mode_uninstall_patch">模式：解除心之契约</string>
     <string name="patch_select_bootimg_btn">选择魔法容器</string>
-    <string name="patch_embed_kpm_btn">镶嵌星之结晶</string>
+    <string name="patch_embed_kpm_btn">镶嵌星之魔法阵</string>
     <string name="patch_start_patch_btn">开始施法</string>
     <string name="patch_start_unpatch_btn">解除附魔</string>
     <string name="patch_item_error">!!魔法反噬!!</string>
@@ -87,7 +87,7 @@
     <string name="patch_item_kpimg_version">魔法等级:</string>
     <string name="patch_item_kpimg_comile_time">施法时间:</string>
     <string name="patch_item_kpimg_config">魔法配置:</string>
-    <string name="patch_item_new_extra_kpm">镶嵌新星之结晶</string>
+    <string name="patch_item_new_extra_kpm">镶嵌新星之魔法阵</string>
     <string name="patch_item_existed_extra_kpm">已存在</string>
     <string name="patch_item_extra_name">魔法名称:</string>
     <string name="patch_item_extra_version">魔法等级:</string>
@@ -323,8 +323,8 @@
     <string name="home_hide_kpatch_version_summary">在魔法情报卡片中隐藏心之核心契约等级信息</string>
     <string name="home_hide_fingerprint_summary">在魔法情报卡片中隐藏魔法指纹信息</string>
     <!-- KPM AutoLoad Strings -->
-    <string name="kpm_autoload_title">心之结晶自动激活</string>
-    <string name="kpm_autoload_enabled">启用自动激活</string>
+    <string name="kpm_autoload_title">心之结晶自动觉醒</string>
+    <string name="kpm_autoload_enabled">启用结晶自主觉醒</string>
     <string name="kpm_autoload_enabled_summary">应用启动时自动激活心之结晶</string>
     <string name="kpm_autoload_json_config">星界咒语配置</string>
     <string name="kpm_autoload_json_label">星界咒语</string>
@@ -343,11 +343,11 @@
     <string name="apm_bulk_install_list_title">魔法阵列表</string>
     <string name="apm_bulk_install_add">添加魔法阵</string>
     <string name="apm_bulk_install_empty">未添加魔法阵</string>
-    <string name="apm_bulk_install_action">批量施法</string>
-    <string name="apm_bulk_install_log_title">批量施法记录</string>
-    <string name="apm_bulk_install_log_start">开始批量施法...</string>
-    <string name="apm_bulk_install_log_installing">正在施法 %s</string>
-    <string name="apm_bulk_install_log_installed">魔法阵 %s 施法完成。</string>
+    <string name="apm_bulk_install_action">批量契约</string>
+    <string name="apm_bulk_install_log_title">批量契约记录</string>
+    <string name="apm_bulk_install_log_start">开始批量契约...</string>
+    <string name="apm_bulk_install_log_installing">正在契约 %s</string>
+    <string name="apm_bulk_install_log_installed">魔法阵 %s 契约完成。</string>
     <string name="apm_bulk_install_log_done">所有魔法仪式已完成。</string>
     <string name="apm_bulk_install_first_use_text">这个功能允许你一次性施展多个魔法阵，属于快速施法，适合施展一些过程中没有涉及咒语咏唱的魔法阵，涉及咏唱古代咒语的请使用普通施法</string>
     <string name="apm_bulk_install_remove">移除</string>
@@ -360,7 +360,7 @@
     <string name="kpm_autoload_kpm_path">心之结晶路径</string>
     <string name="kpm_autoload_file_not_found">未找到魔法文件</string>
     <string name="kpm_autoload_select_kpm_file">选择心之结晶文件</string>
-    <string name="kpm_autoload_first_time_title">关于心之结晶自动激活</string>
+    <string name="kpm_autoload_first_time_title">关于心之结晶自动觉醒</string>
     <string name="kpm_autoload_first_time_message">这个功能可以让你觉醒时自动临时激活咒语配置文件的全部心之结晶，这种方案相比于直接融合到心之核心更加方便。\n\n例如，功能为防止魔法容器被修改的心之结晶，这种心之结晶只能临时激活使用，但是融合会导致无法觉醒。或者你不想破坏心之核心就可以使用这个咒语配置快速激活结晶。\n\n需要确保魔法工坊完全退出进入才会执行咒语，一般来说觉醒进入也是会激活的，工坊黑屏一段时间属于正常现象，使用的是纯后台的咒语激活方案，记得手动刷新看看是否正确激活！</string>
     <string name="kpm_autoload_first_time_confirm">了解了</string>
     <string name="kpm_autoload_do_not_show_again">不再显示</string>
@@ -389,4 +389,13 @@
     <string name="settings_clear_font_confirm">确定要解除变身吗？</string>
     <string name="settings_font_cleared">已恢复变身前的状态</string>
     <string name="settings_font_select_hint">请选择一个星尘卷轴(TTF)</string>
+
+    <!-- Auto Backup Strings -->
+    <string name="settings_auto_backup_module">魔法星阵自动护存</string>
+    <string name="settings_auto_backup_module_summary">觉醒时自动将星之魔法阵保存到私人魔法宝箱</string>
+    <string name="settings_open_backup_dir">打开魔法宝箱</string>
+    <string name="backup_dir_empty">魔法宝箱空空如也</string>
+    <string name="backup_dir_open_failed">无法打开魔法宝箱</string>
+    <string name="auto_backup_failed">星之魔法阵保存失败: %s</string>
+    <string name="auto_backup_success">星之魔法阵保存成功: %s</string>
 </resources>
