@@ -120,17 +120,17 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "default")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {
             navigator.navigate(InstallModeSelectScreenDestination)
         }, navigator, kpState)
     }) { innerPadding ->
-        if (homeLayout == "kernelsu") {
-            HomeScreenV2(innerPadding, navigator, kpState, apState)
-        } else {
-            HomeScreenV1(innerPadding, navigator, kpState, apState)
+        when (homeLayout) {
+            "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
+            "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
+            else -> HomeScreenV1(innerPadding, navigator, kpState, apState)
         }
     }
 }

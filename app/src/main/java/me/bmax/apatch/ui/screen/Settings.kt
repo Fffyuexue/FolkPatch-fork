@@ -712,7 +712,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 }, modifier = Modifier.clickable {
                     showHomeLayoutChooseDialog.value = true
                 }, supportingContent = {
-                    val currentStyle = prefs.getString("home_layout_style", "default")
+                    val currentStyle = prefs.getString("home_layout_style", "focus")
                     Text(
                         text = stringResource(homeLayoutStyleToString(currentStyle.toString())),
                         style = MaterialTheme.typography.bodyMedium,
@@ -721,7 +721,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 }, leadingContent = { Icon(Icons.Filled.Dashboard, null) })
 
                 // Grid Layout Background
-                if (prefs.getString("home_layout_style", "default") == "kernelsu") {
+                if (prefs.getString("home_layout_style", "kernelsu") == "kernelsu") {
                     SwitchItem(
                         icon = Icons.Filled.Image,
                         title = stringResource(id = R.string.settings_grid_working_card_background),
@@ -2041,6 +2041,7 @@ private fun iconNameToString(iconName: String): Int {
 private fun homeLayoutStyleToString(style: String): Int {
     return when (style) {
         "kernelsu" -> R.string.settings_home_layout_grid
+        "focus" -> R.string.settings_home_layout_focus
         else -> R.string.settings_home_layout_default
     }
 }
@@ -2071,7 +2072,7 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 
-                val currentStyle = prefs.getString("home_layout_style", "default")
+                val currentStyle = prefs.getString("home_layout_style", "kernelsu")
                 
                 Surface(
                     shape = RoundedCornerShape(12.dp),
@@ -2103,6 +2104,20 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                             },
                             modifier = Modifier.clickable {
                                 prefs.edit().putString("home_layout_style", "kernelsu").apply()
+                                showDialog.value = false
+                            }
+                        )
+                        
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_home_layout_focus)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentStyle == "focus",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                prefs.edit().putString("home_layout_style", "focus").apply()
                                 showDialog.value = false
                             }
                         )

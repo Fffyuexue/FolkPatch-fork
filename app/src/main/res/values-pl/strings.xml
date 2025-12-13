@@ -529,4 +529,23 @@
     <string name="file_picker_cancel">Anuluj</string>
     <string name="file_picker_internal_storage">Pamięć wewnętrzna</string>
     <string name="file_picker_no_files">Brak plików</string>
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">Status urządzenia</string>
+    <string name="home_device_status_battery_temp">Temperatura baterii</string>
+    <string name="home_device_status_cpu_load">Obciążenie CPU</string>
+    <string name="home_device_status_battery_level">Poziom baterii</string>
+    <string name="home_storage_title">Pamięć</string>
+    <string name="home_storage_internal">Pamięć wewnętrzna</string>
+    <string name="home_storage_ram">RAM</string>
+    <string name="home_storage_zram">ZRAM</string>
+    <string name="home_storage_swap">Plik swap</string>
+    <string name="home_info_kernel">Jądro</string>
+    <string name="home_info_superkey">SuperKlucz</string>
+    <string name="home_info_auth_auth">Aut</string>
+    <string name="home_info_auth_na">N/D</string>
+    <string name="home_info_device_slot">Slot urządzenia</string>
+    <string name="home_info_device_model">Model urządzenia</string>
+    <string name="home_info_running_mode">Tryb działania</string>
+    <string name="home_info_mode_full">Pełny</string>
+    <string name="home_info_mode_half">Częściowy</string>
 </resources>

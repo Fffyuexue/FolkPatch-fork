@@ -488,4 +488,23 @@
     <string name="file_picker_cancel">キャンセル</string>
     <string name="file_picker_internal_storage">内部ストレージ</string>
     <string name="file_picker_no_files">ファイルがありません</string>
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">デバイス状態</string>
+    <string name="home_device_status_battery_temp">バッテリー温度</string>
+    <string name="home_device_status_cpu_load">CPU負荷</string>
+    <string name="home_device_status_battery_level">バッテリーレベル</string>
+    <string name="home_storage_title">ストレージ</string>
+    <string name="home_storage_internal">内部ストレージ</string>
+    <string name="home_storage_ram">RAM</string>
+    <string name="home_storage_zram">ZRAM</string>
+    <string name="home_storage_swap">スワップファイル</string>
+    <string name="home_info_kernel">カーネル</string>
+    <string name="home_info_superkey">SuperKey</string>
+    <string name="home_info_auth_auth">認証</string>
+    <string name="home_info_auth_na">N/A</string>
+    <string name="home_info_device_slot">デバイススロット</string>
+    <string name="home_info_device_model">デバイスモデル</string>
+    <string name="home_info_running_mode">実行モード</string>
+    <string name="home_info_mode_full">完全</string>
+    <string name="home_info_mode_half">不完全</string>
 </resources>

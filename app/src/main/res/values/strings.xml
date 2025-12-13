@@ -429,6 +429,7 @@
     <string name="settings_home_layout_style">Home Layout Style</string>
     <string name="settings_home_layout_default">ListUI</string>
     <string name="settings_home_layout_grid">GridUI</string>
+    <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Unofficial Version</string>
     <string name="unofficial_version_message">You are using FolkPatch which is not an official app, please download the official app!</string>
     <string name="go_to_github">Go to Github</string>
@@ -535,4 +536,24 @@
     <string name="file_picker_cancel">Cancel</string>
     <string name="file_picker_internal_storage">Internal Storage</string>
     <string name="file_picker_no_files">No files</string>
+
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">Device Status</string>
+    <string name="home_device_status_battery_temp">Battery Temp</string>
+    <string name="home_device_status_cpu_load">CPU Load</string>
+    <string name="home_device_status_battery_level">Battery Level</string>
+    <string name="home_storage_title">Storage</string>
+    <string name="home_storage_internal">Internal Storage</string>
+    <string name="home_storage_ram">RAM</string>
+    <string name="home_storage_zram">ZRAM</string>
+    <string name="home_storage_swap">Swap File</string>
+    <string name="home_info_kernel">Kernel</string>
+    <string name="home_info_superkey">SuperKey</string>
+    <string name="home_info_auth_auth">Auth</string>
+    <string name="home_info_auth_na">N/A</string>
+    <string name="home_info_device_slot">Device Slot</string>
+    <string name="home_info_device_model">Device Model</string>
+    <string name="home_info_running_mode">Running Mode</string>
+    <string name="home_info_mode_full">Full</string>
+    <string name="home_info_mode_half">Half</string>
 </resources>

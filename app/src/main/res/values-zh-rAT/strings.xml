@@ -529,4 +529,23 @@
     <string name="file_picker_cancel">撤销</string>
     <string name="file_picker_internal_storage">圣域记忆</string>
     <string name="file_picker_no_files">无典籍</string>
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">圣域状态</string>
+    <string name="home_device_status_battery_temp">圣光温度</string>
+    <string name="home_device_status_cpu_load">神念负载</string>
+    <string name="home_device_status_battery_level">圣光能量</string>
+    <string name="home_storage_title">圣域存储</string>
+    <string name="home_storage_internal">圣域记忆</string>
+    <string name="home_storage_ram">神念内存</string>
+    <string name="home_storage_zram">圣域压缩</string>
+    <string name="home_storage_swap">神念交换</string>
+    <string name="home_info_kernel">灵魂内核</string>
+    <string name="home_info_superkey">圣光之心</string>
+    <string name="home_info_auth_auth">已认证</string>
+    <string name="home_info_auth_na">不可用</string>
+    <string name="home_info_device_slot">神念槽位</string>
+    <string name="home_info_device_model">圣域形态</string>
+    <string name="home_info_running_mode">运行模式</string>
+    <string name="home_info_mode_full">完整</string>
+    <string name="home_info_mode_half">不完整</string>
 </resources>

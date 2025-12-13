@@ -116,7 +116,7 @@ fun BackgroundLayer(currentRoute: String? = null) {
     }
 
     // Determine target URI for Image Background
-    val targetUri = if (BackgroundConfig.isMultiBackgroundEnabled) {
+    val rawTargetUri = if (BackgroundConfig.isMultiBackgroundEnabled) {
         when (currentRoute) {
             HomeScreenDestination.route -> BackgroundConfig.homeBackgroundUri
             KPModuleScreenDestination.route -> BackgroundConfig.kernelBackgroundUri
@@ -129,6 +129,13 @@ fun BackgroundLayer(currentRoute: String? = null) {
         BackgroundConfig.customBackgroundUri
     }
 
+    // Resolve "background.png" to asset path
+    val targetModel = if (rawTargetUri == "background.png") {
+        "file:///android_asset/background.png"
+    } else {
+        rawTargetUri
+    }
+
     // Default background (fallback)
     Box(
         modifier = Modifier
@@ -138,9 +145,19 @@ fun BackgroundLayer(currentRoute: String? = null) {
     )
 
     // Image Background Logic
-    if (BackgroundConfig.isCustomBackgroundEnabled && !targetUri.isNullOrEmpty()) {
+    // Fix: Ensure we only show background if it is enabled AND uri is valid.
+    // Also handle fallback for multi-background: if specific page bg is null, fallback to customBackgroundUri (global) if enabled?
+    // User request: "If multi-background mode is enabled, disabling the switch should stop it."
+    // Current logic: BackgroundConfig.isCustomBackgroundEnabled controls GLOBAL background.
+    // Multi-background mode is an additional layer.
+    // If isMultiBackgroundEnabled is FALSE, we use customBackgroundUri.
+    // If isMultiBackgroundEnabled is TRUE, we use page specific URIs.
+    // BUT, isCustomBackgroundEnabled acts as a master switch for "Show ANY background image".
+    // If master switch is OFF, no image should be shown regardless of multi-mode.
+    
+    if (BackgroundConfig.isCustomBackgroundEnabled && targetModel != null && (targetModel !is String || targetModel.isNotEmpty())) {
         val painter = rememberAsyncImagePainter(
-            model = targetUri,
+            model = targetModel,
             onError = { error ->
                 android.util.Log.e("BackgroundLayer", "Failed to load background: ${error.result.throwable.message}")
             }

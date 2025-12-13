@@ -531,4 +531,23 @@
     <string name="file_picker_cancel">Отмена</string>
     <string name="file_picker_internal_storage">Внутреннее хранилище</string>
     <string name="file_picker_no_files">Нет файлов</string>
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">Состояние устройства</string>
+    <string name="home_device_status_battery_temp">Температура батареи</string>
+    <string name="home_device_status_cpu_load">Нагрузка ЦПУ</string>
+    <string name="home_device_status_battery_level">Уровень батареи</string>
+    <string name="home_storage_title">Хранилище</string>
+    <string name="home_storage_internal">Внутреннее хранилище</string>
+    <string name="home_storage_ram">ОЗУ</string>
+    <string name="home_storage_zram">ZRAM</string>
+    <string name="home_storage_swap">Файл подкачки</string>
+    <string name="home_info_kernel">Ядро</string>
+    <string name="home_info_superkey">SuperKey</string>
+    <string name="home_info_auth_auth">Аут</string>
+    <string name="home_info_auth_na">Н/Д</string>
+    <string name="home_info_device_slot">Слот устройства</string>
+    <string name="home_info_device_model">Модель устройства</string>
+    <string name="home_info_running_mode">Режим работы</string>
+    <string name="home_info_mode_full">Полный</string>
+    <string name="home_info_mode_half">Частичный</string>
 </resources>

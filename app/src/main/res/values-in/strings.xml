@@ -511,4 +511,23 @@
     <string name="file_picker_cancel">Batal</string>
     <string name="file_picker_internal_storage">Penyimpanan Internal</string>
     <string name="file_picker_no_files">Tidak ada file</string>
+    <!-- HomeV3 Strings -->
+    <string name="home_device_status_title">Status Perangkat</string>
+    <string name="home_device_status_battery_temp">Suhu Baterai</string>
+    <string name="home_device_status_cpu_load">Beban CPU</string>
+    <string name="home_device_status_battery_level">Level Baterai</string>
+    <string name="home_storage_title">Penyimpanan</string>
+    <string name="home_storage_internal">Penyimpanan Internal</string>
+    <string name="home_storage_ram">RAM</string>
+    <string name="home_storage_zram">ZRAM</string>
+    <string name="home_storage_swap">Berkas Swap</string>
+    <string name="home_info_kernel">Kernel</string>
+    <string name="home_info_superkey">SuperKey</string>
+    <string name="home_info_auth_auth">Otor</string>
+    <string name="home_info_auth_na">T/A</string>
+    <string name="home_info_device_slot">Slot Perangkat</string>
+    <string name="home_info_device_model">Model Perangkat</string>
+    <string name="home_info_running_mode">Mode Berjalan</string>
+    <string name="home_info_mode_full">Penuh</string>
+    <string name="home_info_mode_half">Setengah</string>
 </resources>
