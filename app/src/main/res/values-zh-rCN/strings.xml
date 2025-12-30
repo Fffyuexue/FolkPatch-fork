@@ -640,6 +640,5 @@
     <string name="acefs_edit_group">编辑组</string>
     <string name="acefs_save_success">配置保存成功</string>
     <string name="acefs_save_failed">配置保存失败</string>
-    <string name="acefs_zygisk_missing">缺失 Zygisk API, 无法使用</string>
     <string name="acefs_save_config">保存配置</string>
 </resources>

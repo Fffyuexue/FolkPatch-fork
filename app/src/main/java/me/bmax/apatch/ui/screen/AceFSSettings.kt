@@ -88,15 +88,10 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
     val context = LocalContext.current
     var config by remember { mutableStateOf(AceFSConfig.Config()) }
     val scope = rememberCoroutineScope()
-    var isZygiskAvailable by remember { mutableStateOf(false) }
 
     // Load initial state
     LaunchedEffect(Unit) {
         config = AceFSConfig.readConfig()
-        withContext(Dispatchers.IO) {
-            val zygiskImpl = me.bmax.apatch.util.getZygiskImplement()
-            isZygiskAvailable = zygiskImpl != "None"
-        }
     }
 
     // Explicitly save config to disk (for manual save buttons)
@@ -190,8 +185,7 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
                 ZygiskGroupsListRow(
                     title = stringResource(R.string.acefs_umount_paths_zygisk),
                     groups = config.zygiskGroups,
-                    onGroupsChange = { updateLocalConfig(config.copy(zygiskGroups = it)) },
-                    enabled = isZygiskAvailable
+                    onGroupsChange = { updateLocalConfig(config.copy(zygiskGroups = it)) }
                 )
 
                 Button(
@@ -350,44 +344,32 @@ fun ConfigListRow(
 fun ZygiskGroupsListRow(
     title: String,
     groups: List<AceFSConfig.ZygiskGroup>,
-    onGroupsChange: (List<AceFSConfig.ZygiskGroup>) -> Unit,
-    enabled: Boolean = true
+    onGroupsChange: (List<AceFSConfig.ZygiskGroup>) -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
 
     ListItem(
         headlineContent = {
-            Text(
-                text = title,
-                color = if (enabled) Color.Unspecified else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-            )
+            Text(text = title)
         },
         supportingContent = {
-            if (enabled) {
-                Text("${groups.size} groups")
-            } else {
-                Text(
-                    text = stringResource(R.string.acefs_zygisk_missing),
-                    color = MaterialTheme.colorScheme.error
-                )
-            }
+            Text("${groups.size} groups")
         },
         trailingContent = {
             IconButton(
-                onClick = { showDialog = true },
-                enabled = enabled
+                onClick = { showDialog = true }
             ) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
                     contentDescription = "Configure",
-                    tint = if (enabled) LocalContentColor.current else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                    tint = LocalContentColor.current
                 )
             }
         },
-        modifier = Modifier.clickable(enabled = enabled) { showDialog = true }
+        modifier = Modifier.clickable { showDialog = true }
     )
 
-    if (showDialog && enabled) {
+    if (showDialog) {
         ZygiskGroupsManageDialog(
             title = title,
             initialGroups = groups,

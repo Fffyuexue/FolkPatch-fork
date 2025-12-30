@@ -647,5 +647,4 @@
     <string name="acefs_edit_group">Edit Group</string>
     <string name="acefs_save_success">Configuration saved successfully</string>
     <string name="acefs_save_failed">Failed to save configuration</string>
-    <string name="acefs_zygisk_missing">Zygisk API missing, feature unavailable</string>
 </resources>
