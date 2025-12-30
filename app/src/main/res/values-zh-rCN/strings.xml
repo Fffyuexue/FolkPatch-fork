@@ -631,13 +631,6 @@
     <string name="acefs_manage_superuser">接管原生超级用户列表</string>
     <string name="acefs_add_item">添加</string>
     <string name="acefs_remove_item">移除</string>
-    <string name="acefs_umount_paths_zygisk">目标应用自定义卸载挂载路径</string>
-    <string name="acefs_zygisk_pkg">包名</string>
-    <string name="acefs_zygisk_path">路径</string>
-    <string name="acefs_zygisk_packages">目标应用</string>
-    <string name="acefs_zygisk_paths">卸载路径</string>
-    <string name="acefs_add_group">添加组</string>
-    <string name="acefs_edit_group">编辑组</string>
     <string name="acefs_save_success">配置保存成功</string>
     <string name="acefs_save_failed">配置保存失败</string>
     <string name="acefs_save_config">保存配置</string>

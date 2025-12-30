@@ -102,15 +102,7 @@ object AceFSConfig {
                 json.put("enable_folk_su_manage", if (config.enableSuManage) 1 else 0)
                 json.put("enable_hide", if (config.enableHide) 1 else 0)
 
-                // Save Groups (New Format)
-                val groupsArray = JSONArray()
-                config.zygiskGroups.forEach { group ->
-                    val obj = JSONObject()
-                    obj.put("packages", JSONArray(group.pkgNames))
-                    obj.put("paths", JSONArray(group.paths))
-                    groupsArray.put(obj)
-                }
-                json.put("umount_paths_zygisk_groups", groupsArray)
+                json.remove("umount_paths_zygisk_groups")
                 json.remove("umount_paths_zygisk")
 
                 if (!file.parentFile?.exists()!!) {
