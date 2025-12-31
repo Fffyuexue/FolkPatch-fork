@@ -25,6 +25,10 @@
 - Multiple featured language styles for on-demand switching
 - Global module exclusion for faster operation
 - Online module download functionality
+- AceFS Core Technology: Introduces the AceFS concept, utilizing kernel function hooks to complete main operations.
+  - Allows selecting AceFS during patching for additional patching.
+  - Implements system-level component hooks and core modifications through AceFS C/S services.
+  - Additional features: FolkPatch Hide (prevents detection of bootloader unlock status), custom unmount mount paths, custom hide paths.
 
 ## Download & Install
 

@@ -25,10 +25,10 @@
 - 多种特色语言,随心切换
 - 模块全局排除,更加快速
 - 在线模块下载功能
-- AceFS Core Technology: Introduces the AceFS concept, utilizing kernel function hooks to complete main operations.
-  - Allows selecting AceFS during patching for additional patching.
-  - Implements system-level component hooks and core modifications through AceFS C/S services.
-  - Additional features: FolkPatch Hide (prevents detection of bootloader unlock status), custom unmount mount paths, custom hide paths.
+- AceFS核心技术：引入AceFS概念，利用内核函数Hook完成主操作。
+  - 修补时允许勾选AceFS进行附加修补。
+  - 通过AceFS-C/S服务实现系统级别组件HOOK与核心修改。
+  - 附属功能：FolkPatch Hide (防止检测Bootloader解锁状态)、自定义卸载挂载路径、自定义隐藏路径。
 
 ## 下载安装
 
