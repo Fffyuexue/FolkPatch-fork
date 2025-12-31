@@ -35,6 +35,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -82,6 +83,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.bmax.apatch.R
+import me.bmax.apatch.ui.component.SwitchItem
 import me.bmax.apatch.ui.viewmodel.KPModel
 import me.bmax.apatch.ui.viewmodel.PatchesViewModel
 import me.bmax.apatch.util.Version
@@ -186,9 +188,11 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
             // existed extras
             if (mode == PatchesViewModel.PatchMode.PATCH_AND_INSTALL || mode == PatchesViewModel.PatchMode.INSTALL_TO_NEXT_SLOT) {
                 viewModel.existedExtras.forEach(action = {
-                    ExtraItem(extra = it, true, onDelete = {
-                        viewModel.existedExtras.remove(it)
-                    })
+                    if (it.name != "AceFS") {
+                        ExtraItem(extra = it, true, onDelete = {
+                            viewModel.existedExtras.remove(it)
+                        })
+                    }
                 })
             }
 
@@ -205,6 +209,12 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
 
             // add new KPM
             if (viewModel.superkey.isNotEmpty() && !viewModel.patching && !viewModel.patchdone && mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE) {
+                
+                AceFSSwitchCard(
+                    checked = viewModel.patchAceFSS,
+                    onCheckedChange = { viewModel.patchAceFSS = it }
+                )
+
                 SelectFileButton(
                     text = stringResource(id = R.string.patch_embed_kpm_btn),
                     onSelected = { data, uri ->
@@ -682,6 +692,23 @@ private fun PatchMode(mode: PatchesViewModel.PatchMode) {
         ) {
             Text(text = stringResource(id = mode.sId), style = MaterialTheme.typography.bodyLarge)
         }
+    }
+}
+
+@Composable
+private fun AceFSSwitchCard(checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
+    ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(containerColor = run {
+            MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
+        })
+    ) {
+        SwitchItem(
+            icon = Icons.Outlined.Extension,
+            title = stringResource(id = R.string.patch_embed_acefs_title),
+            summary = stringResource(id = R.string.patch_embed_acefs_summary),
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
     }
 }
 

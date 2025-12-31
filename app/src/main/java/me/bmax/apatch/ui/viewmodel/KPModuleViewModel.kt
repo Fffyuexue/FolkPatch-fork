@@ -49,7 +49,7 @@ class KPModuleViewModel : ViewModel() {
                     names = ""
                 val nameList = names.split('\n').toList()
                 Log.d(TAG, "kpm list: $nameList")
-                modules = nameList.filter { it.isNotEmpty() }.map {
+                modules = nameList.filter { it.isNotEmpty() && it != "AceFS" }.map {
                     val infoline = Natives.kernelPatchModuleInfo(it)
                     val spi = infoline.split('\n')
                     val name = spi.find { it.startsWith("name=") }?.removePrefix("name=")

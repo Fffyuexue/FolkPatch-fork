@@ -73,12 +73,17 @@ class PatchesViewModel : ViewModel() {
     var error by mutableStateOf("")
     var patchLog by mutableStateOf("")
 
+    var patchAceFSS by mutableStateOf(false)
+
     private val patchDir: ExtendedFile = FileSystemManager.getLocal().getFile(apApp.filesDir.parent, "patch")
     private var srcBoot: ExtendedFile = patchDir.getChildFile("boot.img")
     private var shell: Shell = createRootShell()
     private var prepared: Boolean = false
 
     private fun prepare() {
+        // Force clean with root to avoid permission issues from previous root operations or AceFS protection
+        shell.newJob().add("rm -rf ${patchDir.path}").exec()
+        
         patchDir.deleteRecursively()
         patchDir.mkdirs()
         val execs = listOf(
@@ -93,7 +98,11 @@ class PatchesViewModel : ViewModel() {
 
         for (lib in libs) {
             val name = lib.name.substring(3, lib.name.length - 3)
-            Os.symlink(lib.path, "$patchDir/$name")
+            try {
+                Os.symlink(lib.path, "$patchDir/$name")
+            } catch (e: Exception) {
+                lib.inputStream().copyAndClose(File(patchDir, name).outputStream())
+            }
         }
 
         // Extract scripts
@@ -252,14 +261,20 @@ class PatchesViewModel : ViewModel() {
             prepared = true
 
             running = true
-            prepare()
-            if (mode != PatchMode.UNPATCH) {
-                parseKpimg()
+            try {
+                prepare()
+                if (mode != PatchMode.UNPATCH) {
+                    parseKpimg()
+                }
+                if (mode == PatchMode.PATCH_AND_INSTALL || mode == PatchMode.UNPATCH || mode == PatchMode.INSTALL_TO_NEXT_SLOT || mode == PatchMode.RESTORE) {
+                    extractAndParseBootimg(mode)
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Prepare failed", e)
+                error = "Initialization failed: ${e.message}"
+            } finally {
+                running = false
             }
-            if (mode == PatchMode.PATCH_AND_INSTALL || mode == PatchMode.UNPATCH || mode == PatchMode.INSTALL_TO_NEXT_SLOT || mode == PatchMode.RESTORE) {
-                extractAndParseBootimg(mode)
-            }
-            running = false
         }
     }
 
@@ -454,6 +469,20 @@ class PatchesViewModel : ViewModel() {
                 }
                 patchCommand.addAll(listOf("-T", extra.type.desc))
             }
+
+            if (patchAceFSS) {
+                try {
+                    val kpmFile = patchDir.getChildFile("AceFS.kpm")
+                    apApp.assets.open("AceFS/AceFS.kpm").writeTo(kpmFile)
+                    patchCommand.addAll(listOf("-M", "AceFS.kpm"))
+                    patchCommand.addAll(listOf("-T", KPModel.ExtraType.KPM.desc))
+                    logs.add(" AceFS KPM embedded")
+                } catch (e: Exception) {
+                    logs.add(" [!] Failed to embed AceFS KPM: ${e.message}")
+                    Log.e(TAG, "Failed to embed AceFS KPM", e)
+                }
+            }
+
             for (i in 0..<existedExtras.size) {
                 val extra = existedExtras[i]
                 patchCommand.addAll(listOf("-E", extra.name))

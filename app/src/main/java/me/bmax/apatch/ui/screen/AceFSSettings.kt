@@ -54,6 +54,7 @@ import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.bmax.apatch.Natives
@@ -87,6 +88,9 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.window.DialogProperties
 
+import androidx.compose.material.icons.filled.AutoFixHigh
+import com.ramcosta.composedestinations.generated.destinations.AceFSKPMScreenDestination
+
 @Destination<RootGraph>
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -95,6 +99,8 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
     var config by remember { mutableStateOf(AceFSConfig.Config()) }
     val scope = rememberCoroutineScope()
     var showMenu by remember { mutableStateOf(false) }
+    var isServiceRunning by remember { mutableStateOf(false) }
+    var isAceFSKpmLoaded by remember { mutableStateOf(false) }
 
     val exportLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.CreateDocument("application/json")
@@ -167,6 +173,10 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
     // Load initial state
     LaunchedEffect(Unit) {
         config = AceFSConfig.readConfig()
+        AceFSConfig.installAceFS(context)
+        delay(200)
+        isServiceRunning = AceFSConfig.isAceFSRunning()
+        isAceFSKpmLoaded = AceFSConfig.isAceFSKpmLoaded()
     }
 
     // Explicitly save config to disk (for manual save buttons)
@@ -219,6 +229,9 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
                     }
                 },
                 actions = {
+                    IconButton(onClick = { navigator.navigate(AceFSKPMScreenDestination) }) {
+                        Icon(Icons.Filled.AutoFixHigh, contentDescription = "AceFS KPM")
+                    }
                     IconButton(onClick = { showMenu = true }) {
                         Icon(Icons.Filled.MoreVert, contentDescription = "Menu")
                         WallpaperAwareDropdownMenu(
@@ -253,7 +266,8 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
             // 1. FolkPatch Hide
             ExpandableSettingsCard(
                 title = stringResource(R.string.acefs_hide_service_title),
-                icon = Icons.Filled.VisibilityOff
+                icon = Icons.Filled.VisibilityOff,
+                enabled = isServiceRunning
             ) {
                 SwitchItem(
                     icon = null,
@@ -267,7 +281,8 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
             // 2. Custom Umount Paths
             ExpandableSettingsCard(
                 title = stringResource(R.string.acefs_category_hide),
-                icon = Icons.Filled.FolderOpen
+                icon = Icons.Filled.FolderOpen,
+                enabled = isServiceRunning
             ) {
                 ConfigListRow(
                     title = stringResource(R.string.acefs_umount_paths),
@@ -278,6 +293,7 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
                 ConfigListRow(
                     title = stringResource(R.string.acefs_hidden_paths),
                     items = config.hiddenPaths,
+                    enabled = isAceFSKpmLoaded,
                     onItemsChange = { updateLocalConfig(config.copy(hiddenPaths = it)) }
                 )
 
@@ -298,7 +314,8 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
             // 3. Spoof Configuration
             ExpandableSettingsCard(
                 title = stringResource(R.string.acefs_category_spoof),
-                icon = Icons.Filled.Face
+                icon = Icons.Filled.Face,
+                enabled = false
             ) {
                 Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
                     OutlinedTextField(
@@ -335,7 +352,8 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
             // 4. Permission Management
             ExpandableSettingsCard(
                 title = stringResource(R.string.acefs_category_permission),
-                icon = Icons.Filled.Security
+                icon = Icons.Filled.Security,
+                enabled = false
             ) {
                 SwitchItem(
                     icon = null,
@@ -355,6 +373,7 @@ fun AceFSSettingsScreen(navigator: DestinationsNavigator) {
 fun ExpandableSettingsCard(
     title: String,
     icon: ImageVector,
+    enabled: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
@@ -366,7 +385,7 @@ fun ExpandableSettingsCard(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { expanded = !expanded }
+            .then(if (enabled) Modifier.clickable { expanded = !expanded } else Modifier)
     ) {
         Row(
             modifier = Modifier
@@ -377,22 +396,24 @@ fun ExpandableSettingsCard(
             Icon(
                 imageVector = icon,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurface,
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = if (enabled) 1f else 0.38f),
                 modifier = Modifier.padding(end = 16.dp)
             )
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (enabled) 1f else 0.38f),
                 modifier = Modifier.weight(1f)
             )
             Icon(
                 imageVector = Icons.Default.ExpandMore,
                 contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = if (enabled) 1f else 0.38f),
                 modifier = Modifier.rotate(rotationState)
             )
         }
-        AnimatedVisibility(visible = expanded) {
+        AnimatedVisibility(visible = expanded && enabled) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -408,18 +429,27 @@ fun ExpandableSettingsCard(
 fun ConfigListRow(
     title: String,
     items: List<String>,
+    enabled: Boolean = true,
     onItemsChange: (List<String>) -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
 
     ListItem(
-        headlineContent = { Text(title) },
+        headlineContent = { 
+            Text(
+                text = title,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (enabled) 1f else 0.38f)
+            ) 
+        },
         trailingContent = {
-            IconButton(onClick = { showDialog = true }) {
+            IconButton(
+                onClick = { showDialog = true },
+                enabled = enabled
+            ) {
                 Icon(Icons.Filled.Settings, contentDescription = "Configure")
             }
         },
-        modifier = Modifier.clickable { showDialog = true }
+        modifier = Modifier.then(if (enabled) Modifier.clickable { showDialog = true } else Modifier)
     )
 
     if (showDialog) {
