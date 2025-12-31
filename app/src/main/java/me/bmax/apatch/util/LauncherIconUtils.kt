@@ -13,20 +13,20 @@ enum class LauncherIconVariant(val aliasName: String) {
     KERNELSUNEXT(".ui.MainActivityAliasKernelSUNext"),
     KITSUNE(".ui.MainActivityAliasKitsune"),
     MAGISK(".ui.MainActivityAliasMagisk"),
-    SUPERROOT(".ui.MainActivityAliasSuperRoot")
+    SUPERROOT(".ui.MainActivityAliasSuperRoot"),
+
+    DEFAULT_FOLKSU(".ui.MainActivityAliasDefaultFolkSU"),
+    CLASSIC_FOLKSU(".ui.MainActivityAliasClassicFolkSU"),
+    APATCH_FOLKSU(".ui.MainActivityAliasApatchFolkSU"),
+    KERNELSU_FOLKSU(".ui.MainActivityAliasKernelSUFolkSU"),
+    KERNELSUNEXT_FOLKSU(".ui.MainActivityAliasKernelSUNextFolkSU"),
+    KITSUNE_FOLKSU(".ui.MainActivityAliasKitsuneFolkSU"),
+    MAGISK_FOLKSU(".ui.MainActivityAliasMagiskFolkSU"),
+    SUPERROOT_FOLKSU(".ui.MainActivityAliasSuperRootFolkSU")
 }
 
 object LauncherIconUtils {
-    private val aliases = listOf(
-        LauncherIconVariant.DEFAULT,
-        LauncherIconVariant.CLASSIC,
-        LauncherIconVariant.APATCH,
-        LauncherIconVariant.KERNELSU,
-        LauncherIconVariant.KERNELSUNEXT,
-        LauncherIconVariant.KITSUNE,
-        LauncherIconVariant.MAGISK,
-        LauncherIconVariant.SUPERROOT
-    )
+    private val aliases = LauncherIconVariant.values().toList()
 
     fun applyVariant(context: Context, variant: LauncherIconVariant) {
         val pm = context.packageManager
@@ -42,19 +42,23 @@ object LauncherIconUtils {
         }
     }
 
-    fun applySaved(context: Context, variantName: String?) {
-        val variant = when (variantName) {
-            "default" -> LauncherIconVariant.DEFAULT
-            "classic" -> LauncherIconVariant.CLASSIC
-            "apatch" -> LauncherIconVariant.APATCH
-            "kernelsu" -> LauncherIconVariant.KERNELSU
-            "kernelsunext" -> LauncherIconVariant.KERNELSUNEXT
-            "kitsune" -> LauncherIconVariant.KITSUNE
-            "magisk" -> LauncherIconVariant.MAGISK
-            "superroot" -> LauncherIconVariant.SUPERROOT
-            else -> LauncherIconVariant.DEFAULT
+    fun applySaved(context: Context, variantName: String? = null) {
+        val prefs = APApplication.sharedPreferences
+        val vName = variantName ?: prefs.getString("launcher_icon_variant", "default")
+        val appName = prefs.getString("desktop_app_name", "FolkPatch")
+        val isFolkSU = appName == "FolkSU"
+
+        val variant = when (vName) {
+            "default" -> if (isFolkSU) LauncherIconVariant.DEFAULT_FOLKSU else LauncherIconVariant.DEFAULT
+            "classic" -> if (isFolkSU) LauncherIconVariant.CLASSIC_FOLKSU else LauncherIconVariant.CLASSIC
+            "apatch" -> if (isFolkSU) LauncherIconVariant.APATCH_FOLKSU else LauncherIconVariant.APATCH
+            "kernelsu" -> if (isFolkSU) LauncherIconVariant.KERNELSU_FOLKSU else LauncherIconVariant.KERNELSU
+            "kernelsunext" -> if (isFolkSU) LauncherIconVariant.KERNELSUNEXT_FOLKSU else LauncherIconVariant.KERNELSUNEXT
+            "kitsune" -> if (isFolkSU) LauncherIconVariant.KITSUNE_FOLKSU else LauncherIconVariant.KITSUNE
+            "magisk" -> if (isFolkSU) LauncherIconVariant.MAGISK_FOLKSU else LauncherIconVariant.MAGISK
+            "superroot" -> if (isFolkSU) LauncherIconVariant.SUPERROOT_FOLKSU else LauncherIconVariant.SUPERROOT
+            else -> if (isFolkSU) LauncherIconVariant.DEFAULT_FOLKSU else LauncherIconVariant.DEFAULT
         }
         applyVariant(context, variant)
     }
 }
-

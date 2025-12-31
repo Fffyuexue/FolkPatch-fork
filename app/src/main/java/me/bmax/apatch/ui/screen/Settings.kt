@@ -35,6 +35,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AspectRatio
 import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Commit
@@ -271,6 +272,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         val showIconChooseDialog = remember { mutableStateOf(false) }
         if (showIconChooseDialog.value) {
             IconChooseDialog(showIconChooseDialog)
+        }
+
+        val showDesktopAppNameDialog = remember { mutableStateOf(false) }
+        if (showDesktopAppNameDialog.value) {
+            DesktopAppNameChooseDialog(showDesktopAppNameDialog)
         }
 
         val showHomeLayoutChooseDialog = remember { mutableStateOf(false) }
@@ -585,6 +591,10 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val currentIcon = stringResource(iconNameToString(currentIconRaw.toString()))
             val showLauncherIcon = matchGeneral || shouldShow(launcherIconTitle, currentIcon)
 
+            val desktopAppNameTitle = stringResource(id = R.string.desktop_app_name)
+            val currentDesktopAppName = prefs.getString("desktop_app_name", "FolkPatch")
+            val showDesktopAppName = matchGeneral || shouldShow(desktopAppNameTitle, currentDesktopAppName.toString())
+
             val dpiTitle = stringResource(id = R.string.settings_app_dpi)
             val currentDpiVal = me.bmax.apatch.util.DPIUtils.currentDpi
             val dpiValue = if (currentDpiVal == -1) stringResource(id = R.string.system_default) else "$currentDpiVal DPI"
@@ -602,7 +612,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val currentSchemeLabel = if (currentScheme == "root_service") stringResource(R.string.app_list_loading_scheme_root_service) else stringResource(R.string.app_list_loading_scheme_package_manager)
             val showAppListLoadingScheme = matchGeneral || shouldShow(appListLoadingSchemeTitle, currentSchemeLabel)
 
-            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme
+            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme
 
             if (showGeneralCategory) {
                 SettingsCategory(icon = Icons.Filled.Tune, title = generalTitle, isSearching = searchText.isNotEmpty()) {
@@ -821,6 +831,21 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                 color = MaterialTheme.colorScheme.outline
                             )
                         }, leadingContent = { Icon(painterResource(id = R.drawable.settings), null) })
+                    }
+
+                    // Desktop App Name
+                    if (showDesktopAppName) {
+                        ListItem(colors = ListItemDefaults.colors(containerColor = Color.Transparent), headlineContent = {
+                            Text(text = desktopAppNameTitle)
+                        }, modifier = Modifier.clickable {
+                            showDesktopAppNameDialog.value = true
+                        }, supportingContent = {
+                            Text(
+                                text = currentDesktopAppName.toString(),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        }, leadingContent = { Icon(Icons.Filled.TextFields, null) })
                     }
 
                     // DPI
@@ -3201,6 +3226,66 @@ fun IconChooseDialog(showDialog: MutableState<Boolean>) {
                             prefs.edit { putString("launcher_icon_variant", preset.name) }
                             me.bmax.apatch.util.LauncherIconUtils.applySaved(context, preset.name)
                         })
+                }
+            }
+
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DesktopAppNameChooseDialog(showDialog: MutableState<Boolean>) {
+    val prefs = APApplication.sharedPreferences
+    val context = LocalContext.current
+    val currentName = prefs.getString("desktop_app_name", "FolkPatch")
+
+    BasicAlertDialog(
+        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            LazyColumn {
+                item {
+                    ListItem(
+                        headlineContent = { Text(text = "FolkPatch") },
+                        modifier = Modifier.clickable {
+                            showDialog.value = false
+                            prefs.edit { putString("desktop_app_name", "FolkPatch") }
+                            me.bmax.apatch.util.LauncherIconUtils.applySaved(context)
+                        },
+                        trailingContent = {
+                            if (currentName == "FolkPatch" || currentName == null) {
+                                Icon(Icons.Filled.Check, contentDescription = null)
+                            }
+                        }
+                    )
+                }
+                item {
+                    ListItem(
+                        headlineContent = { Text(text = "FolkSU") },
+                        modifier = Modifier.clickable {
+                            showDialog.value = false
+                            prefs.edit { putString("desktop_app_name", "FolkSU") }
+                            me.bmax.apatch.util.LauncherIconUtils.applySaved(context)
+                        },
+                        trailingContent = {
+                            if (currentName == "FolkSU") {
+                                Icon(Icons.Filled.Check, contentDescription = null)
+                            }
+                        }
+                    )
                 }
             }
 
