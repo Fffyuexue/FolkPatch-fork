@@ -1,8 +1,4 @@
-use std::env;
-use std::fs::File;
-use std::io::Write;
-use std::path::Path;
-use std::process::Command;
+use std::{env, fs::File, io::Write, path::Path, process::Command};
 
 fn get_git_version() -> Result<(u32, String), std::io::Error> {
     // Try to get version code from environment variable first
@@ -16,10 +12,9 @@ fn get_git_version() -> Result<(u32, String), std::io::Error> {
 
         let output = output.stdout;
         let git_count = String::from_utf8(output).expect("Failed to read git count stdout");
-        let git_count: u32 = git_count
-            .trim()
-            .parse()
-            .map_err(|_| std::io::Error::new(std::io::ErrorKind::Other, "Failed to parse git count"))?;
+        let git_count: u32 = git_count.trim().parse().map_err(|_| {
+            std::io::Error::new(std::io::ErrorKind::Other, "Failed to parse git count")
+        })?;
         std::cmp::max(11000 + 200 + git_count, 10762) // For historical reasons and ensure minimum version
     };
 
