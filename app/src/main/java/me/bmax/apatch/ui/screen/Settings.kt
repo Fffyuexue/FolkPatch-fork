@@ -78,8 +78,6 @@ import androidx.compose.material.icons.filled.Notifications
 import me.bmax.apatch.ui.component.CheckboxItem
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.generated.destinations.ThemeStoreScreenDestination
-// [TEMP_DISABLED_ACEFS] AceFS 设置界面导航暂时注释
-// import com.ramcosta.composedestinations.generated.destinations.AceFSSettingsScreenDestination
 import androidx.compose.material.icons.filled.Settings
 
 import androidx.compose.ui.res.painterResource
@@ -234,10 +232,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 onSearchTextChange = { searchText = it },
                 onClearClick = { searchText = "" },
                 dropdownContent = {
-                    // [TEMP_DISABLED_ACEFS] AceFS 设置界面入口按钮暂时注释
-                    // IconButton(onClick = { navigator.navigate(AceFSSettingsScreenDestination) }) {
-                    //     Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.acefs_settings_title))
-                    // }
                 }
             )
         },

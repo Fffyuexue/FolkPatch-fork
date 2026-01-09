@@ -208,12 +208,6 @@ fun Patches(mode: PatchesViewModel.PatchMode) {
             // add new KPM
             if (viewModel.superkey.isNotEmpty() && !viewModel.patching && !viewModel.patchdone && mode != PatchesViewModel.PatchMode.UNPATCH && mode != PatchesViewModel.PatchMode.RESTORE) {
 
-                // [TEMP_DISABLED_ACEFS] AceFS-S 开关组件暂时注释
-                // AceFSSwitchCard(
-                //     checked = viewModel.patchAceFSS,
-                //     onCheckedChange = { viewModel.patchAceFSS = it }
-                // )
-
                 SelectFileButton(
                     text = stringResource(id = R.string.patch_embed_kpm_btn),
                     onSelected = { data, uri ->
@@ -694,24 +688,6 @@ private fun PatchMode(mode: PatchesViewModel.PatchMode) {
         }
     }
 }
-
-// [TEMP_DISABLED_ACEFS] AceFS-S 开关卡片组件暂时注释
-// @Composable
-// private fun AceFSSwitchCard(checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
-//     ElevatedCard(
-//         colors = CardDefaults.elevatedCardColors(containerColor = run {
-//             MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 1f)
-//         })
-//     ) {
-//         SwitchItem(
-//             icon = Icons.Outlined.Extension,
-//             title = stringResource(id = R.string.patch_embed_acefs_title),
-//             summary = stringResource(id = R.string.patch_embed_acefs_summary),
-//             checked = checked,
-//             onCheckedChange = onCheckedChange
-//         )
-//     }
-// }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

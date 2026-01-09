@@ -73,16 +73,13 @@ class PatchesViewModel : ViewModel() {
     var error by mutableStateOf("")
     var patchLog by mutableStateOf("")
 
-    // [TEMP_DISABLED_ACEFS] AceFS-S 嵌入状态暂时注释
-    // var patchAceFSS by mutableStateOf(false)
-
     private val patchDir: ExtendedFile = FileSystemManager.getLocal().getFile(apApp.filesDir.parent, "patch")
     private var srcBoot: ExtendedFile = patchDir.getChildFile("boot.img")
     private var shell: Shell = createRootShell()
     private var prepared: Boolean = false
 
     private fun prepare() {
-        // Force clean with root to avoid permission issues from previous root operations or AceFS protection
+        // Force clean with root to avoid permission issues from previous root operations
         shell.newJob().add("rm -rf ${patchDir.path}").exec()
         
         patchDir.deleteRecursively()
@@ -141,8 +138,6 @@ class PatchesViewModel : ViewModel() {
     }
 
     private fun parseBootimg(bootimg: String) {
-        // [TEMP_DISABLED_ACEFS] AceFS-S 状态重置暂时注释
-        // patchAceFSS = false
         val result = shellForResult(
             shell,
             "cd $patchDir",
@@ -186,11 +181,6 @@ class PatchesViewModel : ViewModel() {
                             event = KPModel.TriggerEvent.PRE_KERNEL_INIT.event
                         }
                         if (type == KPModel.ExtraType.KPM) {
-                            // [TEMP_DISABLED_ACEFS] 检测到 AceFS 模块时设置状态暂时注释
-                            // if (name == "AceFS") {
-                            //     patchAceFSS = true
-                            //     continue
-                            // }
                             val kpmInfo = KPModel.KPMInfo(
                                 type, name, event, args,
                                 extra["version"].toString(),
@@ -477,20 +467,6 @@ class PatchesViewModel : ViewModel() {
                 }
                 patchCommand.addAll(listOf("-T", extra.type.desc))
             }
-
-            // [TEMP_DISABLED_ACEFS] 嵌入 AceFS KPM 的逻辑暂时注释
-            // if (patchAceFSS) {
-            //     try {
-            //         val kpmFile = patchDir.getChildFile("AceFS.kpm")
-            //         apApp.assets.open("AceFS/AceFS.kpm").writeTo(kpmFile)
-            //         patchCommand.addAll(listOf("-M", "AceFS.kpm"))
-            //         patchCommand.addAll(listOf("-T", KPModel.ExtraType.KPM.desc))
-            //         logs.add(" AceFS KPM embedded")
-            //     } catch (e: Exception) {
-            //         logs.add(" [!] Failed to embed AceFS KPM: ${e.message}")
-            //         Log.e(TAG, "Failed to embed AceFS KPM", e)
-            //     }
-            // }
 
             for (i in 0..<existedExtras.size) {
                 val extra = existedExtras[i]

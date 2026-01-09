@@ -624,51 +624,6 @@
     <string name="backup_success">备份成功</string>
     <string name="restore_success">还原成功</string>
 
-    <!-- AceFS Settings -->
-    <string name="acefs_settings_title">AceFS 设置</string>
-    <string name="acefs_hide_service_title">FolkPatch Hide伪装服务</string>
-    <string name="acefs_hide_service_summary">使用Hide服务来隐藏一些东西</string>
-    <string name="acefs_hide_btn">开启 Hide</string>
-    <string name="acefs_category_hide">隐藏配置</string>
-    <string name="acefs_umount_paths">自定义卸载挂载路径</string>
-    <string name="acefs_category_spoof">伪装配置</string>
-    <string name="acefs_fake_kernel_version">伪装内核版本</string>
-    <string name="acefs_fake_build_time">伪装构建时间</string>
-    <string name="acefs_hidden_paths">自定义隐藏路径</string>
-    <string name="acefs_category_permission">权限管理</string>
-    <string name="acefs_manage_superuser">接管原生超级用户列表</string>
-    <string name="acefs_add_item">添加</string>
-    <string name="acefs_remove_item">移除</string>
-    <string name="acefs_save_success">配置保存成功</string>
-    <string name="acefs_save_failed">配置保存失败</string>
-    <string name="acefs_save_config">保存配置</string>
-    <string name="acefs_import_config">导入配置</string>
-    <string name="acefs_export_config">导出配置</string>
-    <string name="acefs_import_success">导入成功</string>
-    <string name="acefs_import_failed">导入失败</string>
-    <string name="acefs_export_success">导出成功</string>
-    <string name="acefs_export_failed">导出失败</string>
-
-    <string name="acefs_kpm_title">AceFS Service</string>
-    <string name="acefs_kpm_service_status">Service</string>
-    <string name="acefs_kpm_status_running">运行中</string>
-    <string name="acefs_kpm_status_not_loaded">未加载</string>
-    <string name="acefs_kpm_status_not_running">未运行</string>
-    <string name="acefs_kpm_version_prefix">版本：</string>
-    <string name="acefs_kpm_unload">停止服务</string>
-    <string name="acefs_kpm_load">启动服务</string>
-    <string name="acefs_kpm_info_title">系统信息</string>
-    <string name="acefs_kpm_kernel_version">内核版本</string>
-    <string name="acefs_kpm_s_status">AceFS-S 状态</string>
-    <string name="acefs_kpm_c_status">AceFS-C 状态</string>
-    <string name="acefs_kpm_hide_status">FolkPatch 隐藏</string>
-    <string name="acefs_kpm_hide_enabled">已启用</string>
-    <string name="acefs_kpm_hide_disabled">已禁用</string>
-    <string name="acefs_kpm_s_version">AceFS-S 版本</string>
-
-    <string name="patch_embed_acefs_title">嵌入 AceFS-S 内核</string>
-    <string name="patch_embed_acefs_summary">修补时嵌入 AceFS 补丁</string>
-
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">角标统计设置</string>
     <string name="enable_badge_count_summary">配置导航项的角标统计显示</string>

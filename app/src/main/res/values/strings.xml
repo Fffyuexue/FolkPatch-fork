@@ -631,51 +631,6 @@
     <string name="backup_success">Backup successful</string>
     <string name="restore_success">Restore successful</string>
 
-    <!-- AceFS Settings -->
-    <string name="acefs_settings_title">AceFS Settings</string>
-    <string name="acefs_kpm_title">AceFS Service</string>
-    <string name="acefs_kpm_service_status">Service</string>
-    <string name="acefs_kpm_status_running">Running</string>
-    <string name="acefs_kpm_status_not_loaded">Not Loaded</string>
-    <string name="acefs_kpm_status_not_running">Not Running</string>
-    <string name="acefs_kpm_version_prefix">Version: </string>
-    <string name="acefs_kpm_unload">Stop Service</string>
-    <string name="acefs_kpm_load">Start Service</string>
-    <string name="acefs_kpm_info_title">System Info</string>
-    <string name="acefs_kpm_kernel_version">Kernel Version</string>
-    <string name="acefs_kpm_s_status">AceFS-S Status</string>
-    <string name="acefs_kpm_c_status">AceFS-C Status</string>
-    <string name="acefs_kpm_hide_status">FolkPatch Hide</string>
-    <string name="acefs_kpm_hide_enabled">Enabled</string>
-    <string name="acefs_kpm_hide_disabled">Disabled</string>
-    <string name="acefs_kpm_s_version">AceFS-S Version</string>
-    
-    <string name="acefs_hide_service_title">FolkPatch Hide Service</string>
-    <string name="acefs_hide_service_summary">Use Hide service to hide something</string>
-    <string name="acefs_hide_btn">Enable Hide</string>
-    <string name="acefs_category_hide">Hide Configuration</string>
-    <string name="acefs_umount_paths">Custom Umount Paths</string>
-    <string name="acefs_category_spoof">Spoof Configuration</string>
-    <string name="acefs_fake_kernel_version">Fake Kernel Version</string>
-    <string name="acefs_fake_build_time">Fake Build Time</string>
-    <string name="acefs_hidden_paths">Custom Hidden Paths</string>
-    <string name="acefs_category_permission">Permission Management</string>
-    <string name="acefs_manage_superuser">Manage SuperUser List</string>
-    <string name="acefs_add_item">Add Item</string>
-    <string name="acefs_remove_item">Remove</string>
-    <string name="acefs_save_config">Save Configuration</string>
-    <string name="acefs_save_success">Configuration saved successfully</string>
-    <string name="acefs_save_failed">Failed to save configuration</string>
-    <string name="acefs_import_config">Import Configuration</string>
-    <string name="acefs_export_config">Export Configuration</string>
-    <string name="acefs_import_success">Import successful</string>
-    <string name="acefs_import_failed">Import failed</string>
-    <string name="acefs_export_success">Export successful</string>
-    <string name="acefs_export_failed">Export failed</string>
-
-    <string name="patch_embed_acefs_title">Embed AceFS-S Kernel</string>
-    <string name="patch_embed_acefs_summary">Embed AceFS patch when patching</string>
-
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">Badge Count Settings</string>
     <string name="enable_badge_count_summary">Configure badge count display for navigation items</string>

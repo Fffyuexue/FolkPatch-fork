@@ -43,7 +43,6 @@
     <string name="settings_grid_working_card_hide_mode">Ocultar modo de trabajo</string>
     <string name="settings_grid_working_card_hide_mode_summary">Ocultar el texto \'Full\' o \'Half\' en la tarjeta de estado</string>
 
-
     <string name="settings_folkx_engine_title">Motor de Animación FolkX</string>
     <string name="settings_folkx_engine_summary">Usar animación elástica basada en física al cambiar entre páginas principales</string>
     <string name="settings_folkx_animation_type">Tipo de animación</string>
@@ -236,8 +235,6 @@
     <string name="settings_donot_store_superkey">No guardar SuperKey localmente</string>
     <string name="settings_donot_store_superkey_summary">Autenticar la SuperKey cada vez que inicie el gestor</string>
 
-
-
     <string name="mode_select_page_title">Instalar</string>
     <string name="mode_select_page_patch_and_install">Parchear e instalar</string>
     <string name="mode_select_page_select_file">Selecciona una imagen boot para parchear</string>
@@ -353,7 +350,6 @@
     <string name="settings_select_system_module_background">Fondo Módulos del Sistema</string>
     <string name="settings_select_settings_background">Fondo Ajustes</string>
 
-    
     <!-- Font Settings -->
     <string name="settings_custom_font">Fuente Personalizada</string>
     <string name="settings_select_font_file">Seleccionar archivo de fuente</string>
@@ -462,8 +458,7 @@
 
     <string name="kpm_page_first_time_title">Advertencia</string>
     <string name="kpm_page_first_time_message">Los módulos de kernel modifican directamente la implementación del Boot. A diferencia de los módulos del sistema, carecen de un buen mecanismo de recuperación. Si surgen problemas, solo puedes arreglarlos entrando en Fastboot. Se recomienda cargar el módulo primero para asegurar que no haya problemas antes de incrustarlo en el Boot. ¡Si un módulo solo puede usarse cargándolo, puedes probar la función de carga automática de módulos KPM. ¡Si no entiendes los módulos de kernel, por favor no uses esta función!</string>
-    
-    
+
     <!-- Auto Backup Strings -->
     <string name="settings_auto_backup_module">Auto-respaldo de Módulos del Sistema</string>
     <string name="settings_auto_backup_module_summary">Respaldar automáticamente el archivo del módulo al directorio privado al instalar</string>
@@ -626,51 +621,7 @@
     <string name="su_backup_list">Lista de copia de seguridad</string>
     <string name="su_restore_list">Lista de restauración</string>
     <string name="backup_success">Copia de seguridad exitosa</string>
-    <string name="restore_success">Restauración exitosa</string>
-    <string name="acefs_kpm_title">AceFS Service</string>
-    <string name="acefs_kpm_service_status">Service</string>
-    <string name="acefs_kpm_status_running">Ejecutándose</string>
-    <string name="acefs_kpm_status_not_loaded">No Cargado</string>
-    <string name="acefs_kpm_status_not_running">No Ejecutándose</string>
-    <string name="acefs_kpm_version_prefix">Versión: </string>
-    <string name="acefs_kpm_unload">Detener Servicio</string>
-    <string name="acefs_kpm_load">Iniciar Servicio</string>
-    <string name="acefs_kpm_info_title">Información del Sistema</string>
-    <string name="acefs_kpm_kernel_version">Versión del Núcleo</string>
-    <string name="acefs_kpm_s_status">Estado AceFS-S</string>
-    <string name="acefs_kpm_c_status">Estado AceFS-C</string>
-    <string name="acefs_kpm_hide_status">FolkPatch Ocultar</string>
-    <string name="acefs_kpm_hide_enabled">Habilitado</string>
-    <string name="acefs_kpm_hide_disabled">Deshabilitado</string>
-    <string name="acefs_kpm_s_version">Versión AceFS-S</string>
-
-    <string name="acefs_settings_title">Configuración AceFS</string>
-    <string name="acefs_hide_service_title">Servicio de Ocultación FolkPatch</string>
-    <string name="acefs_hide_service_summary">Usar el servicio de ocultación para ocultar algo</string>
-    <string name="acefs_hide_btn">Activar Ocultación</string>
-    <string name="acefs_category_hide">Configuración de Ocultación</string>
-    <string name="acefs_umount_paths">Rutas de Desmontaje Personalizadas</string>
-    <string name="acefs_category_spoof">Configuración de Suplantación</string>
-    <string name="acefs_fake_kernel_version">Versión de Núcleo Falsa</string>
-    <string name="acefs_fake_build_time">Tiempo de Compilación Falso</string>
-    <string name="acefs_hidden_paths">Rutas Ocultas Personalizadas</string>
-    <string name="acefs_category_permission">Gestión de Permisos</string>
-    <string name="acefs_manage_superuser">Gestionar Lista de Superusuarios</string>
-    <string name="acefs_add_item">Agregar Elemento</string>
-    <string name="acefs_remove_item">Eliminar</string>
-    <string name="acefs_save_success">Configuración guardada exitosamente</string>
-    <string name="acefs_save_failed">Error al guardar configuración</string>
-    <string name="acefs_save_config">Guardar Configuración</string>
-    <string name="acefs_import_config">Importar Configuración</string>
-    <string name="acefs_export_config">Exportar Configuración</string>
-    <string name="acefs_import_success">Importación exitosa</string>
-    <string name="acefs_import_failed">Error de importación</string>
-    <string name="acefs_export_success">Exportación exitosa</string>
-    <string name="acefs_export_failed">Error de exportación</string>
-
-    <string name="patch_embed_acefs_title">Incrustar núcleo AceFS-S</string>
-    <string name="patch_embed_acefs_summary">Incrustar parche AceFS al parchear</string>
-    <!-- Badge Count Settings -->
+    <string name="restore_success">Restauración exitosa</string>    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Configuración de conteo de insignias</string>
     <string name="enable_badge_count_summary">Configurar la visualización del conteo de insignias para elementos de navegación</string>
     <string name="badge_superuser">Mostrar insignia de superusuario</string>

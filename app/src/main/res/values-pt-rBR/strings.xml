@@ -43,7 +43,6 @@
     <string name="settings_grid_working_card_hide_mode">Ocultar modo de operação</string>
     <string name="settings_grid_working_card_hide_mode_summary">Ocultar o texto \'Completo\' ou \'Metade\' no cartão de status</string>
 
-
     <string name="settings_folkx_engine_title">FolkX Animation Engine</string>
     <string name="settings_folkx_engine_summary">Usar animação de mola baseada em física suave ao alternar entre páginas de nível superior</string>
     <string name="settings_folkx_animation_type">Tipo de Animação</string>
@@ -236,7 +235,6 @@
     <string name="settings_donot_store_superkey">Não armazenar SuperKey localmente</string>
     <string name="settings_donot_store_superkey_summary">Autenticar a SuperKey toda vez que o gerenciador iniciar</string>
 
-
     <string name="mode_select_page_title">Instalar</string>
     <string name="mode_select_page_patch_and_install">Aplicar Patch e Instalar</string>
     <string name="mode_select_page_select_file">Selecione uma imagem de boot para aplicar o patch</string>
@@ -352,7 +350,6 @@
     <string name="settings_select_system_module_background">Fundo Módulos de Sistema</string>
     <string name="settings_select_settings_background">Fundo Configurações</string>
 
-    
     <!-- Font Settings -->
     <string name="settings_custom_font">Fonte Personalizada</string>
     <string name="settings_select_font_file">Selecionar Arquivo de Fonte</string>
@@ -461,8 +458,7 @@
 
     <string name="kpm_page_first_time_title">Aviso</string>
     <string name="kpm_page_first_time_message">Módulos de kernel modificam diretamente a implementação de Boot. Diferente dos módulos de sistema, eles carecem de um bom mecanismo de recuperação. Se surgirem problemas, você só poderá corrigi-los entrando no Fastboot. Recomenda-se carregar o módulo primeiro para garantir que não há problemas antes de embuti-lo no Boot. Se um módulo só pode ser usado via carregamento, tente o recurso de auto-carregamento KPM. Se você não entende de módulos de kernel, por favor, não use este recurso!</string>
-    
-    
+
     <!-- Auto Backup Strings -->
     <string name="settings_auto_backup_module">Backup Automático de Módulos</string>
     <string name="settings_auto_backup_module_summary">Fazer backup automático do arquivo do módulo para diretório privado ao instalar</string>
@@ -625,51 +621,7 @@
     <string name="su_backup_list">Lista de backup</string>
     <string name="su_restore_list">Lista de restauração</string>
     <string name="backup_success">Backup bem-sucedido</string>
-    <string name="restore_success">Restauração bem-sucedida</string>
-    <string name="acefs_kpm_title">AceFS Service</string>
-    <string name="acefs_kpm_service_status">Service</string>
-    <string name="acefs_kpm_status_running">Em Execução</string>
-    <string name="acefs_kpm_status_not_loaded">Não Carregado</string>
-    <string name="acefs_kpm_status_not_running">Não Em Execução</string>
-    <string name="acefs_kpm_version_prefix">Versão: </string>
-    <string name="acefs_kpm_unload">Parar Serviço</string>
-    <string name="acefs_kpm_load">Iniciar Serviço</string>
-    <string name="acefs_kpm_info_title">Informações do Sistema</string>
-    <string name="acefs_kpm_kernel_version">Versão do Kernel</string>
-    <string name="acefs_kpm_s_status">Status AceFS-S</string>
-    <string name="acefs_kpm_c_status">Status AceFS-C</string>
-    <string name="acefs_kpm_hide_status">Ocultar FolkPatch</string>
-    <string name="acefs_kpm_hide_enabled">Habilitado</string>
-    <string name="acefs_kpm_hide_disabled">Desabilitado</string>
-    <string name="acefs_kpm_s_version">Versão AceFS-S</string>
-
-    <string name="acefs_settings_title">Configurações AceFS</string>
-    <string name="acefs_hide_service_title">Serviço de Ocultação FolkPatch</string>
-    <string name="acefs_hide_service_summary">Usar serviço de ocultação para ocultar algo</string>
-    <string name="acefs_hide_btn">Ativar Ocultação</string>
-    <string name="acefs_category_hide">Configuração de Ocultação</string>
-    <string name="acefs_umount_paths">Caminhos de Desmontagem Personalizados</string>
-    <string name="acefs_category_spoof">Configuração de Falsificação</string>
-    <string name="acefs_fake_kernel_version">Versão de Kernel Falsa</string>
-    <string name="acefs_fake_build_time">Tempo de Compilação Falso</string>
-    <string name="acefs_hidden_paths">Caminhos Ocultos Personalizados</string>
-    <string name="acefs_category_permission">Gerenciamento de Permissões</string>
-    <string name="acefs_manage_superuser">Gerenciar Lista de Superusuário</string>
-    <string name="acefs_add_item">Adicionar Item</string>
-    <string name="acefs_remove_item">Remover</string>
-    <string name="acefs_save_success">Configuração salva com sucesso</string>
-    <string name="acefs_save_failed">Falha ao salvar configuração</string>
-    <string name="acefs_save_config">Salvar Configuração</string>
-    <string name="acefs_import_config">Importar Configuração</string>
-    <string name="acefs_export_config">Exportar Configuração</string>
-    <string name="acefs_import_success">Importação bem-sucedida</string>
-    <string name="acefs_import_failed">Falha na importação</string>
-    <string name="acefs_export_success">Exportação bem-sucedida</string>
-    <string name="acefs_export_failed">Falha na exportação</string>
-
-    <string name="patch_embed_acefs_title">Incorporar kernel AceFS-S</string>
-    <string name="patch_embed_acefs_summary">Incorporar patch AceFS ao patchear</string>
-    <!-- Badge Count Settings -->
+    <string name="restore_success">Restauração bem-sucedida</string>    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Configurações do contador de selos</string>
     <string name="enable_badge_count_summary">Configurar a exibição do contador de selos para itens de navegação</string>
     <string name="badge_superuser">Mostrar selo de superusuário</string>
