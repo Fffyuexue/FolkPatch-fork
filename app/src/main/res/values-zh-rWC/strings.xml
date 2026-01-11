@@ -318,10 +318,6 @@
     <string name="app_title_superroot">SuperRoot</string>
 
     <string name="settings_app_dpi">仙器DPI</string>
-    <string name="settings_lite_mode">清修之境</string>
-    <string name="settings_lite_mode_mode_summary">不挂载仙法符箓以获得更好的施法性能和隐藏性</string>
-    <string name="settings_force_overlayfs_mode">强启OverlayFS仙域</string>
-    <string name="settings_force_overlayfs_mode_summary">强以OverlayFS仙域引仙符入道</string>
     <string name="settings_magic_mount">启仙域挂载</string>
     <string name="settings_magic_mount_summary">启内建挂载系统而不赖元仙符</string>
     <string name="settings_app_title">仙器名讳</string>

@@ -288,10 +288,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">アプリの DPI</string>
-    <string name="settings_lite_mode">ライトモード</string>
-    <string name="settings_lite_mode_mode_summary">より良いパフォーマンスと隠匿性のためにファイルをマウントしない</string>
-    <string name="settings_force_overlayfs_mode">強制OverlayFSモード</string>
-    <string name="settings_force_overlayfs_mode_summary">モジュール機能にOverlayFSを強制的に使用する</string>
     <string name="settings_magic_mount">マウントシステムを有効にする</string>
     <string name="settings_magic_mount_summary">メタモジュールに依存せずに内蔵マウントシステムを有効にする</string>
     <string name="settings_app_title">アプリタイトル</string>

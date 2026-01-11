@@ -332,10 +332,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI de la App</string>
-    <string name="settings_lite_mode">Modo Lite</string>
-    <string name="settings_lite_mode_mode_summary">No montar archivos para un mejor rendimiento y sigilo</string>
-    <string name="settings_force_overlayfs_mode">Forzar Modo OverlayFS</string>
-    <string name="settings_force_overlayfs_mode_summary">Forzar el uso de OverlayFS para módulos</string>
     <string name="settings_magic_mount">Activar Montaje Mágico</string>
     <string name="settings_magic_mount_summary">Activar el sistema de montaje integrado sin depender de metamódulos</string>
     <string name="settings_app_title">Título de la App</string>

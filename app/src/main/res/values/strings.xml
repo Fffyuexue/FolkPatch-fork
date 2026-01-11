@@ -337,10 +337,6 @@
     <string name="settings_app_dpi">App DPI</string>
     <string name="settings_magic_mount">Enable Magic Mount</string>
     <string name="settings_magic_mount_summary">Enable the built-in mounting system without relying on Metamodule</string>
-    <string name="settings_lite_mode">Lite Mode</string>
-    <string name="settings_lite_mode_mode_summary">Do not mount files for better performance and stealth</string>
-    <string name="settings_force_overlayfs_mode">Force OverlayFS Mode</string>
-    <string name="settings_force_overlayfs_mode_summary">Force use OverlayFS for modules</string>
     <string name="settings_app_title">App Title</string>
     <string name="settings_custom_background">Custom Background</string>
     <string name="settings_custom_background_enabled">Custom Background Enabled</string>

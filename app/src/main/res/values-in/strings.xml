@@ -325,10 +325,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI Aplikasi</string>
-    <string name="settings_lite_mode">Mode Ringan</string>
-    <string name="settings_lite_mode_mode_summary">Jangan mount file untuk performa dan penyembunyian yang lebih baik</string>
-    <string name="settings_force_overlayfs_mode">Mode OverlayFS Paksa</string>
-    <string name="settings_force_overlayfs_mode_summary">Paksa penggunaan OverlayFS untuk modul</string>
     <string name="settings_magic_mount">Aktifkan Magic Mount</string>
     <string name="settings_magic_mount_summary">Aktifkan sistem pemasangan bawaan tanpa bergantung pada metamodul</string>
     <string name="settings_app_title">Judul Aplikasi</string>

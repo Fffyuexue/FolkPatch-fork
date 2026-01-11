@@ -326,10 +326,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI ứng dụng</string>
-    <string name="settings_lite_mode">Chế độ gọn nhẹ</string>
-    <string name="settings_lite_mode_mode_summary">Không gắn kết tệp để có hiệu suất và khả năng ẩn tốt hơn</string>
-    <string name="settings_force_overlayfs_mode">Buộc chế độ OverlayFS</string>
-    <string name="settings_force_overlayfs_mode_summary">Buộc sử dụng OverlayFS để tải module</string>
     <string name="settings_magic_mount">Bật Magic Mount</string>
     <string name="settings_magic_mount_summary">Bật hệ thống gắn kết tích hợp mà không cần phụ thuộc vào metamodule</string>
     <string name="settings_app_title">Tên ứng dụng</string>

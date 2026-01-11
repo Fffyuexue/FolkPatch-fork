@@ -334,10 +334,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI التطبيق</string>
-    <string name="settings_lite_mode">الوضع الخفيف</string>
-    <string name="settings_lite_mode_mode_summary">لا تقم بتحميل الملفات لتحسين الأداء والتخفي</string>
-    <string name="settings_force_overlayfs_mode">فرض وضع OverlayFS</string>
-    <string name="settings_force_overlayfs_mode_summary">فرض استخدام OverlayFS للوحدات</string>
     <string name="settings_magic_mount">تفعيل Magic Mount</string>
     <string name="settings_magic_mount_summary">تفعيل نظام التركيب المدمج دون الاعتماد على الوحدات الفوقية</string>
     <string name="settings_app_title">عنوان التطبيق</string>

@@ -330,10 +330,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">DPI aplikacji</string>
-    <string name="settings_lite_mode">Tryb uproszczony</string>
-    <string name="settings_lite_mode_mode_summary">Nie montuj plików, aby uzyskać lepszą wydajność i ukrycie</string>
-    <string name="settings_force_overlayfs_mode">Wymuś tryb OverlayFS</string>
-    <string name="settings_force_overlayfs_mode_summary">Wymuś użycie OverlayFS dla modułów</string>
     <string name="settings_magic_mount">Włącz Magic Mount</string>
     <string name="settings_magic_mount_summary">Włącz wbudowany system montowania bez polegania na metamodułach</string>
     <string name="settings_app_title">Tytuł aplikacji</string>

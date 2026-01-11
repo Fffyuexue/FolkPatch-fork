@@ -326,10 +326,6 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">魔法使清晰度</string>
-    <string name="settings_lite_mode">简约魔法模式</string>
-    <string name="settings_lite_mode_mode_summary">不挂载魔法文件以获得更好的施法性能和隐蔽性</string>
-    <string name="settings_force_overlayfs_mode">强制星之回廊模式</string>
-    <string name="settings_force_overlayfs_mode_summary">强制使用星之回廊加载魔法阵</string>
     <string name="settings_magic_mount">启用魔法挂载</string>
     <string name="settings_magic_mount_summary">启用内置挂载系统而不依赖元魔法阵</string>
     <string name="settings_app_title">魔法使名称</string>

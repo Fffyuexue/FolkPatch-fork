@@ -329,12 +329,8 @@
     <string name="app_title_magicpatch">MagicPatch</string>
 
     <string name="settings_app_dpi">应用 DPI</string>
-    <string name="settings_lite_mode">Lite模式</string>
-    <string name="settings_lite_mode_mode_summary">不挂载文件以获得更好的性能和隐藏性</string>
     <string name="settings_magic_mount">启用挂载系统</string>
     <string name="settings_magic_mount_summary">启用内置的挂载系统而不依赖元模块</string>
-    <string name="settings_force_overlayfs_mode">强制 OverlayFS 模式</string>
-    <string name="settings_force_overlayfs_mode_summary">强制使用 OverlayFS 加载模块</string>
     <string name="settings_app_title">应用名称</string>
     <string name="settings_custom_background">自定义背景</string>
     <string name="settings_custom_background_enabled">已启用自定义背景</string>
