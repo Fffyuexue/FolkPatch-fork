@@ -119,6 +119,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 
 import me.bmax.apatch.util.BiometricUtils
+import me.bmax.apatch.util.ModuleBackupUtils
+import me.bmax.apatch.util.getFileNameFromUri
+import kotlinx.coroutines.CoroutineScope
 
 private const val TAG = "KernelPatchModule"
 private lateinit var targetKPMToControl: KPModel.KPMInfo
@@ -407,6 +410,23 @@ suspend fun loadModule(loadingDialog: LoadingDialogHandle, uri: Uri, args: Strin
                 var rc = -1
                 try {
                     uri.inputStream().buffered().writeTo(kpm)
+
+                    // Auto Backup Logic for KPM Load
+                    val fileName = getFileNameFromUri(apApp, uri)
+                    // Launch backup asynchronously
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val result = ModuleBackupUtils.autoBackupModule(apApp, kpm, fileName, "KPM")
+                            if (result != null && !result.startsWith("Duplicate")) {
+                                Log.e(TAG, "KPM Auto backup failed: $result")
+                            } else {
+                                Log.d(TAG, "KPM Auto backup success")
+                            }
+                        } catch (e: Exception) {
+                            Log.e(TAG, "KPM Auto backup error: ${e.message}")
+                        }
+                    }
+
                     rc = Natives.loadKernelPatchModule(kpm.path, args).toInt()
                 } catch (e: IOException) {
                     Log.e(TAG, "Copy kpm error: $e")

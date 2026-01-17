@@ -44,6 +44,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+import me.bmax.apatch.util.getFileNameFromUri
+import me.bmax.apatch.util.ModuleBackupUtils
+
 private const val TAG = "PatchViewModel"
 
 class PatchesViewModel : ViewModel() {
@@ -293,6 +296,23 @@ class PatchesViewModel : ViewModel() {
                         src.copyAndCloseOut(it.newOutputStream())
                     }
                 }
+
+                // Auto Backup Logic
+                val originalFileName = getFileNameFromUri(apApp, uri)
+                launch(Dispatchers.IO) {
+                     val result = ModuleBackupUtils.autoBackupModule(
+                        apApp,
+                        kpmFile,
+                        originalFileName,
+                        "KPM"
+                    )
+                    if (result != null && !result.startsWith("Duplicate")) {
+                        Log.e(TAG, "KPM Auto backup failed: $result")
+                    } else {
+                        Log.d(TAG, "KPM Auto backup success")
+                    }
+                }
+
             } catch (e: IOException) {
                 Log.e(TAG, "Copy kpm error: $e")
             }

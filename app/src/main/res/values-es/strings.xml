@@ -219,8 +219,6 @@
     <string name="setting_reset_su_path">Restablecer ruta su</string>
     <string name="setting_reset_su_new_path">Nueva ruta completa</string>
 
-    <string name="setting_auto_backup_boot">Auto-respaldo del boot</string>
-    <string name="setting_auto_backup_boot_summary">Respaldar automáticamente la imagen boot en /storage/emulated/0/Download/FolkPatch/BootBackups/ al parchear</string>
 
     <string name="apm_webui_open">Abrir</string>
     <string name="apm_action">Acción</string>
@@ -633,7 +631,7 @@
     <string name="su_backup_list">Lista de copia de seguridad</string>
     <string name="su_restore_list">Lista de restauración</string>
     <string name="backup_success">Copia de seguridad exitosa</string>
-    <string name="restore_success">Restauración exitosa</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Configuración de conteo de insignias</string>
     <string name="enable_badge_count_summary">Configurar la visualización del conteo de insignias para elementos de navegación</string>
     <string name="badge_superuser">Mostrar insignia de superusuario</string>
@@ -651,4 +649,49 @@
     <string name="settings_clear_sound_effect">Borrar efecto de sonido</string>
     <string name="settings_clear_sound_effect_confirm">¿Estás seguro de que quieres borrar el efecto de sonido?</string>
     <string name="settings_sound_effect_cleared">Efecto de sonido borrado</string>
+
+    <string name="settings_enable_cloud_backup_summary">Copia de seguridad automática en la nube</string>
+    <string name="settings_configure_webdav">Configurar servicio WebDAV</string>
+    <string name="webdav_config_title">Configuración WebDAV</string>
+    <string name="webdav_url">URL de WebDAV</string>
+    <string name="webdav_username">Nombre de usuario</string>
+    <string name="webdav_password">Contraseña</string>
+    <string name="webdav_uploading">Subiendo a WebDAV...</string>
+    <string name="webdav_backup_success">Copia de seguridad WebDAV exitosa</string>
+    <string name="webdav_backup_failed">Error en copia de seguridad WebDAV: %s</string>
+    <string name="save">Guardar</string>
+    <string name="test">Probar</string>
+    <string name="webdav_path_label">Ruta (ej. /Backup)</string>
+    <string name="webdav_view_logs">Ver registros</string>
+    <string name="webdav_backup_logs_title">Registros de copia de seguridad</string>
+    <string name="webdav_no_logs">No hay registros</string>
+    <string name="webdav_clear_logs">Borrar</string>
+    <string name="settings_enable_local_backup">Habilitar copia de seguridad local</string>
+    <string name="settings_enable_local_backup_summary">Copia de seguridad en almacenamiento local (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Cerrar</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Configuración de copia de seguridad</string>
+    <string name="settings_enable_cloud_backup">Habilitar copia de seguridad en la nube</string>
+    <string name="settings_webdav_url">URL de WebDAV</string>
+    <string name="settings_webdav_username">Usuario de WebDAV</string>
+    <string name="settings_webdav_password">Contraseña de WebDAV</string>
+    <string name="settings_test_webdav">Probar conexión WebDAV</string>
+    <string name="webdav_test_success">Prueba exitosa</string>
+    <string name="webdav_test_failed">Prueba fallida: %s</string>
+    <string name="settings_backup_now">Hacer copia de seguridad ahora</string>
+    <string name="backup_failed">Copia de seguridad fallida: %s</string>
+    <string name="settings_restore_backup">Restaurar copia de seguridad</string>
+    <string name="restore_success">Restauración exitosa</string>
+    <string name="restore_failed">Restauración fallida: %s</string>
+    <string name="settings_auto_backup">Copia de seguridad automática</string>
+    <string name="settings_auto_backup_summary">Copia de seguridad automática una vez al día</string>
+    <string name="settings_delete_remote_backup">Eliminar copia de seguridad en la nube</string>
+    <string name="delete_remote_backup_confirm">¿Está seguro de que desea eliminar la copia de seguridad en la nube?</string>
+    <string name="delete_success">Eliminación exitosa</string>
+    <string name="delete_failed">Eliminación fallida: %s</string>
+    <string name="settings_encrypt_backup">Cifrar copia de seguridad</string>
+    <string name="settings_encrypt_backup_summary">Cifrar archivo de copia de seguridad con contraseña</string>
+    <string name="settings_backup_password">Contraseña de copia de seguridad</string>
+    <string name="settings_backup_password_hint">Ingrese contraseña de copia de seguridad</string>
 </resources>

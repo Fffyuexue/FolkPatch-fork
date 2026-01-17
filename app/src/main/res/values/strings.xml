@@ -218,8 +218,6 @@
     <string name="setting_reset_su_path">Reset su path</string>
     <string name="setting_reset_su_new_path">New full path</string>
 
-    <string name="setting_auto_backup_boot">Auto backup boot</string>
-    <string name="setting_auto_backup_boot_summary">Automatically backup boot image to /storage/emulated/0/Download/FolkPatch/BootBackups/ when patching</string>
 
     <string name="apm_webui_open">Open</string>
     <string name="apm_action">Action</string>
@@ -661,4 +659,29 @@
     <string name="settings_clear_sound_effect">Clear Sound Effect</string>
     <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
     <string name="settings_sound_effect_cleared">Sound effect cleared</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Backup</string>
+    <string name="settings_enable_cloud_backup">Enable Cloud Backup</string>
+    <string name="settings_enable_cloud_backup_summary">Automatically backup flashed modules to cloud service</string>
+    <string name="settings_configure_webdav">Configure WebDAV Service</string>
+    <string name="webdav_config_title">WebDAV Configuration</string>
+    <string name="webdav_url">WebDAV URL</string>
+    <string name="webdav_username">Username</string>
+    <string name="webdav_password">Password</string>
+    <string name="webdav_test_success">Test Successful</string>
+    <string name="webdav_test_failed">Test Failed: %s</string>
+    <string name="webdav_uploading">Uploading to WebDAV...</string>
+    <string name="webdav_backup_success">WebDAV Backup Success</string>
+    <string name="webdav_backup_failed">WebDAV Backup Failed: %s</string>
+    <string name="save">Save</string>
+    <string name="test">Test</string>
+    <string name="webdav_path_label">Path (e.g. /Backup)</string>
+    <string name="webdav_view_logs">View Logs</string>
+    <string name="webdav_backup_logs_title">Backup Logs</string>
+    <string name="webdav_no_logs">No logs found.</string>
+    <string name="webdav_clear_logs">Clear</string>
+    <string name="settings_enable_local_backup">Enable Local Backup</string>
+    <string name="settings_enable_local_backup_summary">Backup modules to local storage (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Close</string>
 </resources>

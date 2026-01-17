@@ -220,9 +220,6 @@
     <string name="setting_reset_su_path">إعادة تعيين مسار su</string>
     <string name="setting_reset_su_new_path">المسار الكامل الجديد</string>
 
-    <string name="setting_auto_backup_boot">النسخ الاحتياطي التلقائي لـ boot</string>
-    <string name="setting_auto_backup_boot_summary">النسخ الاحتياطي التلقائي لصورة boot إلى /storage/emulated/0/Download/FolkPatch/BootBackups/ عند التصحيح</string>
-
     <string name="apm_webui_open">فتح</string>
     <string name="apm_action">إجراء</string>
     <string name="enable_web_debugging">تمكين تصحيح أخطاء WebView</string>
@@ -639,7 +636,6 @@
     <string name="su_backup_list">قائمة النسخ الاحتياطي</string>
     <string name="su_restore_list">قائمة الاستعادة</string>
     <string name="backup_success">تم النسخ الاحتياطي بنجاح</string>
-    <string name="restore_success">تمت الاستعادة بنجاح</string>
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">إعدادات عدد الشارات</string>
     <string name="enable_badge_count_summary">تكوين عرض عدد الشارات لعناصر التنقل</string>
@@ -658,4 +654,31 @@
     <string name="settings_clear_sound_effect">Clear Sound Effect</string>
     <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
     <string name="settings_sound_effect_cleared">Sound effect cleared</string>
+
+    <string name="settings_enable_cloud_backup_summary">النسخ الاحتياطي تلقائيًا من السحابة</string>
+    <string name="settings_configure_webdav">تكوين خدمة WebDAV</string>
+    <string name="webdav_config_title">تكوين WebDAV</string>
+    <string name="webdav_url">رابط WebDAV</string>
+    <string name="webdav_username">اسم المستخدم</string>
+    <string name="webdav_password">كلمة المرور</string>
+    <string name="webdav_uploading">جاري الرفع إلى WebDAV...</string>
+    <string name="webdav_backup_success">نجح النسخ الاحتياطي عبر WebDAV</string>
+    <string name="webdav_backup_failed">فشل النسخ الاحتياطي عبر WebDAV: %s</string>
+    <string name="save">حفظ</string>
+    <string name="test">اختبار</string>
+    <string name="webdav_path_label">المسار (مثال /Backup)</string>
+    <string name="webdav_view_logs">عرض السجلات</string>
+    <string name="webdav_backup_logs_title">سجلات النسخ الاحتياطي</string>
+    <string name="webdav_no_logs">لا توجد سجلات</string>
+    <string name="webdav_clear_logs">مسح</string>
+    <string name="settings_enable_local_backup">تفعيل النسخ الاحتياطي المحلي</string>
+    <string name="settings_enable_local_backup_summary">نسخ احتياطي إلى التخزين المحلي (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">إغلاق</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">إعدادات النسخ الاحتياطي</string>
+    <string name="settings_enable_cloud_backup">تفعيل النسخ الاحتياطي السحابي</string>
+    <string name="settings_test_webdav">اختبار اتصال WebDAV</string>
+    <string name="webdav_test_success">نجح الاختبار</string>
+    <string name="webdav_test_failed">فشل الاختبار: %s</string>
 </resources>

@@ -198,9 +198,6 @@
     <string name="setting_reset_su_path">重置圣光使者路径</string>
     <string name="setting_reset_su_new_path">新完整圣光路径</string>
 
-    <string name="setting_auto_backup_boot">自动备份圣器容器</string>
-    <string name="setting_auto_backup_boot_summary">加持时自动备份圣器容器到 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
-
     <string name="settings_folkx_engine_title">FolkX圣光动画引擎</string>
     <string name="settings_folkx_engine_summary">在顶层圣阵页面切换时使用圣域之光般的物理弹跳动画</string>
     <string name="settings_folkx_animation_type">圣光动画类型</string>
@@ -632,7 +629,8 @@
     <string name="su_backup_list">封存圣光记忆</string>
     <string name="su_restore_list">取出圣光记忆</string>
     <string name="backup_success">圣光记忆封存成功</string>
-    <string name="restore_success">圣光记忆取出成功</string>    <!-- Badge Count Settings -->
+    <string name="restore_success">圣光记忆取出成功</string>
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">神恩印记设定</string>
     <string name="enable_badge_count_summary">配置神谕圣所的神恩印记显示</string>
     <string name="badge_superuser">显示圣光使者印记</string>
@@ -650,4 +648,32 @@
     <string name="settings_clear_sound_effect">净化圣音</string>
     <string name="settings_clear_sound_effect_confirm">确定要净化此圣音吗？</string>
     <string name="settings_sound_effect_cleared">圣音已净化</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">圣域记忆</string>
+    <string name="settings_enable_cloud_backup">开启云端圣域</string>
+    <string name="settings_enable_cloud_backup_summary">自动将铭刻的圣物投影至云端圣域</string>
+    <string name="settings_configure_webdav">连接异界通道</string>
+    <string name="webdav_config_title">异界通道配置</string>
+    <string name="webdav_url">异界坐标</string>
+    <string name="webdav_username">契约者真名</string>
+    <string name="webdav_password">灵魂印记</string>
+    <string name="webdav_test_success">通道共鸣成功</string>
+    <string name="webdav_test_failed">通道共鸣失败: %s</string>
+    <string name="webdav_uploading">正在传送至异界...</string>
+    <string name="webdav_backup_success">圣域投影成功</string>
+    <string name="webdav_backup_failed">圣域投影失败: %s</string>
+    <string name="save">铭刻</string>
+    <string name="test">共鸣</string>
+    <string name="webdav_path_label">虚空路径 (如 /Backup)</string>
+    <string name="webdav_view_logs">查阅神谕</string>
+    <string name="webdav_backup_logs_title">投影神谕</string>
+    <string name="webdav_no_logs">暂无神谕</string>
+    <string name="webdav_clear_logs">净化</string>
+    <string name="settings_enable_local_backup">开启现世留存</string>
+    <string name="settings_enable_local_backup_summary">将圣物留存于现世 (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">封印</string>
+    <string name="settings_backup_password">封印咒语</string>
+    <string name="settings_backup_password_hint">吟唱封印咒语</string>
+
 </resources>

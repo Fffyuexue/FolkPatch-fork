@@ -214,9 +214,6 @@
     <string name="setting_reset_su_path">重置 su 路径</string>
     <string name="setting_reset_su_new_path">新完整路径</string>
 
-    <string name="setting_auto_backup_boot">自动备份 Boot</string>
-    <string name="setting_auto_backup_boot_summary">修补时自动备份 Boot 镜像到 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
-
     <string name="apm_webui_open">打开</string>
     <string name="apm_action">操作</string>
     <string name="enable_web_debugging">启用 WebView 调试</string>
@@ -655,4 +652,29 @@
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">确定要清除音效吗？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">备份</string>
+    <string name="settings_enable_cloud_backup">启用云端备份</string>
+    <string name="settings_enable_cloud_backup_summary">自动备份刷入过的模块到云端服务</string>
+    <string name="settings_configure_webdav">配置 WebDAV 服务</string>
+    <string name="webdav_config_title">WebDAV 配置</string>
+    <string name="webdav_url">WebDAV 地址</string>
+    <string name="webdav_username">用户名</string>
+    <string name="webdav_password">密码</string>
+    <string name="webdav_test_success">测试成功</string>
+    <string name="webdav_test_failed">测试失败: %s</string>
+    <string name="webdav_uploading">正在上传到 WebDAV...</string>
+    <string name="webdav_backup_success">WebDAV 备份成功</string>
+    <string name="webdav_backup_failed">WebDAV 备份失败: %s</string>
+    <string name="save">保存</string>
+    <string name="test">测试</string>
+    <string name="webdav_path_label">路径 (例如 /Backup)</string>
+    <string name="webdav_view_logs">查看日志</string>
+    <string name="webdav_backup_logs_title">备份日志</string>
+    <string name="webdav_no_logs">暂无日志</string>
+    <string name="webdav_clear_logs">清除</string>
+    <string name="settings_enable_local_backup">启用本地备份</string>
+    <string name="settings_enable_local_backup_summary">将模块备份到本地存储 (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">关闭</string>
 </resources>

@@ -199,8 +199,6 @@
     <string name="setting_reset_su_path">Đặt lại đường dẫn su</string>
     <string name="setting_reset_su_new_path">Đường dẫn đầy đủ mới</string>
 
-    <string name="setting_auto_backup_boot">Tự động sao lưu Boot</string>
-    <string name="setting_auto_backup_boot_summary">Tự động sao lưu ảnh Boot vào /storage/emulated/0/Download/FolkPatch/BootBackups/ khi vá</string>
 
     <string name="settings_folkx_engine_title">Động cơ hoạt hình FolkX</string>
     <string name="settings_folkx_engine_summary">Sử dụng hoạt hình lò xo vật lý mượt mà khi chuyển đổi các trang cấp cao nhất</string>
@@ -628,7 +626,7 @@
     <string name="su_backup_list">Danh sách sao lưu</string>
     <string name="su_restore_list">Danh sách khôi phục</string>
     <string name="backup_success">Sao lưu thành công</string>
-    <string name="restore_success">Khôi phục thành công</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Cài đặt đếm huy hiệu</string>
     <string name="enable_badge_count_summary">Cấu hình hiển thị số đếm huy hiệu cho các mục điều hướng</string>
     <string name="badge_superuser">Hiển thị huy hiệu siêu người dùng</string>
@@ -646,4 +644,49 @@
     <string name="settings_clear_sound_effect">Xóa hiệu ứng âm thanh</string>
     <string name="settings_clear_sound_effect_confirm">Bạn có chắc chắn muốn xóa hiệu ứng âm thanh không?</string>
     <string name="settings_sound_effect_cleared">Đã xóa hiệu ứng âm thanh</string>
+
+    <string name="settings_enable_cloud_backup_summary">Sao lưu tự động lên đám mây</string>
+    <string name="settings_configure_webdav">Cấu hình dịch vụ WebDAV</string>
+    <string name="webdav_config_title">Cấu hình WebDAV</string>
+    <string name="webdav_url">URL WebDAV</string>
+    <string name="webdav_username">Tên người dùng</string>
+    <string name="webdav_password">Mật khẩu</string>
+    <string name="webdav_uploading">Đang tải lên WebDAV...</string>
+    <string name="webdav_backup_success">Sao lưu WebDAV thành công</string>
+    <string name="webdav_backup_failed">Sao lưu WebDAV thất bại: %s</string>
+    <string name="save">Lưu</string>
+    <string name="test">Kiểm tra</string>
+    <string name="webdav_path_label">Đường dẫn (ví dụ: /Backup)</string>
+    <string name="webdav_view_logs">Xem nhật ký</string>
+    <string name="webdav_backup_logs_title">Nhật ký sao lưu</string>
+    <string name="webdav_no_logs">Không có nhật ký</string>
+    <string name="webdav_clear_logs">Xóa</string>
+    <string name="settings_enable_local_backup">Bật sao lưu cục bộ</string>
+    <string name="settings_enable_local_backup_summary">Sao lưu mô-đun vào bộ nhớ cục bộ (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Đóng</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Cài đặt sao lưu</string>
+    <string name="settings_enable_cloud_backup">Bật sao lưu đám mây</string>
+    <string name="settings_webdav_url">URL WebDAV</string>
+    <string name="settings_webdav_username">Tên người dùng WebDAV</string>
+    <string name="settings_webdav_password">Mật khẩu WebDAV</string>
+    <string name="settings_test_webdav">Kiểm tra kết nối WebDAV</string>
+    <string name="webdav_test_success">Kiểm tra thành công</string>
+    <string name="webdav_test_failed">Kiểm tra thất bại: %s</string>
+    <string name="settings_backup_now">Sao lưu ngay</string>
+    <string name="backup_failed">Sao lưu thất bại: %s</string>
+    <string name="settings_restore_backup">Khôi phục sao lưu</string>
+    <string name="restore_success">Khôi phục thành công</string>
+    <string name="restore_failed">Khôi phục thất bại: %s</string>
+    <string name="settings_auto_backup">Sao lưu tự động</string>
+    <string name="settings_auto_backup_summary">Tự động sao lưu một lần mỗi ngày</string>
+    <string name="settings_delete_remote_backup">Xóa sao lưu đám mây</string>
+    <string name="delete_remote_backup_confirm">Bạn có chắc chắn muốn xóa sao lưu đám mây không?</string>
+    <string name="delete_success">Xóa thành công</string>
+    <string name="delete_failed">Xóa thất bại: %s</string>
+    <string name="settings_encrypt_backup">Mã hóa sao lưu</string>
+    <string name="settings_encrypt_backup_summary">Mã hóa tệp sao lưu bằng mật khẩu</string>
+    <string name="settings_backup_password">Mật khẩu sao lưu</string>
+    <string name="settings_backup_password_hint">Nhập mật khẩu sao lưu</string>
 </resources>

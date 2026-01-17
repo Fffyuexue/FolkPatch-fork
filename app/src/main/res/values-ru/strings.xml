@@ -203,10 +203,7 @@
     <string name="hide_apatch_manager_failure">Не удалось скрыть. Пожалуйста, сообщите об ошибке!</string>
 
     <string name="setting_reset_su_path">Сбросить путь su</string>
-    <string name="setting_reset_su_new_path">Новый полный путь</string>
-
-    <string name="setting_auto_backup_boot">Автоматическое резервное копирование Boot</string>
-    <string name="setting_auto_backup_boot_summary">Автоматически создавать резервную копию образа Boot в /storage/emulated/0/Download/FolkPatch/BootBackups/ при патчинге</string>
+    <string name="setting_reset_su_new_path">Новый полный путь</string>\
 
     <string name="settings_folkx_engine_title">Движок анимации FolkX</string>
     <string name="settings_folkx_engine_summary">Использовать плавные физические пружинные анимации при переключении страниц верхнего уровня</string>
@@ -629,7 +626,7 @@
     <string name="su_backup_list">Список резервных копий</string>
     <string name="su_restore_list">Список восстановлений</string>
     <string name="backup_success">Резервное копирование успешно</string>
-    <string name="restore_success">Восстановление успешно</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Настройки счётчика значков</string>
     <string name="enable_badge_count_summary">Настройка отображения счётчика значков для элементов навигации</string>
     <string name="badge_superuser">Показывать значок суперпользователя</string>
@@ -647,4 +644,49 @@
     <string name="settings_clear_sound_effect">Очистить звуковой эффект</string>
     <string name="settings_clear_sound_effect_confirm">Вы уверены, что хотите удалить звуковой эффект?</string>
     <string name="settings_sound_effect_cleared">Звуковой эффект удален</string>
+
+    <string name="settings_enable_cloud_backup_summary">Автоматическое резервное копирование в облако</string>
+    <string name="settings_configure_webdav">Настроить службу WebDAV</string>
+    <string name="webdav_config_title">Конфигурация WebDAV</string>
+    <string name="webdav_url">URL WebDAV</string>
+    <string name="webdav_username">Имя пользователя</string>
+    <string name="webdav_password">Пароль</string>
+    <string name="webdav_uploading">Загрузка в WebDAV...</string>
+    <string name="webdav_backup_success">Резервная копия WebDAV успешно создана</string>
+    <string name="webdav_backup_failed">Ошибка резервного копирования WebDAV: %s</string>
+    <string name="save">Сохранить</string>
+    <string name="test">Тест</string>
+    <string name="webdav_path_label">Путь (напр. /Backup)</string>
+    <string name="webdav_view_logs">Просмотр логов</string>
+    <string name="webdav_backup_logs_title">Логи резервного копирования</string>
+    <string name="webdav_no_logs">Нет логов</string>
+    <string name="webdav_clear_logs">Очистить</string>
+    <string name="settings_enable_local_backup">Включить локальное резервное копирование</string>
+    <string name="settings_enable_local_backup_summary">Резервное копирование модулей в локальное хранилище (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Закрыть</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Настройки резервного копирования</string>
+    <string name="settings_enable_cloud_backup">Включить облачное резервное копирование</string>
+    <string name="settings_webdav_url">URL WebDAV</string>
+    <string name="settings_webdav_username">Имя пользователя WebDAV</string>
+    <string name="settings_webdav_password">Пароль WebDAV</string>
+    <string name="settings_test_webdav">Проверить соединение WebDAV</string>
+    <string name="webdav_test_success">Тест успешен</string>
+    <string name="webdav_test_failed">Тест не удался: %s</string>
+    <string name="settings_backup_now">Создать резервную копию сейчас</string>
+    <string name="backup_failed">Ошибка резервного копирования: %s</string>
+    <string name="settings_restore_backup">Восстановить из резервной копии</string>
+    <string name="restore_success">Восстановление успешно</string>
+    <string name="restore_failed">Ошибка восстановления: %s</string>
+    <string name="settings_auto_backup">Автоматическое резервное копирование</string>
+    <string name="settings_auto_backup_summary">Автоматическое резервное копирование раз в день</string>
+    <string name="settings_delete_remote_backup">Удалить облачную резервную копию</string>
+    <string name="delete_remote_backup_confirm">Вы уверены, что хотите удалить облачную резервную копию?</string>
+    <string name="delete_success">Удаление успешно</string>
+    <string name="delete_failed">Ошибка удаления: %s</string>
+    <string name="settings_encrypt_backup">Шифровать резервную копию</string>
+    <string name="settings_encrypt_backup_summary">Шифровать файл резервной копии паролем</string>
+    <string name="settings_backup_password">Пароль резервной копии</string>
+    <string name="settings_backup_password_hint">Введите пароль резервной копии</string>
 </resources>

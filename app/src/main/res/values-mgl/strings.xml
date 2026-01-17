@@ -199,8 +199,6 @@
     <string name="setting_reset_su_path">重置魔法使路径</string>
     <string name="setting_reset_su_new_path">新完整魔法路径</string>
 
-    <string name="setting_auto_backup_boot">自动备份魔法容器</string>
-    <string name="setting_auto_backup_boot_summary">施法时自动备份魔法容器到 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
 
     <string name="settings_folkx_engine_title">FolkX魔法动画引擎</string>
     <string name="settings_folkx_engine_summary">在顶层魔法页面切换时使用流畅的物理弹簧动画</string>
@@ -629,7 +627,8 @@
     <string name="su_backup_list">封印魔法使</string>
     <string name="su_restore_list">解封魔法使</string>
     <string name="backup_success">封印成功</string>
-    <string name="restore_success">唤醒成功</string>    <!-- Badge Count Settings -->
+    <string name="restore_success">唤醒成功</string>
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">魔法印记设定</string>
     <string name="enable_badge_count_summary">配置星图导航的魔法印记显示</string>
     <string name="badge_superuser">显示魔法使印记</string>
@@ -646,5 +645,33 @@
     <string name="settings_sound_effect_scope_bottom_bar">仅基座法阵</string>
     <string name="settings_clear_sound_effect">消除魔法音效</string>
     <string name="settings_clear_sound_effect_confirm">确定要消除此魔法音效吗？</string>
-    <string name="settings_sound_effect_cleared">魔法音效已消除</string>
+    <string name="settings_sound_effect_cleared">声音魔法已消散</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">记忆回廊</string>
+    <string name="settings_enable_cloud_backup">开启异界投影</string>
+    <string name="settings_enable_cloud_backup_summary">自动将变身道具投影到异世界</string>
+    <string name="settings_configure_webdav">建立异界连接</string>
+    <string name="webdav_config_title">异界连接仪式</string>
+    <string name="webdav_url">异界坐标</string>
+    <string name="webdav_username">魔女之名</string>
+    <string name="webdav_password">魔力印记</string>
+    <string name="webdav_test_success">契约缔结成功</string>
+    <string name="webdav_test_failed">契约缔结失败: %s</string>
+    <string name="webdav_uploading">正在传送魔法...</string>
+    <string name="webdav_backup_success">异界投影成功</string>
+    <string name="webdav_backup_failed">异界投影失败: %s</string>
+    <string name="save">缔结</string>
+    <string name="test">试炼</string>
+    <string name="webdav_path_label">次源路径 (如 /Backup)</string>
+    <string name="webdav_view_logs">查看魔法书</string>
+    <string name="webdav_backup_logs_title">投影记录</string>
+    <string name="webdav_no_logs">魔法书是空的</string>
+    <string name="webdav_clear_logs">遗忘</string>
+    <string name="settings_enable_local_backup">开启现世留影</string>
+    <string name="settings_enable_local_backup_summary">将道具留影在现世 (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">合上魔法书</string>
+    <string name="settings_backup_password">守护咒语</string>
+    <string name="settings_backup_password_hint">吟唱守护咒语</string>
+    
 </resources>

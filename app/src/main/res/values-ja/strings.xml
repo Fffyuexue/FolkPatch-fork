@@ -180,8 +180,6 @@
     <string name="setting_reset_su_path">su パスをリセット</string>
     <string name="setting_reset_su_new_path">新しいフルパス</string>
 
-    <string name="setting_auto_backup_boot">Boot の自動バックアップ</string>
-    <string name="setting_auto_backup_boot_summary">パッチ適用時に Boot イメージを /storage/emulated/0/Download/FolkPatch/BootBackups/ に自動的にバックアップ</string>
 
     <string name="settings_folkx_engine_title">FolkX アニメーションエンジン</string>
     <string name="settings_folkx_engine_summary">トップレベルページの切り替え時に滑らかな物理スプリングアニメーションを使用</string>
@@ -593,7 +591,7 @@
     <string name="su_backup_list">バックアップリスト</string>
     <string name="su_restore_list">復元リスト</string>
     <string name="backup_success">バックアップ成功</string>
-    <string name="restore_success">復元成功</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">バッジ数設定</string>
     <string name="enable_badge_count_summary">ナビゲーション項目のバッジ数表示を設定</string>
     <string name="badge_superuser">スーパーユーザーバッジを表示</string>
@@ -611,4 +609,49 @@
     <string name="settings_clear_sound_effect">効果音を消去</string>
     <string name="settings_clear_sound_effect_confirm">本当に効果音を消去しますか？</string>
     <string name="settings_sound_effect_cleared">効果音が消去されました</string>
+
+    <string name="settings_enable_cloud_backup_summary">自動的にクラウドにバックアップ</string>
+    <string name="settings_configure_webdav">WebDAVサービスを設定</string>
+    <string name="webdav_config_title">WebDAV設定</string>
+    <string name="webdav_url">WebDAV URL</string>
+    <string name="webdav_username">ユーザー名</string>
+    <string name="webdav_password">パスワード</string>
+    <string name="webdav_uploading">WebDAVにアップロード中...</string>
+    <string name="webdav_backup_success">WebDAVバックアップ成功</string>
+    <string name="webdav_backup_failed">WebDAVバックアップ失敗: %s</string>
+    <string name="save">保存</string>
+    <string name="test">テスト</string>
+    <string name="webdav_path_label">パス (例: /Backup)</string>
+    <string name="webdav_view_logs">ログを表示</string>
+    <string name="webdav_backup_logs_title">バックアップログ</string>
+    <string name="webdav_no_logs">ログがありません</string>
+    <string name="webdav_clear_logs">クリア</string>
+    <string name="settings_enable_local_backup">ローカルバックアップを有効にする</string>
+    <string name="settings_enable_local_backup_summary">モジュールをローカルストレージにバックアップ (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">閉じる</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">バックアップ設定</string>
+    <string name="settings_enable_cloud_backup">クラウドバックアップを有効化</string>
+    <string name="settings_webdav_url">WebDAV URL</string>
+    <string name="settings_webdav_username">WebDAV ユーザー名</string>
+    <string name="settings_webdav_password">WebDAV パスワード</string>
+    <string name="settings_test_webdav">WebDAV 接続テスト</string>
+    <string name="webdav_test_success">テスト成功</string>
+    <string name="webdav_test_failed">テスト失敗: %s</string>
+    <string name="settings_backup_now">今すぐバックアップ</string>
+    <string name="backup_failed">バックアップ失敗: %s</string>
+    <string name="settings_restore_backup">バックアップから復元</string>
+    <string name="restore_success">復元成功</string>
+    <string name="restore_failed">復元失敗: %s</string>
+    <string name="settings_auto_backup">自動バックアップ</string>
+    <string name="settings_auto_backup_summary">毎日1回自動バックアップ</string>
+    <string name="settings_delete_remote_backup">クラウドバックアップを削除</string>
+    <string name="delete_remote_backup_confirm">クラウドバックアップを削除しますか？</string>
+    <string name="delete_success">削除成功</string>
+    <string name="delete_failed">削除失敗: %s</string>
+    <string name="settings_encrypt_backup">バックアップを暗号化</string>
+    <string name="settings_encrypt_backup_summary">パスワードでバックアップを暗号化</string>
+    <string name="settings_backup_password">バックアップパスワード</string>
+    <string name="settings_backup_password_hint">バックアップパスワードを入力</string>
 </resources>

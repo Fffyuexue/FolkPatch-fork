@@ -197,8 +197,6 @@
     <string name="setting_reset_su_path">重铸登仙令符之路</string>
     <string name="setting_reset_su_new_path">新登仙令符全径</string>
 
-    <string name="setting_auto_backup_boot">自动备份仙躯</string>
-    <string name="setting_auto_backup_boot_summary">炼符时自动备份仙躯镜像至 /storage/emulated/0/Download/FolkPatch/BootBackups/</string>
 
     <string name="settings_folkx_engine_title">FolkX仙法动画引擎</string>
     <string name="settings_folkx_engine_summary">在天阶仙页转换时使用仙域灵动的物理符箓动画</string>
@@ -626,7 +624,8 @@
     <string name="su_backup_list">备份至尊密钥</string>
     <string name="su_restore_list">还原至尊密钥</string>
     <string name="backup_success">备份成功</string>
-    <string name="restore_success">还原成功</string>    <!-- Badge Count Settings -->
+    <string name="restore_success">还原成功</string>
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">灵印显法设定</string>
     <string name="enable_badge_count_summary">配置天机阁灵印之显现</string>
     <string name="badge_superuser">显登仙至尊之数</string>
@@ -644,4 +643,32 @@
     <string name="settings_clear_sound_effect">散去仙音</string>
     <string name="settings_clear_sound_effect_confirm">道友确欲散去此仙音乎？</string>
     <string name="settings_sound_effect_cleared">仙音已散</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">乾坤备份</string>
+    <string name="settings_enable_cloud_backup">开启云端乾坤</string>
+    <string name="settings_enable_cloud_backup_summary">自动将炼化的符箓备份至云端仙界</string>
+    <string name="settings_configure_webdav">配置须弥芥子</string>
+    <string name="webdav_config_title">须弥芥子阵法</string>
+    <string name="webdav_url">仙界阵眼</string>
+    <string name="webdav_username">道号</string>
+    <string name="webdav_password">灵识印记</string>
+    <string name="webdav_test_success">阵法连通成功</string>
+    <string name="webdav_test_failed">阵法连通失败: %s</string>
+    <string name="webdav_uploading">正在飞升至云端...</string>
+    <string name="webdav_backup_success">云端乾坤备份成功</string>
+    <string name="webdav_backup_failed">云端乾坤备份失败: %s</string>
+    <string name="save">封印</string>
+    <string name="test">试阵</string>
+    <string name="webdav_path_label">仙途路径 (如 /Backup)</string>
+    <string name="webdav_view_logs">观天道录</string>
+    <string name="webdav_backup_logs_title">乾坤录</string>
+    <string name="webdav_no_logs">暂无天道录</string>
+    <string name="webdav_clear_logs">抹除</string>
+    <string name="settings_enable_local_backup">开启洞天备份</string>
+    <string name="settings_enable_local_backup_summary">将符箓备份至本地洞天 (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">闭关</string>
+    <string name="settings_backup_password">禁制口诀</string>
+    <string name="settings_backup_password_hint">输入禁制口诀</string>
+
 </resources>

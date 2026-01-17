@@ -205,8 +205,6 @@
     <string name="setting_reset_su_path">Reset jalur su</string>
     <string name="setting_reset_su_new_path">Jalur penuh baru</string>
 
-    <string name="setting_auto_backup_boot">Cadangkan Boot otomatis</string>
-    <string name="setting_auto_backup_boot_summary">Otomatis mencadangkan image boot ke /storage/emulated/0/Download/FolkPatch/BootBackups/ saat melakukan patch</string>
 
     <string name="settings_folkx_engine_title">Mesin Animasi FolkX</string>
     <string name="settings_folkx_engine_summary">Gunakan animasi pegas fisik yang halus saat beralih halaman tingkat atas</string>
@@ -612,7 +610,7 @@
     <string name="su_backup_list">Daftar Cadangan</string>
     <string name="su_restore_list">Daftar Pemulihan</string>
     <string name="backup_success">Pencadangan Berhasil</string>
-    <string name="restore_success">Pemulihan Berhasil</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Pengaturan Hitung Badge</string>
     <string name="enable_badge_count_summary">Konfigurasi tampilan hitung badge untuk item navigasi</string>
     <string name="badge_superuser">Tampilkan Badge Superuser</string>
@@ -630,4 +628,48 @@
     <string name="settings_clear_sound_effect">Hapus Efek Suara</string>
     <string name="settings_clear_sound_effect_confirm">Apakah Anda yakin ingin menghapus efek suara?</string>
     <string name="settings_sound_effect_cleared">Efek suara dihapus</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Pengaturan Cadangan</string>
+    <string name="settings_enable_cloud_backup">Aktifkan Cadangan Cloud</string>
+    <string name="settings_webdav_url">URL WebDAV</string>
+    <string name="settings_webdav_username">Nama Pengguna WebDAV</string>
+    <string name="settings_webdav_password">Kata Sandi WebDAV</string>
+    <string name="settings_test_webdav">Uji Koneksi WebDAV</string>
+    <string name="webdav_test_success">Uji Berhasil</string>
+    <string name="webdav_test_failed">Uji Gagal: %s</string>
+    <string name="settings_backup_now">Cadangkan Sekarang</string>
+    <string name="backup_failed">Cadangan Gagal: %s</string>
+    <string name="settings_restore_backup">Pulihkan Cadangan</string>
+    <string name="restore_success">Pemulihan Berhasil</string>
+    <string name="restore_failed">Pemulihan Gagal: %s</string>
+    <string name="settings_auto_backup">Cadangan Otomatis</string>
+    <string name="settings_auto_backup_summary">Cadangan otomatis sekali sehari</string>
+    <string name="settings_delete_remote_backup">Hapus Cadangan Cloud</string>
+    <string name="delete_remote_backup_confirm">Apakah Anda yakin ingin menghapus cadangan cloud?</string>
+    <string name="delete_success">Penghapusan Berhasil</string>
+    <string name="delete_failed">Penghapusan Gagal: %s</string>
+    <string name="settings_encrypt_backup">Enkripsi Cadangan</string>
+    <string name="settings_encrypt_backup_summary">Enkripsi file cadangan dengan kata sandi</string>
+    <string name="settings_backup_password">Kata Sandi Cadangan</string>
+    <string name="settings_backup_password_hint">Masukkan Kata Sandi Cadangan</string>
+    <string name="settings_enable_cloud_backup_summary">Cadangan otomatis ke cloud</string>
+    <string name="settings_configure_webdav">Konfigurasi Layanan WebDAV</string>
+    <string name="webdav_config_title">Konfigurasi WebDAV</string>
+    <string name="webdav_url">URL WebDAV</string>
+    <string name="webdav_username">Nama Pengguna</string>
+    <string name="webdav_password">Kata Sandi</string>
+    <string name="webdav_uploading">Mengunggah ke WebDAV...</string>
+    <string name="webdav_backup_success">Backup WebDAV Berhasil</string>
+    <string name="webdav_backup_failed">Backup WebDAV Gagal: %s</string>
+    <string name="save">Simpan</string>
+    <string name="test">Uji</string>
+    <string name="webdav_path_label">Path (mis. /Backup)</string>
+    <string name="webdav_view_logs">Lihat Log</string>
+    <string name="webdav_backup_logs_title">Log Backup</string>
+    <string name="webdav_no_logs">Tidak ada log</string>
+    <string name="webdav_clear_logs">Hapus</string>
+    <string name="settings_enable_local_backup">Aktifkan Backup Lokal</string>
+    <string name="settings_enable_local_backup_summary">Backup modul ke penyimpanan lokal (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Tutup</string>
 </resources>

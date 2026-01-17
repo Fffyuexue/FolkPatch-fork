@@ -204,8 +204,6 @@
     <string name="setting_reset_su_path">Resetuj ścieżkę su</string>
     <string name="setting_reset_su_new_path">Nowa pełna ścieżka</string>
 
-    <string name="setting_auto_backup_boot">Automatyczna kopia zapasowa Boot</string>
-    <string name="setting_auto_backup_boot_summary">Automatycznie twórz kopię zapasową obrazu Boot do /storage/emulated/0/Download/FolkPatch/BootBackups/ podczas łatania</string>
 
     <string name="settings_folkx_engine_title">Silnik animacji FolkX</string>
     <string name="settings_folkx_engine_summary">Używaj płynnych fizycznych animacji sprężynowych przy przełączaniu stron najwyższego poziomu</string>
@@ -632,7 +630,7 @@
     <string name="su_backup_list">Lista kopii zapasowych</string>
     <string name="su_restore_list">Lista przywracania zapasowych</string>
     <string name="backup_success">Kopia zapasowana pomyślnie</string>
-    <string name="restore_success">Przywracanie pomyślnie</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Ustawienia licznika odznak</string>
     <string name="enable_badge_count_summary">Skonfiguruj wyświetlanie licznika odznak dla elementów nawigacyjnych</string>
     <string name="badge_superuser">Pokaż odznakę superużytkownika</string>
@@ -650,4 +648,49 @@
     <string name="settings_clear_sound_effect">Wyczyść efekt dźwiękowy</string>
     <string name="settings_clear_sound_effect_confirm">Czy na pewno chcesz usunąć efekt dźwiękowy?</string>
     <string name="settings_sound_effect_cleared">Wyczyszczono efekt dźwiękowy</string>
+
+    <string name="settings_enable_cloud_backup_summary">Automatyczna kopia zapasowa w chmurze</string>
+    <string name="settings_configure_webdav">Konfiguruj usługę WebDAV</string>
+    <string name="webdav_config_title">Konfiguracja WebDAV</string>
+    <string name="webdav_url">URL WebDAV</string>
+    <string name="webdav_username">Nazwa użytkownika</string>
+    <string name="webdav_password">Hasło</string>
+    <string name="webdav_uploading">Przesyłanie do WebDAV...</string>
+    <string name="webdav_backup_success">Kopia zapasowa WebDAV udana</string>
+    <string name="webdav_backup_failed">Błąd kopii zapasowej WebDAV: %s</string>
+    <string name="save">Zapisz</string>
+    <string name="test">Test</string>
+    <string name="webdav_path_label">Ścieżka (np. /Backup)</string>
+    <string name="webdav_view_logs">Pokaż logi</string>
+    <string name="webdav_backup_logs_title">Logi kopii zapasowych</string>
+    <string name="webdav_no_logs">Brak logów</string>
+    <string name="webdav_clear_logs">Wyczyść</string>
+    <string name="settings_enable_local_backup">Włącz lokalną kopię zapasową</string>
+    <string name="settings_enable_local_backup_summary">Kopia zapasowa modułów do lokalnej pamięci (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Zamknij</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Ustawienia kopii zapasowej</string>
+    <string name="settings_enable_cloud_backup">Włącz kopię zapasową w chmurze</string>
+    <string name="settings_webdav_url">URL WebDAV</string>
+    <string name="settings_webdav_username">Nazwa użytkownika WebDAV</string>
+    <string name="settings_webdav_password">Hasło WebDAV</string>
+    <string name="settings_test_webdav">Testuj połączenie WebDAV</string>
+    <string name="webdav_test_success">Test zakończony sukcesem</string>
+    <string name="webdav_test_failed">Test nieudany: %s</string>
+    <string name="settings_backup_now">Utwórz kopię zapasową teraz</string>
+    <string name="backup_failed">Kopia zapasowa nieudana: %s</string>
+    <string name="settings_restore_backup">Przywróć z kopii zapasowej</string>
+    <string name="restore_success">Przywracanie zakończone sukcesem</string>
+    <string name="restore_failed">Przywracanie nieudane: %s</string>
+    <string name="settings_auto_backup">Automatyczna kopia zapasowa</string>
+    <string name="settings_auto_backup_summary">Automatyczna kopia zapasowa raz dziennie</string>
+    <string name="settings_delete_remote_backup">Usuń kopię zapasową w chmurze</string>
+    <string name="delete_remote_backup_confirm">Czy na pewno chcesz usunąć kopię zapasową w chmurze?</string>
+    <string name="delete_success">Usuwanie zakończone sukcesem</string>
+    <string name="delete_failed">Usuwanie nieudane: %s</string>
+    <string name="settings_encrypt_backup">Szyfruj kopię zapasową</string>
+    <string name="settings_encrypt_backup_summary">Szyfruj plik kopii zapasowej hasłem</string>
+    <string name="settings_backup_password">Hasło kopii zapasowej</string>
+    <string name="settings_backup_password_hint">Wprowadź hasło kopii zapasowej</string>
 </resources>

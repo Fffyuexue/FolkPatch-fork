@@ -219,9 +219,6 @@
     <string name="setting_reset_su_path">Redefinir caminho do su</string>
     <string name="setting_reset_su_new_path">Novo caminho completo</string>
 
-    <string name="setting_auto_backup_boot">Backup automático do boot</string>
-    <string name="setting_auto_backup_boot_summary">Fazer backup automático da imagem de boot em /storage/emulated/0/Download/FolkPatch/BootBackups/ ao aplicar patch</string>
-
     <string name="apm_webui_open">Abrir</string>
     <string name="apm_action">Ação</string>
     <string name="enable_web_debugging">Ativar depuração WebView</string>
@@ -633,7 +630,7 @@
     <string name="su_backup_list">Lista de backup</string>
     <string name="su_restore_list">Lista de restauração</string>
     <string name="backup_success">Backup bem-sucedido</string>
-    <string name="restore_success">Restauração bem-sucedida</string>    <!-- Badge Count Settings -->
+    <!-- Badge Count Settings -->
     <string name="enable_badge_count">Configurações do contador de selos</string>
     <string name="enable_badge_count_summary">Configurar a exibição do contador de selos para itens de navegação</string>
     <string name="badge_superuser">Mostrar selo de superusuário</string>
@@ -651,4 +648,49 @@
     <string name="settings_clear_sound_effect">Limpar efeito sonoro</string>
     <string name="settings_clear_sound_effect_confirm">Tem certeza que deseja limpar o efeito sonoro?</string>
     <string name="settings_sound_effect_cleared">Efeito sonoro limpo</string>
+
+    <string name="settings_enable_cloud_backup_summary">Backup automático na nuvem</string>
+    <string name="settings_configure_webdav">Configurar serviço WebDAV</string>
+    <string name="webdav_config_title">Configuração WebDAV</string>
+    <string name="webdav_url">URL WebDAV</string>
+    <string name="webdav_username">Nome de usuário</string>
+    <string name="webdav_password">Senha</string>
+    <string name="webdav_uploading">Enviando para WebDAV...</string>
+    <string name="webdav_backup_success">Backup WebDAV bem-sucedido</string>
+    <string name="webdav_backup_failed">Falha no backup WebDAV: %s</string>
+    <string name="save">Salvar</string>
+    <string name="test">Testar</string>
+    <string name="webdav_path_label">Caminho (ex. /Backup)</string>
+    <string name="webdav_view_logs">Ver logs</string>
+    <string name="webdav_backup_logs_title">Logs de Backup</string>
+    <string name="webdav_no_logs">Sem logs</string>
+    <string name="webdav_clear_logs">Limpar</string>
+    <string name="settings_enable_local_backup">Ativar backup local</string>
+    <string name="settings_enable_local_backup_summary">Backup de módulos para armazenamento local (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="close">Fechar</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">Configurações de Backup</string>
+    <string name="settings_enable_cloud_backup">Ativar backup na nuvem</string>
+    <string name="settings_webdav_url">URL do WebDAV</string>
+    <string name="settings_webdav_username">Usuário do WebDAV</string>
+    <string name="settings_webdav_password">Senha do WebDAV</string>
+    <string name="settings_test_webdav">Testar conexão WebDAV</string>
+    <string name="webdav_test_success">Teste bem-sucedido</string>
+    <string name="webdav_test_failed">Teste falhou: %s</string>
+    <string name="settings_backup_now">Fazer backup agora</string>
+    <string name="backup_failed">Falha no backup: %s</string>
+    <string name="settings_restore_backup">Restaurar backup</string>
+    <string name="restore_success">Restauração bem-sucedida</string>
+    <string name="restore_failed">Falha na restauração: %s</string>
+    <string name="settings_auto_backup">Backup automático</string>
+    <string name="settings_auto_backup_summary">Backup automático uma vez por dia</string>
+    <string name="settings_delete_remote_backup">Excluir backup na nuvem</string>
+    <string name="delete_remote_backup_confirm">Tem certeza de que deseja excluir o backup na nuvem?</string>
+    <string name="delete_success">Exclusão bem-sucedida</string>
+    <string name="delete_failed">Falha na exclusão: %s</string>
+    <string name="settings_encrypt_backup">Criptografar backup</string>
+    <string name="settings_encrypt_backup_summary">Criptografar arquivo de backup com senha</string>
+    <string name="settings_backup_password">Senha de backup</string>
+    <string name="settings_backup_password_hint">Digite a senha de backup</string>
 </resources>

@@ -214,8 +214,6 @@
     <string name="setting_reset_su_path">重置su路径喵</string>
     <string name="setting_reset_su_new_path">新的完整路径喵</string>
 
-    <string name="setting_auto_backup_boot">自动备份Boot喵</string>
-    <string name="setting_auto_backup_boot_summary">修补的时候自动把Boot镜像存到 /storage/emulated/0/Download/FolkPatch/BootBackups/ 喵！</string>
 
     <string name="apm_webui_open">打开喵！</string>
     <string name="apm_action">操作喵</string>
@@ -666,4 +664,31 @@
     <string name="settings_clear_sound_effect">不要声音了喵</string>
     <string name="settings_clear_sound_effect_confirm">真的不要听人家叫了吗喵？</string>
     <string name="settings_sound_effect_cleared">声音没有了喵...</string>
+
+    <!-- Backup Settings -->
+    <string name="settings_category_backup">备份喵</string>
+    <string name="settings_enable_cloud_backup">开启云端备份喵</string>
+    <string name="settings_enable_cloud_backup_summary">自动把刷入的模块备份到云端哦喵</string>
+    <string name="settings_configure_webdav">配置 WebDAV 服务喵</string>
+    <string name="webdav_config_title">WebDAV 配置喵</string>
+    <string name="webdav_url">WebDAV 地址喵</string>
+    <string name="webdav_username">用户名喵</string>
+    <string name="webdav_password">密码喵</string>
+    <string name="webdav_test_success">测试成功啦喵！</string>
+    <string name="webdav_test_failed">测试失败了喵: %s</string>
+    <string name="webdav_uploading">正在上传到 WebDAV 喵...</string>
+    <string name="webdav_backup_success">WebDAV 备份成功喵！</string>
+    <string name="webdav_backup_failed">WebDAV 备份失败喵: %s</string>
+    <string name="save">保存喵</string>
+    <string name="test">测试喵</string>
+    <string name="webdav_path_label">路径 (比如 /Backup) 喵</string>
+    <string name="webdav_view_logs">查看日志喵</string>
+    <string name="webdav_backup_logs_title">备份日志喵</string>
+    <string name="webdav_no_logs">还没有日志喵</string>
+    <string name="webdav_clear_logs">清除喵</string>
+    <string name="settings_enable_local_backup">开启本地备份喵</string>
+    <string name="settings_enable_local_backup_summary">把模块备份到本地存储 (Downloads/FolkPatch/ModuleBackups) 喵</string>
+    <string name="close">关闭喵</string>
+    <string name="settings_backup_password">备份密码喵</string>
+    <string name="settings_backup_password_hint">输入备份密码喵</string>
 </resources>

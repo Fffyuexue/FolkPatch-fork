@@ -218,12 +218,18 @@ fun installModule(
         }
 
         // Auto Backup Logic
-        if (type == MODULE_TYPE.APM) {
-            val fileName = getFileNameFromUri(apApp, uri)
+        val fileName = getFileNameFromUri(apApp, uri)
+        val backupSubDir = if (type == MODULE_TYPE.APM) "APM" else "KPM"
+        
+        // Create a temp copy for backup to prevent race condition (ENOENT) when file is deleted after install
+        val backupTempFile = File(apApp.cacheDir, "backup_${System.currentTimeMillis()}_${file.name}")
+        try {
+            file.copyTo(backupTempFile, overwrite = true)
+            
             // Launch backup asynchronously without blocking the main thread
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    val result = ModuleBackupUtils.autoBackupModule(apApp, file, fileName)
+                    val result = ModuleBackupUtils.autoBackupModule(apApp, backupTempFile, fileName, backupSubDir)
                     withContext(Dispatchers.Main) {
                         if (result != null && !result.startsWith("Duplicate")) {
                             onStdout("Auto backup failed: $result\n")
@@ -237,8 +243,16 @@ fun installModule(
                     withContext(Dispatchers.Main) {
                         onStdout("Auto backup error: ${e.message}\n")
                     }
+                } finally {
+                    // Clean up the temporary backup file
+                    if (backupTempFile.exists()) {
+                        backupTempFile.delete()
+                    }
                 }
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to create temp backup file", e)
+            onStdout("Auto backup failed: Could not create temp file\n")
         }
 
         val stdoutCallback: CallbackList<String?> = object : CallbackList<String?>() {
