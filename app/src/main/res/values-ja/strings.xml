@@ -423,6 +423,8 @@
     <string name="backup_dir_open_failed">バックアップディレクトリを開けませんでした</string>
     <string name="auto_backup_failed">自動バックアップに失敗しました: %s</string>
     <string name="auto_backup_success">自動バックアップに成功しました: %s</string>
+    <string name="settings_auto_backup_boot">Bootの自動バックアップ</string>
+    <string name="settings_auto_backup_boot_summary">Bootをローカルストレージに自動バックアップ (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
     <string name="home_hide_kpatch_version_summary">情報カードでカーネルパッチのバージョンを隠す</string>
@@ -654,4 +656,7 @@
     <string name="settings_encrypt_backup_summary">パスワードでバックアップを暗号化</string>
     <string name="settings_backup_password">バックアップパスワード</string>
     <string name="settings_backup_password_hint">バックアップパスワードを入力</string>
+
+    <string name="patch_output_written_to"> パッチ成功、ファイルを書き込みました </string>
+    <string name="patch_write_failed"> パッチ適用済みboot.imgの書き込みに失敗しました</string>
 </resources>

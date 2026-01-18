@@ -487,6 +487,8 @@
     <string name="backup_dir_open_failed">开备份目录失败了喵...</string>
     <string name="auto_backup_failed">自动备份失败了喵：%s</string>
     <string name="auto_backup_success">自动备份成功了喵：%s</string>
+    <string name="settings_auto_backup_boot">自动备份Boot喵</string>
+    <string name="settings_auto_backup_boot_summary">自动把Boot备份到本地存储喵！(Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">首页布局样式喵</string>
@@ -691,4 +693,7 @@
     <string name="close">关闭喵</string>
     <string name="settings_backup_password">备份密码喵</string>
     <string name="settings_backup_password_hint">输入备份密码喵</string>
+
+    <string name="patch_output_written_to"> 修补成功喵，文件输出到 </string>
+    <string name="patch_write_failed"> 修补失败喵，发生了致命错误</string>
 </resources>

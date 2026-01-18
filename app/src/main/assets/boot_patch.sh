@@ -25,7 +25,7 @@ ARCH=$(getprop ro.product.cpu.abi)
 . ./util_functions.sh
 
 echo "****************************"
-echo " APatch Boot Image Patcher"
+echo " FolkPatch Boot Image Patcher"
 echo "****************************"
 
 SUPERKEY="$1"

@@ -402,11 +402,10 @@ class PatchesViewModel : ViewModel() {
                     patchLog += "\n"
                 }
             }
-            logs.add("****************************")
-
             // Auto Backup Boot
             val prefs = APApplication.sharedPreferences
-            if (prefs.getBoolean("auto_backup_boot", true)) {
+            if (prefs.getBoolean("auto_backup_boot", false)) {
+                logs.add("****************************")
                 logs.add(" Backing up boot image...")
                 try {
                     val backupDir = File("/storage/emulated/0/Download/FolkPatch/BootBackups/")
@@ -421,11 +420,9 @@ class PatchesViewModel : ViewModel() {
                         }
                     }
                     logs.add(" Boot image backed up to ${backupFile.absolutePath}")
-                    logs.add("****************************")
                 } catch (e: Exception) {
                     logs.add(" Backup failed: ${e.message}")
                     Log.e(TAG, "Backup failed", e)
-                    logs.add("****************************")
                 }
             }
 
@@ -607,10 +604,10 @@ class PatchesViewModel : ViewModel() {
                     newBootFile.inputStream().copyAndClose(outPath.outputStream())
                 }
                 if (succ) {
-                    logs.add(" Output file is written to ")
+                    logs.add(apApp.getString(R.string.patch_output_written_to))
                     logs.add(" ${outPath.path}")
                 } else {
-                    logs.add(" Write patched boot.img failed")
+                    logs.add(apApp.getString(R.string.patch_write_failed))
                 }
             }
             logs.add("****************************")

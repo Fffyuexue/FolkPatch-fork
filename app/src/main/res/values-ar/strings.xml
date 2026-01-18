@@ -479,6 +479,8 @@
     <string name="backup_dir_open_failed">فشل فتح دليل النسخ الاحتياطي</string>
     <string name="auto_backup_failed">فشل النسخ الاحتياطي التلقائي: %s</string>
     <string name="auto_backup_success">نجح النسخ الاحتياطي التلقائي: %s</string>
+    <string name="settings_auto_backup_boot">النسخ الاحتياطي التلقائي لـ Boot</string>
+    <string name="settings_auto_backup_boot_summary">النسخ الاحتياطي التلقائي لـ Boot إلى التخزين المحلي (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">نمط تخطيط الشاشة الرئيسية</string>
@@ -681,4 +683,6 @@
     <string name="settings_test_webdav">اختبار اتصال WebDAV</string>
     <string name="webdav_test_success">نجح الاختبار</string>
     <string name="webdav_test_failed">فشل الاختبار: %s</string>
+    <string name="patch_output_written_to"> تم التصحيح بنجاح، تم كتابة ملف الإخراج إلى </string>
+    <string name="patch_write_failed"> فشل تصحيح boot.img</string>
 </resources>

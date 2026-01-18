@@ -470,6 +470,8 @@
     <string name="backup_dir_open_failed">Mở thư mục sao lưu thất bại</string>
     <string name="auto_backup_failed">Sao lưu tự động thất bại: %s</string>
     <string name="auto_backup_success">Sao lưu tự động thành công: %s</string>
+    <string name="settings_auto_backup_boot">Sao lưu tự động Boot</string>
+    <string name="settings_auto_backup_boot_summary">Tự động sao lưu Boot vào bộ nhớ cục bộ (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Kiểu bố cục trang chủ</string>
@@ -689,4 +691,7 @@
     <string name="settings_encrypt_backup_summary">Mã hóa tệp sao lưu bằng mật khẩu</string>
     <string name="settings_backup_password">Mật khẩu sao lưu</string>
     <string name="settings_backup_password_hint">Nhập mật khẩu sao lưu</string>
+
+    <string name="patch_output_written_to"> Vá thành công, tệp được ghi vào </string>
+    <string name="patch_write_failed"> Ghi boot.img đã vá thất bại</string>
 </resources>

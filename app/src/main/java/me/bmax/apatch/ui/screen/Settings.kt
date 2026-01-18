@@ -2269,10 +2269,14 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val enableLocalBackupSummary = stringResource(id = R.string.settings_enable_local_backup_summary)
             val showEnableLocalBackup = matchBackup || shouldShow(enableLocalBackupTitle, enableLocalBackupSummary)
 
+            val enableBootBackupTitle = stringResource(id = R.string.settings_auto_backup_boot)
+            val enableBootBackupSummary = stringResource(id = R.string.settings_auto_backup_boot_summary)
+            val showEnableBootBackup = matchBackup || shouldShow(enableBootBackupTitle, enableBootBackupSummary)
+
             val openBackupDirTitle = stringResource(id = R.string.settings_open_backup_dir)
             val showOpenBackupDir = autoBackupModule && (matchBackup || shouldShow(openBackupDirTitle))
             
-            val showBackupCategory = showEnableCloudBackup || showConfigureWebDav || showEnableLocalBackup || showOpenBackupDir
+            val showBackupCategory = showEnableCloudBackup || showConfigureWebDav || showEnableLocalBackup || showEnableBootBackup || showOpenBackupDir
             
             if (showBackupCategory) {
                 SettingsCategory(
@@ -2289,6 +2293,19 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         ) {
                             prefs.edit { putBoolean("auto_backup_module", it) }
                             autoBackupModule = it
+                        }
+                     }
+
+                     if (showEnableBootBackup) {
+                        var autoBackupBoot by rememberSaveable { mutableStateOf(prefs.getBoolean("auto_backup_boot", false)) }
+                        SwitchItem(
+                            icon = Icons.Filled.Save,
+                            title = enableBootBackupTitle,
+                            summary = enableBootBackupSummary,
+                            checked = autoBackupBoot
+                        ) {
+                            prefs.edit { putBoolean("auto_backup_boot", it) }
+                            autoBackupBoot = it
                         }
                      }
 

@@ -472,6 +472,8 @@
     <string name="backup_dir_open_failed">Nie udało się otworzyć katalogu kopii zapasowych</string>
     <string name="auto_backup_failed">Automatyczna kopia zapasowa nie powiodła się: %s</string>
     <string name="auto_backup_success">Automatyczna kopia zapasowa zakończona sukcesem: %s</string>
+    <string name="settings_auto_backup_boot">Automatyczna kopia zapasowa Boot</string>
+    <string name="settings_auto_backup_boot_summary">Automatycznie kopiuj Boot do lokalnego magazynu (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
     <string name="app_name" translatable="false">FolkPatch</string>
@@ -693,4 +695,7 @@
     <string name="settings_encrypt_backup_summary">Szyfruj plik kopii zapasowej hasłem</string>
     <string name="settings_backup_password">Hasło kopii zapasowej</string>
     <string name="settings_backup_password_hint">Wprowadź hasło kopii zapasowej</string>
+
+    <string name="patch_output_written_to"> Łatka zastosowana pomyślnie, plik zapisano do </string>
+    <string name="patch_write_failed"> Błąd zapisu łatkowanego boot.img</string>
 </resources>

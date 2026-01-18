@@ -474,6 +474,8 @@
     <string name="backup_dir_open_failed">打开备份目录失败</string>
     <string name="auto_backup_failed">自动备份失败: %s</string>
     <string name="auto_backup_success">自动备份成功: %s</string>
+    <string name="settings_auto_backup_boot">自动备份Boot</string>
+    <string name="settings_auto_backup_boot_summary">自动将Boot备份到本地存储 (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">首页布局样式</string>
@@ -632,6 +634,8 @@
     <string name="su_restore_list">还原列表</string>
     <string name="backup_success">备份成功</string>
     <string name="restore_success">还原成功</string>
+    <string name="patch_output_written_to"> 修补成功，文件输出到 </string>
+    <string name="patch_write_failed"> 修补失败，发生了致命错误</string>
 
     <!-- Badge Count Settings -->
     <string name="enable_badge_count">角标统计设置</string>

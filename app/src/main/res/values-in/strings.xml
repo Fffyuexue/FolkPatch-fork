@@ -461,6 +461,8 @@
     <string name="backup_dir_open_failed">Gagal membuka direktori cadangan</string>
     <string name="auto_backup_failed">Pencadangan otomatis gagal: %s</string>
     <string name="auto_backup_success">Pencadangan otomatis berhasil: %s</string>
+    <string name="settings_auto_backup_boot">Backup Otomatis Boot</string>
+    <string name="settings_auto_backup_boot_summary">Otomatis mem-backup Boot ke penyimpanan lokal (Downloads/FolkPatch/BootBackups)</string>
 
     <string name="settings_home_layout_style">Gaya tata letak utama</string>
     <string name="settings_home_layout_default">ListUI</string>
@@ -672,4 +674,7 @@
     <string name="settings_enable_local_backup">Aktifkan Backup Lokal</string>
     <string name="settings_enable_local_backup_summary">Backup modul ke penyimpanan lokal (Downloads/FolkPatch/ModuleBackups)</string>
     <string name="close">Tutup</string>
+
+    <string name="patch_output_written_to"> Patch berhasil, file ditulis ke </string>
+    <string name="patch_write_failed"> Gagal menulis boot.img yang dipatch</string>
 </resources>

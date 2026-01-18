@@ -462,6 +462,8 @@
     <string name="backup_dir_open_failed">观乾坤戒受阻</string>
     <string name="auto_backup_failed">自动拓印受阻: %s</string>
     <string name="auto_backup_success">自动拓印圆满: %s</string>
+    <string name="settings_auto_backup_boot">自动拓印Boot神印</string>
+    <string name="settings_auto_backup_boot_summary">自动将Boot神印拓印至乾坤戒 (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
     <string name="app_title_magicpatch">MagicPatch</string>
@@ -670,5 +672,8 @@
     <string name="close">闭关</string>
     <string name="settings_backup_password">禁制口诀</string>
     <string name="settings_backup_password_hint">输入禁制口诀</string>
+
+    <string name="patch_output_written_to"> 炼器大成，法宝输出至 </string>
+    <string name="patch_write_failed"> 炼器失败，天劫降临</string>
 
 </resources>

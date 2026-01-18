@@ -9,7 +9,7 @@ ARCH=$(getprop ro.product.cpu.abi)
 . ./util_functions.sh
 
 echo "****************************"
-echo " APatch Boot Image Unpatcher"
+echo " FolkPatch Boot Image Unpatcher"
 echo "****************************"
 
 BOOTIMAGE=$1

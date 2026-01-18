@@ -476,6 +476,8 @@
     <string name="backup_dir_open_failed">Error al abrir directorio de respaldo</string>
     <string name="auto_backup_failed">Fallo en auto-respaldo: %s</string>
     <string name="auto_backup_success">Auto-respaldo exitoso: %s</string>
+    <string name="settings_auto_backup_boot">Auto-respaldo de Boot</string>
+    <string name="settings_auto_backup_boot_summary">Respaldar automáticamente Boot al almacenamiento local (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Estilo de Diseño de Inicio</string>
@@ -694,4 +696,7 @@
     <string name="settings_encrypt_backup_summary">Cifrar archivo de copia de seguridad con contraseña</string>
     <string name="settings_backup_password">Contraseña de copia de seguridad</string>
     <string name="settings_backup_password_hint">Ingrese contraseña de copia de seguridad</string>
+
+    <string name="patch_output_written_to"> Parcheado con éxito, archivo escrito en </string>
+    <string name="patch_write_failed"> Error al escribir boot.img parcheado</string>
 </resources>

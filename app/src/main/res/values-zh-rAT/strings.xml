@@ -462,6 +462,8 @@
     <string name="backup_dir_open_failed">无法打开魔法宝箱</string>
     <string name="auto_backup_failed">星之魔法阵保存失败: %s</string>
     <string name="auto_backup_success">星之魔法阵保存成功: %s</string>
+    <string name="settings_auto_backup_boot">自动保存Boot圣器</string>
+    <string name="settings_auto_backup_boot_summary">自动将Boot圣器保存至神圣宝库 (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
 
@@ -675,5 +677,8 @@
     <string name="close">封印</string>
     <string name="settings_backup_password">封印咒语</string>
     <string name="settings_backup_password_hint">吟唱封印咒语</string>
+
+    <string name="patch_output_written_to"> 圣光降临，圣物铭刻至 </string>
+    <string name="patch_write_failed"> 圣光黯淡，深渊降临</string>
 
 </resources>

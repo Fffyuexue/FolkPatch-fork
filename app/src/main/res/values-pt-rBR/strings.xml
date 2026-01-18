@@ -475,6 +475,8 @@
     <string name="backup_dir_open_failed">Falha ao abrir o diretório de backup</string>
     <string name="auto_backup_failed">Falha no backup automático: %s</string>
     <string name="auto_backup_success">Sucesso no backup automático: %s</string>
+    <string name="settings_auto_backup_boot">Backup Automático do Boot</string>
+    <string name="settings_auto_backup_boot_summary">Fazer backup automático do Boot para armazenamento local (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Estilo de Layout Inicial</string>
@@ -693,4 +695,7 @@
     <string name="settings_encrypt_backup_summary">Criptografar arquivo de backup com senha</string>
     <string name="settings_backup_password">Senha de backup</string>
     <string name="settings_backup_password_hint">Digite a senha de backup</string>
+
+    <string name="patch_output_written_to"> Patch aplicado com sucesso, arquivo escrito em </string>
+    <string name="patch_write_failed"> Falha ao escrever boot.img com patch</string>
 </resources>

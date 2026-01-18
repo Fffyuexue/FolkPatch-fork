@@ -455,6 +455,8 @@
     <string name="backup_dir_open_failed">開啟備份目錄失敗</string>
     <string name="auto_backup_failed">自動備份失敗: %s</string>
     <string name="auto_backup_success">自動備份成功: %s</string>
+    <string name="settings_auto_backup_boot">自動備份Boot</string>
+    <string name="settings_auto_backup_boot_summary">自動將Boot備份到本地儲存 (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
     <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏 「KernelPatch版本」</string>
@@ -667,5 +669,8 @@
     <string name="close">關閉</string>
     <string name="settings_backup_password">備份密碼</string>
     <string name="settings_backup_password_hint">輸入備份密碼</string>
+
+    <string name="patch_output_written_to"> 修補成功，檔案輸出到 </string>
+    <string name="patch_write_failed"> 修補失敗，發生了致命錯誤</string>
 
 </resources>

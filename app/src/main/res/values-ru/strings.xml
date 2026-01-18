@@ -471,6 +471,8 @@
     <string name="backup_dir_open_failed">Не удалось открыть каталог резервных копий</string>
     <string name="auto_backup_failed">Ошибка резервного копирования: %s</string>
     <string name="auto_backup_success">Резервная копия создана: %s</string>
+    <string name="settings_auto_backup_boot">Автоматическое резервное копирование Boot</string>
+    <string name="settings_auto_backup_boot_summary">Автоматически копировать Boot в локальное хранилище (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
 
@@ -689,4 +691,7 @@
     <string name="settings_encrypt_backup_summary">Шифровать файл резервной копии паролем</string>
     <string name="settings_backup_password">Пароль резервной копии</string>
     <string name="settings_backup_password_hint">Введите пароль резервной копии</string>
+
+    <string name="patch_output_written_to"> Патч применен успешно, файл записан в </string>
+    <string name="patch_write_failed"> Ошибка записи пропатченного boot.img</string>
 </resources>
