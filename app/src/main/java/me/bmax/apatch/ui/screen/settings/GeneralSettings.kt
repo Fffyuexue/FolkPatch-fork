@@ -207,15 +207,15 @@ fun GeneralSettings(
             
             // FolkX Engine
             if (showFolkXEngine) {
-                val folkXEngineEnabled by remember { mutableStateOf(prefs.getBoolean("folkx_engine_enabled", true)) }
+                var folkXEngineEnabled by remember { mutableStateOf(prefs.getBoolean("folkx_engine_enabled", true)) }
                 SwitchItem(
                     icon = Icons.Filled.Animation,
                     title = folkXEngineTitle,
                     summary = folkXEngineSummary,
                     checked = folkXEngineEnabled,
                     onCheckedChange = {
+                        folkXEngineEnabled = it
                         prefs.edit().putBoolean("folkx_engine_enabled", it).apply()
-                        // Force recomposition or update state
                     }
                 )
                 
