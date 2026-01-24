@@ -19,17 +19,17 @@ object BackgroundConfig {
         private set
     var isCustomBackgroundEnabled: Boolean by mutableStateOf(false)
         private set
-    var customBackgroundOpacity: Float by mutableStateOf(0.05f)
+    var customBackgroundOpacity: Float by mutableStateOf(0.5f)
         private set
     var customBackgroundBlur: Float by mutableStateOf(0f)
         private set
     var customBackgroundDim: Float by mutableStateOf(0.0f)
         private set
-    var isDualBackgroundDimEnabled: Boolean by mutableStateOf(false)
+    var isDualBackgroundDimEnabled: Boolean by mutableStateOf(true)
         private set
     var customBackgroundDayDim: Float by mutableStateOf(0.0f)
         private set
-    var customBackgroundNightDim: Float by mutableStateOf(0.0f)
+    var customBackgroundNightDim: Float by mutableStateOf(0.5f)
         private set
 
     // Video Background
@@ -345,12 +345,12 @@ object BackgroundConfig {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val uri = prefs.getString(KEY_CUSTOM_BACKGROUND_URI, null)
         val enabled = prefs.getBoolean(KEY_CUSTOM_BACKGROUND_ENABLED, false)
-        val opacity = prefs.getFloat(KEY_CUSTOM_BACKGROUND_OPACITY, 0.05f)
+        val opacity = prefs.getFloat(KEY_CUSTOM_BACKGROUND_OPACITY, 0.5f)
         val blur = prefs.getFloat(KEY_CUSTOM_BACKGROUND_BLUR, 0f)
         val dim = prefs.getFloat(KEY_CUSTOM_BACKGROUND_DIM, 0.0f)
         val dualDimEnabled = prefs.getBoolean(KEY_CUSTOM_BACKGROUND_DUAL_DIM_ENABLED, true)
         val dayDim = prefs.getFloat(KEY_CUSTOM_BACKGROUND_DAY_DIM, 0.0f)
-        val nightDim = prefs.getFloat(KEY_CUSTOM_BACKGROUND_NIGHT_DIM, 0.05f)
+        val nightDim = prefs.getFloat(KEY_CUSTOM_BACKGROUND_NIGHT_DIM, 0.5f)
         
         val videoUri = prefs.getString(KEY_VIDEO_BACKGROUND_URI, null)
         val videoEnabled = prefs.getBoolean(KEY_VIDEO_BACKGROUND_ENABLED, false)
@@ -419,12 +419,12 @@ object BackgroundConfig {
         // Default to custom background disabled
         customBackgroundUri = null
         isCustomBackgroundEnabled = false
-        customBackgroundOpacity = 0.05f
+        customBackgroundOpacity = 0.5f
         customBackgroundBlur = 0f
         customBackgroundDim = 0.0f
         isDualBackgroundDimEnabled = true
         customBackgroundDayDim = 0.0f
-        customBackgroundNightDim = 0.05f
+        customBackgroundNightDim = 0.5f
         
         videoBackgroundUri = null
         isVideoBackgroundEnabled = false

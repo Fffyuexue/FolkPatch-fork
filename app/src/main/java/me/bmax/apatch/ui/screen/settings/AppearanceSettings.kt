@@ -193,7 +193,7 @@ fun AppearanceSettings(
     val nightModeFollowSysSummary = stringResource(id = R.string.settings_night_mode_follow_sys_summary)
     val showNightModeFollowSys = isNightModeSupported && (matchAppearance || shouldShow(searchText, nightModeFollowSysTitle, nightModeFollowSysSummary))
 
-    var nightModeFollowSys by remember { mutableStateOf(prefs.getBoolean("night_mode_follow_sys", false)) }
+    var nightModeFollowSys by remember { mutableStateOf(prefs.getBoolean("night_mode_follow_sys", true)) }
     var nightModeEnabled by remember { mutableStateOf(prefs.getBoolean("night_mode_enabled", true)) }
 
     val nightModeEnabledTitle = stringResource(id = R.string.settings_night_theme_enabled)
@@ -208,7 +208,7 @@ fun AppearanceSettings(
     if (refreshThemeObserver) {
         nightModeFollowSys = prefs.getBoolean("night_mode_follow_sys", false)
         nightModeEnabled = prefs.getBoolean("night_mode_enabled", true)
-        useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", false)
+        useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", true)
         customFontEnabled = FontConfig.isCustomFontEnabled
     }
 
@@ -223,7 +223,7 @@ fun AppearanceSettings(
 
     // Home Layout
     val homeLayoutTitle = stringResource(id = R.string.settings_home_layout_style)
-    val currentStyle = prefs.getString("home_layout_style", "focus")
+    val currentStyle = prefs.getString("home_layout_style", "sign")
     val homeLayoutValue = stringResource(homeLayoutStyleToString(currentStyle.toString()))
     val showHomeLayout = matchAppearance || shouldShow(searchText, homeLayoutTitle, homeLayoutValue)
 

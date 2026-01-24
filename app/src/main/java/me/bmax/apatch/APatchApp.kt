@@ -315,10 +315,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
             sharedPreferences.edit()
                 .putBoolean("app_initialized", true)
                 .putBoolean("night_mode_enabled", true)
-                .putBoolean("night_mode_follow_sys", false)
-                .putBoolean("use_system_color_theme", false)
+                .putBoolean("night_mode_follow_sys", true)
+                .putBoolean("use_system_color_theme", true)
                 .putString("custom_color", "indigo")
-                .putString("home_layout_style", "focus")
+                .putString("home_layout_style", "sign")
                 .apply()
         }
         

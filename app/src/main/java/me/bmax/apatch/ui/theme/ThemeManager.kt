@@ -405,10 +405,10 @@ object ThemeManager {
                 val backgroundNightDim = json.optDouble("backgroundNightDim", backgroundDim.toDouble()).toFloat()
                 val isFontEnabled = json.optBoolean("isFontEnabled", false)
                 val customColor = json.optString("customColor", "indigo")
-                val homeLayoutStyle = json.optString("homeLayoutStyle", "focus")
+                val homeLayoutStyle = json.optString("homeLayoutStyle", "sign")
                 val nightModeEnabled = json.optBoolean("nightModeEnabled", true)
-                val nightModeFollowSys = json.optBoolean("nightModeFollowSys", false)
-                val useSystemDynamicColor = json.optBoolean("useSystemDynamicColor", false)
+                val nightModeFollowSys = json.optBoolean("nightModeFollowSys", true)
+                val useSystemDynamicColor = json.optBoolean("useSystemDynamicColor", true)
                 val appLanguage = json.optString("appLanguage", "")
                 
                 // Grid Working Card Background
