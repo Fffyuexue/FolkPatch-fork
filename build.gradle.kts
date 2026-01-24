@@ -47,7 +47,7 @@ fun getbranch(): String {
 }
 
 fun getVersionName(): String {
-    return "3.3"
+    return "3.4"
 }
 
 tasks.register("printVersion") {
