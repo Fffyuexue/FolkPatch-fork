@@ -74,21 +74,11 @@ fun ScriptExecutionLogScreen(
     var process by remember { mutableStateOf<Process?>(null) }
     var inputCmd by remember { mutableStateOf("") }
 
-    DisposableEffect(Unit) {
-        onDispose {
-            try {
-                process?.destroy()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
+            var p: Process? = null
             try {
                 // Try to start root shell with multiple strategies
-                var p: Process? = null
                 
                 // Strategy 1: APatch specific truncate
                 if (p == null) {
@@ -147,12 +137,12 @@ fun ScriptExecutionLogScreen(
                 process = p
                 
                 if (p != null) {
-                    val os = p.outputStream
+                    val os = p!!.outputStream
                     // Start the script
                     os.write("sh \"${scriptInfo.path}\"\n".toByteArray())
                     os.flush()
 
-                    val reader = p.inputStream.bufferedReader()
+                    val reader = p!!.inputStream.bufferedReader()
                     val buffer = CharArray(1024)
                     while (true) {
                         val count = reader.read(buffer)
@@ -177,13 +167,20 @@ fun ScriptExecutionLogScreen(
                             }
                         }
                     }
-                    p.waitFor()
+                    p!!.waitFor()
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
                     logLines.add(AnnotatedString("Error: ${e.message}"))
                 }
+            } finally {
+                try {
+                    p?.destroy()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                process = null
             }
         }
     }
@@ -231,7 +228,7 @@ fun ScriptExecutionLogScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 30.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 OutlinedTextField(
