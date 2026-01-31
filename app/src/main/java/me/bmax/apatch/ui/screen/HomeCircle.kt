@@ -74,6 +74,10 @@ fun HomeScreenCircle(
     ) {
         val context = LocalContext.current
         
+        if (BackgroundConfig.isCustomBackgroundEnabled) {
+            Spacer(Modifier.height(0.dp))
+        }
+        
         // Status Card
         StatusCardCircle(kpState, apState, navigator, showUninstallDialog, showAuthKeyDialog)
 
