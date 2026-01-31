@@ -497,9 +497,13 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="home_hide_su_path">Hide su executable path</string>
     <string name="home_hide_kpatch_version">Hide kernel patch version</string>
     <string name="home_hide_fingerprint">Hide fingerprint</string>
+    <string name="home_hide_zygisk">Hide Zygisk implementation</string>
+    <string name="home_hide_mount">Hide mount implementation</string>
     <string name="home_hide_su_path_summary">Hide su executable path in info card</string>
     <string name="home_hide_kpatch_version_summary">Hide kernel patch version in info card</string>
     <string name="home_hide_fingerprint_summary">Hide fingerprint in info card</string>
+    <string name="home_hide_zygisk_summary">Hide Zygisk implementation in info card</string>
+    <string name="home_hide_mount_summary">Hide mount implementation in info card</string>
 
     <string name="kpm_page_first_time_title">Warning</string>
     <string name="kpm_page_first_time_message">Kernel modules directly modify the Boot implementation. Unlike system modules, they lack a good recovery mechanism. If issues arise, you can only fix them by entering Fastboot. It is recommended to load the module first to ensure there are no problems before embedding it into Boot. If a module can only be used by loading, you can try the automatic KPM module loading feature. If you do not understand kernel modules, please do not use this feature!</string>

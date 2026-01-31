@@ -78,6 +78,14 @@ fun BehaviorSettings(
     val hideFingerprintSummary = stringResource(id = R.string.home_hide_fingerprint_summary)
     val showHideFingerprint = kPatchReady && (matchBehavior || shouldShow(searchText, hideFingerprintTitle, hideFingerprintSummary))
 
+    val hideZygiskTitle = stringResource(id = R.string.home_hide_zygisk)
+    val hideZygiskSummary = stringResource(id = R.string.home_hide_zygisk_summary)
+    val showHideZygisk = kPatchReady && (matchBehavior || shouldShow(searchText, hideZygiskTitle, hideZygiskSummary))
+
+    val hideMountTitle = stringResource(id = R.string.home_hide_mount)
+    val hideMountSummary = stringResource(id = R.string.home_hide_mount_summary)
+    val showHideMount = kPatchReady && (matchBehavior || shouldShow(searchText, hideMountTitle, hideMountSummary))
+
     // Badge Count Settings
     val badgeCountTitle = stringResource(id = R.string.enable_badge_count)
     val badgeCountSummary = stringResource(id = R.string.enable_badge_count_summary)
@@ -87,7 +95,7 @@ fun BehaviorSettings(
     
     val showBadgeSettings = kPatchReady && (matchBehavior || shouldShow(searchText, badgeCountTitle, badgeCountSummary, showSuperUserBadgeTitle, showApmBadgeTitle, showKernelBadgeTitle))
 
-    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showBadgeSettings
+    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showBadgeSettings
 
     if (showBehaviorCategory) {
         SettingsCategory(icon = Icons.Filled.Visibility, title = behaviorTitle, isSearching = searchText.isNotEmpty()) {
@@ -208,6 +216,36 @@ fun BehaviorSettings(
                     onCheckedChange = {
                         hideFingerprint = it
                         prefs.edit().putBoolean("hide_fingerprint", it).apply()
+                    }
+                )
+            }
+
+            // Hide Zygisk
+            if (showHideZygisk) {
+                var hideZygisk by remember { mutableStateOf(prefs.getBoolean("hide_zygisk", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = hideZygiskTitle,
+                    summary = hideZygiskSummary,
+                    checked = hideZygisk,
+                    onCheckedChange = {
+                        hideZygisk = it
+                        prefs.edit().putBoolean("hide_zygisk", it).apply()
+                    }
+                )
+            }
+
+            // Hide Mount
+            if (showHideMount) {
+                var hideMount by remember { mutableStateOf(prefs.getBoolean("hide_mount", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = hideMountTitle,
+                    summary = hideMountSummary,
+                    checked = hideMount,
+                    onCheckedChange = {
+                        hideMount = it
+                        prefs.edit().putBoolean("hide_mount", it).apply()
                     }
                 )
             }

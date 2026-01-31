@@ -422,8 +422,12 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="home_hide_su_path">Ẩn đường dẫn tệp thực thi su</string>
     <string name="home_hide_kpatch_version">Ẩn bản vá phiên bản nhân</string>
     <string name="home_hide_fingerprint">Ẩn thông tin vân tay</string>
+    <string name="home_hide_zygisk">Ẩn triển khai Zygisk</string>
+    <string name="home_hide_mount">Ẩn triển khai gắn kết</string>
     <string name="home_hide_su_path_summary">Ẩn đường dẫn tệp thực thi su trong thẻ thông tin</string>
     <string name="home_hide_kpatch_version_summary">Ẩn thông tin bản vá phiên bản nhân trong thẻ thông tin</string>
+    <string name="home_hide_zygisk_summary">Ẩn triển khai Zygisk trong thẻ thông tin</string>
+    <string name="home_hide_mount_summary">Ẩn triển khai gắn kết trong thẻ thông tin</string>
     <string name="home_hide_fingerprint_summary">Ẩn thông tin vân tay trong thẻ thông tin</string>
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Tải tự động KPM</string>

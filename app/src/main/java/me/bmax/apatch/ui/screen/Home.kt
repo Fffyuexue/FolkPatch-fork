@@ -1139,6 +1139,8 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
     val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
     val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
     val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+    val hideZygisk = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_zygisk", false)) }
+    val hideMount = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_mount", false)) }
 
     var zygiskImplement by remember { mutableStateOf("None") }
     var mountImplement by remember { mutableStateOf("None") }
@@ -1212,13 +1214,13 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
             
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None" && !hideZygisk.value) {
                 InfoCardItem(stringResource(R.string.home_zygisk_implement), zygiskImplement)
 
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None" && !hideMount.value) {
                 InfoCardItem(stringResource(R.string.home_mount_implement), mountImplement)
 
                 Spacer(Modifier.height(16.dp))
@@ -1235,6 +1237,8 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
     val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
     val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
     val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+    val hideZygisk = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_zygisk", false)) }
+    val hideMount = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_mount", false)) }
 
     var zygiskImplement by remember { mutableStateOf("None") }
     var mountImplement by remember { mutableStateOf("None") }
@@ -1329,12 +1333,12 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None" && !hideZygisk.value) {
                 InfoCardItem(Icons.Outlined.Layers, stringResource(R.string.home_zygisk_implement), zygiskImplement)
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None" && !hideMount.value) {
                 InfoCardItem(Icons.Outlined.SdStorage, stringResource(R.string.home_mount_implement), mountImplement)
                 Spacer(Modifier.height(16.dp))
             }

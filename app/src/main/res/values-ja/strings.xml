@@ -455,8 +455,12 @@
   <string name="home_hide_su_path">su 実行可能パスを非表示</string>
   <string name="home_hide_kpatch_version">Kernel Patch バージョンを非表示</string>
   <string name="home_hide_fingerprint">フィンガープリントを非表示</string>
+  <string name="home_hide_zygisk">Zygisk 実装を非表示</string>
+  <string name="home_hide_mount">マウント実装を非表示</string>
   <string name="home_hide_su_path_summary">su 実行可能パス情報のカードを非表示にします</string>
   <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします</string>
+  <string name="home_hide_zygisk_summary">Zygisk 実装情報のカードを非表示にします</string>
+  <string name="home_hide_mount_summary">マウント実装情報のカードを非表示にします</string>
   <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします</string>
   <string name="kpm_page_first_time_title">警告</string>
   <string name="kpm_page_first_time_message">カーネルモジュールは boot 実装を直接的に変更します。システムモジュールとは異なり、優れた復旧メカニズムが備わっていないため fastboot を起動して修正するしか方法がありません。boot に埋め込む前に、モジュールを読み込んで問題がないことを確認しておくことを推奨します。読み込まないと使用できないモジュールの場合は、KPM の自動読み込み機能を試すことができます。カーネルモジュールについてよく理解していない場合は、この機能を使用しないでください！</string>

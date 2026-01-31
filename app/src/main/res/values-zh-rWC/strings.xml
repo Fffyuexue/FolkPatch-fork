@@ -385,8 +385,12 @@
     <string name="home_hide_su_path">隐登仙令符之路</string>
     <string name="home_hide_kpatch_version">隐道核符箓篇次</string>
     <string name="home_hide_fingerprint">隐仙门指印之宜</string>
+    <string name="home_hide_zygisk">隐 Zygisk 仙人指路之宜</string>
+    <string name="home_hide_mount">隐符箓悬挂之宜</string>
     <string name="home_hide_su_path_summary">于仙门事宜仙笺，隐登仙令符之路</string>
     <string name="home_hide_kpatch_version_summary">于仙门事宜仙笺，隐道核符箓篇次之宜</string>
+    <string name="home_hide_zygisk_summary">于仙门事宜仙笺，隐 Zygisk 仙人指路之宜</string>
+    <string name="home_hide_mount_summary">于仙门事宜仙笺，隐符箓悬挂之宜</string>
     <string name="home_hide_fingerprint_summary">于仙门事宜仙笺，隐仙门指印之宜</string>
     <string name="settings_grid_working_card_hide_check">隐仙符标记</string>
     <string name="settings_grid_working_card_hide_check_summary">隐仙术卡片之符印或警示</string>

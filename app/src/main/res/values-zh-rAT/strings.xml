@@ -383,8 +383,12 @@
     <string name="home_hide_su_path">隐藏天使使路径</string>
     <string name="home_hide_kpatch_version">隐藏心之魔法祝福等级</string>
     <string name="home_hide_fingerprint">隐藏魔法指纹</string>
+    <string name="home_hide_zygisk">隐藏 Zygisk 圣化</string>
+    <string name="home_hide_mount">隐藏圣光结界</string>
     <string name="home_hide_su_path_summary">在天使情报卡片中隐藏天使使路径</string>
     <string name="home_hide_kpatch_version_summary">在天使情报卡片中隐藏心之魔法祝福等级信息</string>
+    <string name="home_hide_zygisk_summary">在天使情报卡片中隐藏 Zygisk 圣化信息</string>
+    <string name="home_hide_mount_summary">在天使情报卡片中隐藏圣光结界信息</string>
     <string name="home_hide_fingerprint_summary">在天使情报卡片中隐藏魔法指纹信息</string>
     
     <string name="settings_grid_working_card_hide_check">隐藏天使光环</string>

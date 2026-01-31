@@ -491,8 +491,12 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="home_hide_su_path">Ocultar caminho do executável su</string>
     <string name="home_hide_kpatch_version">Ocultar versão do kernel patch</string>
     <string name="home_hide_fingerprint">Ocultar fingerprint</string>
+    <string name="home_hide_zygisk">Ocultar implementação Zygisk</string>
+    <string name="home_hide_mount">Ocultar implementação de montagem</string>
     <string name="home_hide_su_path_summary">Ocultar caminho do su no cartão de info</string>
     <string name="home_hide_kpatch_version_summary">Ocultar versão do kernel patch no cartão de info</string>
+    <string name="home_hide_zygisk_summary">Ocultar implementação Zygisk no cartão de info</string>
+    <string name="home_hide_mount_summary">Ocultar implementação de montagem no cartão de info</string>
     <string name="home_hide_fingerprint_summary">Ocultar fingerprint no cartão de info</string>
 
     <string name="kpm_page_first_time_title">Aviso</string>

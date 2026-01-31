@@ -270,6 +270,8 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
             var hideSuPath by remember { mutableStateOf(prefs.getBoolean("hide_su_path", false)) }
             var hideKpatchVersion by remember { mutableStateOf(prefs.getBoolean("hide_kpatch_version", false)) }
             var hideFingerprint by remember { mutableStateOf(prefs.getBoolean("hide_fingerprint", false)) }
+            var hideZygisk by remember { mutableStateOf(prefs.getBoolean("hide_zygisk", false)) }
+            var hideMount by remember { mutableStateOf(prefs.getBoolean("hide_mount", false)) }
             
 
             DisposableEffect(Unit) {
@@ -278,6 +280,8 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
                         "hide_su_path" -> hideSuPath = sharedPreferences.getBoolean("hide_su_path", false)
                         "hide_kpatch_version" -> hideKpatchVersion = sharedPreferences.getBoolean("hide_kpatch_version", false)
                         "hide_fingerprint" -> hideFingerprint = sharedPreferences.getBoolean("hide_fingerprint", false)
+                        "hide_zygisk" -> hideZygisk = sharedPreferences.getBoolean("hide_zygisk", false)
+                        "hide_mount" -> hideMount = sharedPreferences.getBoolean("hide_mount", false)
                     }
                 }
                 prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -397,7 +401,7 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None" && !hideZygisk) {
                 InfoCardItem(
                     icon = Icons.Outlined.Layers,
                     label = stringResource(R.string.home_zygisk_implement),
@@ -406,7 +410,7 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None" && !hideMount) {
                 InfoCardItem(
                     icon = Icons.Outlined.SdStorage,
                     label = stringResource(R.string.home_mount_implement),

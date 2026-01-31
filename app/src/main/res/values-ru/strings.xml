@@ -465,8 +465,12 @@
     <string name="home_hide_su_path">Скрыть путь исполняемого файла su</string>
     <string name="home_hide_kpatch_version">Скрыть версию патча ядра</string>
     <string name="home_hide_fingerprint">Скрыть отпечаток</string>
+    <string name="home_hide_zygisk">Скрыть реализацию Zygisk</string>
+    <string name="home_hide_mount">Скрыть реализацию монтирования</string>
     <string name="home_hide_su_path_summary">Скрыть путь исполняемого файла su в информационной карточке</string>
     <string name="home_hide_kpatch_version_summary">Скрыть версию патча ядра в информационной карточке</string>
+    <string name="home_hide_zygisk_summary">Скрыть реализацию Zygisk в информационной карточке</string>
+    <string name="home_hide_mount_summary">Скрыть реализацию монтирования в информационной карточке</string>
     <string name="home_hide_fingerprint_summary">Скрыть отпечаток в информационной карточке</string>
 
     <string name="kpm_page_first_time_title">Предупреждение</string>

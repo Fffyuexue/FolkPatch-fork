@@ -458,8 +458,12 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="home_hide_su_path">Sembunyikan jalur file yang dapat dieksekusi su</string>
     <string name="home_hide_kpatch_version">Sembunyikan versi patch kernel</string>
     <string name="home_hide_fingerprint">Sembunyikan sidik jari</string>
+    <string name="home_hide_zygisk">Sembunyikan implementasi Zygisk</string>
+    <string name="home_hide_mount">Sembunyikan implementasi pemasangan</string>
     <string name="home_hide_su_path_summary">Sembunyikan jalur file yang dapat dieksekusi su di kartu informasi</string>
     <string name="home_hide_kpatch_version_summary">Sembunyikan versi patch kernel di kartu informasi</string>
+    <string name="home_hide_zygisk_summary">Sembunyikan implementasi Zygisk di kartu informasi</string>
+    <string name="home_hide_mount_summary">Sembunyikan implementasi pemasangan di kartu informasi</string>
     <string name="home_hide_fingerprint_summary">Sembunyikan sidik jari di kartu informasi</string>
 
     <string name="kpm_page_first_time_title">Peringatan</string>

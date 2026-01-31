@@ -427,8 +427,12 @@
     <string name="home_hide_su_path">藏起su可执行文件路径喵</string>
     <string name="home_hide_kpatch_version">藏起内核版本补丁喵</string>
     <string name="home_hide_fingerprint">藏起指纹信息喵</string>
+    <string name="home_hide_zygisk">藏起Zygisk实现喵</string>
+    <string name="home_hide_mount">藏起挂载实现喵</string>
     <string name="home_hide_su_path_summary">信息卡片里藏起su可执行文件路径喵！</string>
     <string name="home_hide_kpatch_version_summary">信息卡片里藏起内核版本补丁信息喵！</string>
+    <string name="home_hide_zygisk_summary">信息卡片里藏起Zygisk实现信息喵！</string>
+    <string name="home_hide_mount_summary">信息卡片里藏起挂载实现信息喵！</string>
     <string name="home_hide_fingerprint_summary">信息卡片里藏起指纹信息喵！</string>
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">KPM自动加载喵</string>
