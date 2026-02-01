@@ -18,6 +18,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +36,9 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -46,6 +49,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Brush
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.topjohnwu.superuser.Shell
 import com.topjohnwu.superuser.io.SuFile
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.background
@@ -75,6 +79,7 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
@@ -744,7 +749,7 @@ private fun ModuleList(
                             onUninstall = {
                                 scope.launch { onModuleUninstall(module) }
                             },
-                            onCheckChanged = {
+                            onCheckChanged = { checked ->
                                 scope.launch {
                                     if (!checkStrongBiometric()) return@launch
                                     val success = loadingDialog.withLoading {
@@ -753,7 +758,7 @@ private fun ModuleList(
                                         }
                                     }
                                     if (success) {
-                                        isChecked = it
+                                        isChecked = checked
                                         viewModel.fetchModuleList()
 
                                         val result = snackBarHost.showSnackbar(
@@ -780,8 +785,8 @@ private fun ModuleList(
                                     )
                                 }
                             },
-                            onClick = {
-                                onClickModule(it.id, it.name, it.hasWebUi)
+                            onClick = { clickedModule ->
+                                onClickModule(clickedModule.id, clickedModule.name, clickedModule.hasWebUi)
                             })
                         // fix last item shadow incomplete in LazyColumn
                         Spacer(Modifier.height(1.dp))
@@ -792,6 +797,7 @@ private fun ModuleList(
 
         DownloadListener(context, onInstallModule)
     }
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -956,6 +962,81 @@ private fun ModuleLabel(
     }
 }
 
+private const val FOLK_BANNER_FILE_NAME = "FolkBanner"
+
+private fun resolveModuleDir(rootShell: Shell, moduleId: String): String {
+    val suFile = { path: String ->
+        SuFile(path).apply { shell = rootShell }
+    }
+    val defaultDir = "/data/adb/modules/$moduleId"
+    return runCatching {
+        val direct = suFile(defaultDir)
+        if (direct.exists()) {
+            direct.path
+        } else {
+            val modulesRoot = suFile("/data/adb/modules")
+            val dirs = modulesRoot.listFiles() ?: return@runCatching defaultDir
+            for (dir in dirs) {
+                if (!dir.isDirectory) continue
+                val propFile = suFile("${dir.path}/module.prop")
+                if (!propFile.exists()) continue
+                val props = Properties()
+                props.load(propFile.newInputStream())
+                val id = props.getProperty("id")?.trim()
+                if (id == moduleId) {
+                    return@runCatching dir.path
+                }
+            }
+            defaultDir
+        }
+    }.getOrDefault(defaultDir)
+}
+
+private fun readFolkBanner(rootShell: Shell, resolvedDir: String): ByteArray? {
+    return runCatching {
+        val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
+        if (file.exists()) {
+            file.newInputStream().use { it.readBytes() }.takeIf { it.isNotEmpty() }
+        } else {
+            null
+        }
+    }.getOrNull()
+}
+
+private fun readModulePropBanner(rootShell: Shell, resolvedDir: String): String? {
+    return runCatching {
+        val propFile = SuFile("$resolvedDir/module.prop").apply { shell = rootShell }
+        if (propFile.exists()) {
+            val props = Properties()
+            props.load(propFile.newInputStream())
+            props.getProperty("banner")?.trim()?.takeIf { it.isNotEmpty() }
+        } else {
+            null
+        }
+    }.getOrNull()
+}
+
+private fun writeFolkBanner(
+    context: Context,
+    rootShell: Shell,
+    resolvedDir: String,
+    uri: Uri
+): ByteArray? {
+    val data = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: return null
+    val dir = SuFile(resolvedDir).apply { shell = rootShell }
+    if (!dir.exists()) {
+        dir.mkdirs()
+    }
+    val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
+    file.newOutputStream().use { it.write(data) }
+    return data
+}
+
+private fun clearFolkBanner(rootShell: Shell, resolvedDir: String): Boolean {
+    val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
+    return !file.exists() || file.delete()
+}
+
 @Composable
 private fun ModuleItem(
     navigator: DestinationsNavigator,
@@ -978,7 +1059,44 @@ private fun ModuleItem(
 ) {
     val context = LocalContext.current
     val viewModel = viewModel<APModuleViewModel>()
+    val snackBarHost = LocalSnackbarHost.current
+    val scope = rememberCoroutineScope()
+    val loadingDialog = rememberLoadingDialog()
     val shortcutAdd = stringResource(id = R.string.module_shortcut_add)
+    val folkBannerTitle = stringResource(R.string.apm_folk_banner_title)
+    val folkBannerSelect = stringResource(R.string.apm_folk_banner_select)
+    val folkBannerClear = stringResource(R.string.apm_folk_banner_clear)
+    val folkBannerSaved = stringResource(R.string.apm_folk_banner_saved)
+    val folkBannerCleared = stringResource(R.string.apm_folk_banner_cleared)
+    val folkBannerFailed = stringResource(R.string.apm_folk_banner_failed)
+    
+    var showFolkBannerDialog by remember { mutableStateOf(false) }
+    var bannerReloadKey by rememberSaveable(module.id) { mutableStateOf(0) }
+    
+    val pickFolkBannerLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            scope.launch {
+                loadingDialog.show()
+                val result = withContext(Dispatchers.IO) {
+                    runCatching {
+                        val rootShell = getRootShell(true)
+                        val resolvedDir = resolveModuleDir(rootShell, module.id)
+                        writeFolkBanner(context, rootShell, resolvedDir, it)
+                    }.getOrNull()
+                }
+                loadingDialog.hide()
+                if (result != null) {
+                    viewModel.putBannerInfo(module.id, APModuleViewModel.BannerInfo(result, null))
+                    bannerReloadKey++
+                    snackBarHost.showSnackbar(folkBannerSaved.format(module.name))
+                } else {
+                    snackBarHost.showSnackbar(folkBannerFailed.format(module.name))
+                }
+            }
+        }
+    }
     
     val isWallpaperMode = BackgroundConfig.isCustomBackgroundEnabled
     val opacity = if (isWallpaperMode) {
@@ -996,7 +1114,8 @@ private fun ModuleItem(
     val bannerInfo by produceState<APModuleViewModel.BannerInfo?>(
         initialValue = viewModel.getBannerInfo(module.id),
         key1 = module.id,
-        key2 = enableModuleBanner
+        key2 = enableModuleBanner,
+        key3 = bannerReloadKey
     ) {
         if (!enableModuleBanner) {
             value = null
@@ -1015,38 +1134,12 @@ private fun ModuleItem(
                 val suFile = { path: String ->
                     SuFile(path).apply { shell = rootShell }
                 }
-                val defaultDir = "/data/adb/modules/${module.id}"
-                val resolvedDir = runCatching {
-                    val direct = suFile(defaultDir)
-                    if (direct.exists()) {
-                        direct.path
-                    } else {
-                        val modulesRoot = suFile("/data/adb/modules")
-                        val dirs = modulesRoot.listFiles() ?: return@runCatching defaultDir
-                        for (dir in dirs) {
-                            if (!dir.isDirectory) continue
-                            val propFile = suFile("${dir.path}/module.prop")
-                            if (!propFile.exists()) continue
-                            val props = Properties()
-                            props.load(propFile.newInputStream())
-                            val id = props.getProperty("id")?.trim()
-                            if (id == module.id) {
-                                return@runCatching dir.path
-                            }
-                        }
-                        defaultDir
-                    }
-                }.getOrDefault(defaultDir)
-                val propBanner = runCatching {
-                    val propFile = suFile("$resolvedDir/module.prop")
-                    if (propFile.exists()) {
-                        val props = Properties()
-                        props.load(propFile.newInputStream())
-                        props.getProperty("banner")?.trim()?.takeIf { it.isNotEmpty() }
-                    } else {
-                        null
-                    }
-                }.getOrNull()
+                val resolvedDir = resolveModuleDir(rootShell, module.id)
+                val folkBanner = readFolkBanner(rootShell, resolvedDir)
+                if (folkBanner != null) {
+                    return@withContext APModuleViewModel.BannerInfo(folkBanner, null)
+                }
+                val propBanner = readModulePropBanner(rootShell, resolvedDir)
 
                 if (!propBanner.isNullOrEmpty() && propBanner.startsWith("http", true)) {
                     return@withContext APModuleViewModel.BannerInfo(null, propBanner)
@@ -1087,16 +1180,26 @@ private fun ModuleItem(
         MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.2f)
     }
 
+    val cardShape = RoundedCornerShape(20.dp)
     Surface(
-        onClick = {
-            if (foldSystemModule) {
-                onExpandToggle()
-            } else {
-                onClick(module)
-            }
-        },
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(cardShape)
+            .combinedClickable(
+                onClick = {
+                    if (foldSystemModule) {
+                        onExpandToggle()
+                    } else {
+                        onClick(module)
+                    }
+                },
+                onLongClick = {
+                    if (enableModuleBanner) {
+                        showFolkBannerDialog = true
+                    }
+                }
+            ),
+        shape = cardShape,
         color = cardColor,
         tonalElevation = 0.dp
     ) {
@@ -1385,6 +1488,57 @@ private fun ModuleItem(
                     }
                 }
             }
+        }
     }
-}
+
+    if (showFolkBannerDialog) {
+        AlertDialog(
+            onDismissRequest = { showFolkBannerDialog = false },
+            title = { Text(folkBannerTitle) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Button(
+                        onClick = {
+                            showFolkBannerDialog = false
+                            pickFolkBannerLauncher.launch("image/*")
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(folkBannerSelect)
+                    }
+                    Button(
+                        onClick = {
+                            showFolkBannerDialog = false
+                            scope.launch {
+                                loadingDialog.show()
+                                val success = withContext(Dispatchers.IO) {
+                                    runCatching {
+                                        val rootShell = getRootShell(true)
+                                        val resolvedDir = resolveModuleDir(rootShell, module.id)
+                                        clearFolkBanner(rootShell, resolvedDir)
+                                    }.getOrDefault(false)
+                                }
+                                loadingDialog.hide()
+                                if (success) {
+                                    viewModel.removeBannerInfo(module.id)
+                                    bannerReloadKey++
+                                    snackBarHost.showSnackbar(folkBannerCleared.format(module.name))
+                                } else {
+                                    snackBarHost.showSnackbar(folkBannerFailed.format(module.name))
+                                }
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(folkBannerClear)
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showFolkBannerDialog = false }) {
+                    Text(stringResource(android.R.string.cancel))
+                }
+            }
+        )
+    }
 }

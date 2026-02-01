@@ -135,6 +135,10 @@ class APModuleViewModel : ViewModel() {
         bannerCache[id] = info
     }
 
+    fun removeBannerInfo(id: String) {
+        bannerCache.remove(id)
+    }
+
     private fun pruneBannerCache(validIds: Set<String>) {
         val keysToRemove = bannerCache.keys.filter { it !in validIds }
         keysToRemove.forEach { bannerCache.remove(it) }

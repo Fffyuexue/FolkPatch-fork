@@ -259,6 +259,12 @@
     <string name="apm_disable_all_confirm">¿Seguro que deseas deshabilitar todos los módulos? Generalmente, esto se hace antes de una actualización OTA.</string>
     <string name="apm_enable_module_banner">Habilitar banner de módulo</string>
     <string name="apm_enable_module_banner_summary">Mostrar imagen de banner para módulos si está disponible</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Seleccionar imagen</string>
+    <string name="apm_folk_banner_clear">Limpiar FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner inyectado para %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner limpiado para %s.</string>
+    <string name="apm_folk_banner_failed">Error al actualizar FolkBanner para %s.</string>
 
     <string name="settings_donot_store_superkey">No guardar SuperKey localmente</string>
     <string name="settings_donot_store_superkey_summary">Autenticar la SuperKey cada vez que inicie el gestor</string>

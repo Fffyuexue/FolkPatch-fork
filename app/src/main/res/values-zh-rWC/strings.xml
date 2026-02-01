@@ -245,8 +245,14 @@
         <string name="settings_simple_list_bottom_bar_summary">仙符符法使用纯图标按钮样式，灵感来自APatch</string>
     <string name="apm_disable_all_title">禁诸仙符</string>
     <string name="apm_disable_all_confirm">确欲尽禁诸仙符乎？大抵天道易筋前为之可避天劫。</string>
-    <string name="apm_enable_module_banner">启仙符横幅</string>
-    <string name="apm_enable_module_banner_summary">为诸仙符显横幅图</string>
+    <string name="apm_enable_module_banner">启仙阵横幅</string>
+    <string name="apm_enable_module_banner_summary">为所容之仙阵显横幅仙图</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">择仙图</string>
+    <string name="apm_folk_banner_clear">消解 FolkBanner</string>
+    <string name="apm_folk_banner_saved">已为 %s 注入 FolkBanner 仙气。</string>
+    <string name="apm_folk_banner_cleared">%s 的 FolkBanner 仙气已消解。</string>
+    <string name="apm_folk_banner_failed">为 %s 注入 FolkBanner 仙气失败。</string>
 
     <string name="settings_donot_store_superkey">不藏登仙秘钥于凡界</string>
     <string name="settings_donot_store_superkey_summary">每启仙府辖器，皆验登仙秘钥</string>

@@ -243,6 +243,12 @@
     <string name="apm_disable_all_confirm">確定停用全部系統模組嗎？一般來說在 OTA 更新前才這麼做。</string>
     <string name="apm_enable_module_banner">啟用模組橫幅</string>
     <string name="apm_enable_module_banner_summary">為支援的模組顯示橫幅圖片</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">選取圖片</string>
+    <string name="apm_folk_banner_clear">清除 FolkBanner</string>
+    <string name="apm_folk_banner_saved">已為 %s 注入 FolkBanner。</string>
+    <string name="apm_folk_banner_cleared">已為 %s 清除 FolkBanner。</string>
+    <string name="apm_folk_banner_failed">為 %s 更新 FolkBanner 失敗。</string>
 
     <string name="settings_donot_store_superkey">停用管理器儲存密鑰</string>
     <string name="settings_donot_store_superkey_summary">每次管理器啟動時驗證超級密鑰</string>

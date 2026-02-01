@@ -242,6 +242,12 @@
    <string name="apm_disable_all_confirm">すべてのモジュールを無効化してもよろしいですか？通常は OTA アップデートの前に行われます。</string>
    <string name="apm_enable_module_banner">モジュールバナーを有効化</string>
    <string name="apm_enable_module_banner_summary">利用可能な場合、モジュールのバナー画像を表示</string>
+   <string name="apm_folk_banner_title">FolkBanner</string>
+   <string name="apm_folk_banner_select">画像を選択</string>
+   <string name="apm_folk_banner_clear">FolkBannerをクリア</string>
+   <string name="apm_folk_banner_saved">%sにFolkBannerを注入しました。</string>
+   <string name="apm_folk_banner_cleared">%sからFolkBannerをクリアしました。</string>
+   <string name="apm_folk_banner_failed">%sのFolkBannerの更新に失敗しました。</string>
    <string name="settings_donot_store_superkey">SuperKey をローカルに保存しない</string>
   <string name="settings_donot_store_superkey_summary">マネージャーを起動するたびに SuperKey の認証を要求します</string>
   <string name="mode_select_page_title">インストール</string>

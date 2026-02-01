@@ -253,6 +253,12 @@
     <string name="apm_disable_all_confirm">Apakah Anda yakin ingin menonaktifkan semua modul? Ini biasanya dilakukan sebelum pembaruan OTA.</string>
     <string name="apm_enable_module_banner">Aktifkan banner modul</string>
     <string name="apm_enable_module_banner_summary">Tampilkan gambar banner untuk modul jika tersedia</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Pilih gambar</string>
+    <string name="apm_folk_banner_clear">Hapus FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner disuntikkan untuk %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner dihapus untuk %s.</string>
+    <string name="apm_folk_banner_failed">Gagal memperbarui FolkBanner untuk %s.</string>
 
     <string name="settings_donot_store_superkey">Jangan simpan SuperKey secara lokal</string>
     <string name="settings_donot_store_superkey_summary">Autentikasi SuperKey setiap kali manajer diluncurkan</string>

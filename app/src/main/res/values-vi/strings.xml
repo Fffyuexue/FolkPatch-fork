@@ -249,6 +249,12 @@
     <string name="apm_disable_all_confirm">Bạn có chắc chắn muốn vô hiệu hóa tất cả module không? Thông thường chỉ làm điều này trước khi cập nhật OTA.</string>
     <string name="apm_enable_module_banner">Bật banner module</string>
     <string name="apm_enable_module_banner_summary">Hiển thị ảnh banner cho module nếu có sẵn</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Chọn ảnh</string>
+    <string name="apm_folk_banner_clear">Xóa FolkBanner</string>
+    <string name="apm_folk_banner_saved">Đã thêm FolkBanner cho %s.</string>
+    <string name="apm_folk_banner_cleared">Đã xóa FolkBanner cho %s.</string>
+    <string name="apm_folk_banner_failed">Cập nhật FolkBanner cho %s thất bại.</string>
 
     <string name="settings_donot_store_superkey">Không lưu khóa siêu cấp tại địa phương</string>
     <string name="settings_donot_store_superkey_summary">Xác thực khóa siêu cấp mỗi khi khởi chạy trình quản lý</string>

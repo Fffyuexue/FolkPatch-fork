@@ -256,6 +256,12 @@
     <string name="apm_disable_all_confirm">确定关所有模块喵？一般只有OTA更新前才这么干哦</string>
     <string name="apm_enable_module_banner">开模块横幅喵</string>
     <string name="apm_enable_module_banner_summary">支持的模块显示横幅图片喵！</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">选图片喵</string>
+    <string name="apm_folk_banner_clear">删掉 FolkBanner 喵</string>
+    <string name="apm_folk_banner_saved">给 %s 装上 FolkBanner 啦喵！</string>
+    <string name="apm_folk_banner_cleared">%s 的 FolkBanner 删掉啦喵！</string>
+    <string name="apm_folk_banner_failed">给 %s 装 FolkBanner 失败了喵...</string>
 
     <string name="settings_donot_store_superkey">本地不要存超级密钥喵</string>
     <string name="settings_donot_store_superkey_summary">每次开管理器都要验证密钥哒喵！</string>

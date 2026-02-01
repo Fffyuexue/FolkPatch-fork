@@ -261,6 +261,12 @@
     <string name="apm_disable_all_confirm">Are you sure you want to disable all modules? Generally, this is done before an OTA update.</string>
     <string name="apm_enable_module_banner">Enable Module Banner</string>
     <string name="apm_enable_module_banner_summary">Display banner image for modules if available</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Select image</string>
+    <string name="apm_folk_banner_clear">Clear FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner injected for %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner cleared for %s.</string>
+    <string name="apm_folk_banner_failed">Failed to update FolkBanner for %s.</string>
 
     <string name="settings_donot_store_superkey">Don\'t store SuperKey in local</string>
     <string name="settings_donot_store_superkey_summary">Authenticate the SuperKey every time the manager starts</string>

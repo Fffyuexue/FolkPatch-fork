@@ -253,6 +253,12 @@
     <string name="apm_disable_all_confirm">Czy na pewno chcesz wyłączyć wszystkie moduły? Zazwyczaj robi się to przed aktualizacją OTA.</string>
     <string name="apm_enable_module_banner">Włącz baner modułu</string>
     <string name="apm_enable_module_banner_summary">Wyświetl obraz banera dla modułów jeśli jest dostępny</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Wybierz obraz</string>
+    <string name="apm_folk_banner_clear">Wyczyść FolkBanner</string>
+    <string name="apm_folk_banner_saved">Wstrzyknięto FolkBanner dla %s.</string>
+    <string name="apm_folk_banner_cleared">Wyczyszczono FolkBanner dla %s.</string>
+    <string name="apm_folk_banner_failed">Nie udało się zaktualizować FolkBanner dla %s.</string>
 
     <string name="settings_donot_store_superkey">Nie przechowuj SuperKlucza lokalnie</string>
     <string name="settings_donot_store_superkey_summary">Uwierzytelniaj SuperKlucz za każdym razem, gdy menedżer się uruchamia</string>
