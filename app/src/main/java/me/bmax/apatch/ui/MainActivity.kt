@@ -312,8 +312,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            // Start badge count refresh coroutine
+
             LaunchedEffect(Unit) {
+                me.bmax.apatch.util.AppData.DataRefreshManager.ensureCountsLoaded()
+                
                 val badgePrefs = APApplication.sharedPreferences
                 var lastEnableSuperUser = badgePrefs.getBoolean("badge_superuser", true)
                 var lastEnableApm = badgePrefs.getBoolean("badge_apm", true)
@@ -332,20 +334,14 @@ class MainActivity : AppCompatActivity() {
                     lastEnableApm = enableApm
                     lastEnableKernel = enableKernel
 
-                    if (enableSuperUser || enableApm || enableKernel) {
-                        try {
-                            me.bmax.apatch.util.AppData.DataRefreshManager.refreshData(
-                                enableSuperUser = enableSuperUser,
-                                enableApm = enableApm,
-                                enableKernel = enableKernel,
-                                force = forceRefresh
-                            )
-                        } catch (e: Exception) {
-                            android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
-                        }
+                    // Always refresh counts for UI components, badge settings only control display
+                    try {
+                        me.bmax.apatch.util.AppData.DataRefreshManager.ensureCountsLoaded(force = forceRefresh)
+                    } catch (e: Exception) {
+                        android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
                     }
 
-                    delay(if (enableSuperUser || enableApm || enableKernel) 15000L else 60000L)
+                    delay(15000L)
                 }
             }
 

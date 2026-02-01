@@ -84,13 +84,17 @@ fun HomeScreenCircle(
         // Superuser and Module Cards
         val showCoreCards = kpState != APApplication.State.UNKNOWN_STATE
         if (showCoreCards) {
+            LaunchedEffect(Unit) {
+                AppData.DataRefreshManager.ensureCountsLoaded()
+            }
+            
+            val superuserCount by AppData.DataRefreshManager.superuserCount.collectAsState()
+            val moduleCount by AppData.DataRefreshManager.apmModuleCount.collectAsState()
+            
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                val superuserCount by AppData.DataRefreshManager.superuserCount.collectAsState()
-                val moduleCount by AppData.DataRefreshManager.apmModuleCount.collectAsState()
-                
                 TonalCard(modifier = Modifier.weight(1f)) {
                     Row(
                         modifier = Modifier
@@ -344,7 +348,7 @@ fun InfoCardCircle(kpState: APApplication.State, apState: APApplication.State) {
             InfoCardItem(
                 icon = Icons.Outlined.Apps,
                 label = stringResource(R.string.home_manager_version),
-                content = "${managerVersion.first} (${managerVersion.second})"
+                content = managerVersion.first
             )
 
             Spacer(Modifier.height(16.dp))
