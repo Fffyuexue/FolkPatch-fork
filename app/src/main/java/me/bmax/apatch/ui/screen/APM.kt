@@ -1230,6 +1230,12 @@ private fun ModuleItem(
                     modifier = Modifier.matchParentSize(),
                     contentAlignment = Alignment.Center
                 ) {
+                    val imageAlpha = if (isWallpaperMode) {
+                        (0.35f + (opacity - 0.2f) * 0.5f).coerceIn(0.25f, 0.6f)
+                    } else {
+                        0.18f
+                    }
+                    
                     AsyncImage(
                         model = if (hasBannerUrl) {
                             bannerUrl
@@ -1241,8 +1247,9 @@ private fun ModuleItem(
                         contentDescription = null,
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop,
-                        alpha = 0.18f
+                        alpha = imageAlpha
                     )
+                    val gradientAlpha = if (isWallpaperMode) 0.5f else 0.8f
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
@@ -1250,7 +1257,7 @@ private fun ModuleItem(
                                 Brush.verticalGradient(
                                     colors = listOf(
                                         fadeColor.copy(alpha = 0.0f),
-                                        fadeColor.copy(alpha = 0.8f)
+                                        fadeColor.copy(alpha = gradientAlpha)
                                     ),
                                     startY = 0f,
                                     endY = Float.POSITIVE_INFINITY
