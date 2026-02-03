@@ -50,7 +50,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v3.2.2
         with:
           packages: ''
 
@@ -62,7 +62,7 @@ jobs:
           rustup target install aarch64-linux-android
 
       - name: Cache Rust
-        uses: Swatinem/rust-cache@v2
+        uses: Swatinem/rust-cache@v2.7.7
         with:
           workspaces: apd
           cache-targets: false
@@ -93,14 +93,20 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
           zipAlign: true
 
+      - name: Get APK path
+        id: get_apk
+        run: |
+          if [ -n "${{ secrets.SIGNING_KEY }}" ] && [ -n "${{ steps.sign_app.outputs.signedReleaseFile }}" ]; then
+            echo "apk_path=${{ steps.sign_app.outputs.signedReleaseFile }}" >> $GITHUB_OUTPUT
+          else
+            echo "apk_path=$(find app/build/outputs/apk/release -name '*.apk' -type f | head -n 1)" >> $GITHUB_OUTPUT
+          fi
+
       - name: Upload build artifact
-        env:
-          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-        if: ${{ env.SIGNING_KEY != '' }}
         uses: actions/upload-artifact@v5
         with:
           name: APatch
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          path: ${{ steps.get_apk.outputs.apk_path }}
 
       - name: Post to channel
         if: ${{github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.ref_type != 'tag'}}
@@ -111,24 +117,20 @@ jobs:
           COMMIT_ID: ${{ github.event.head_commit.id }}
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
-            OUTPUT="app/build/outputs/apk/release"
-            export Release=$(find $OUTPUT -name "*.apk")
             URL=$(python3 .github/scripts/telegram_url.py -1002058433411)
-            curl -v "$URL" -F Release=@${{ steps.sign_app.outputs.signedReleaseFile }}
+            curl -v "$URL" -F Release=@${{ steps.get_apk.outputs.apk_path }}
             URL=$(python3 .github/scripts/telegram_url.py -1001910818234)
-            curl -v "$URL" -F Release=@${{ steps.sign_app.outputs.signedReleaseFile }}
+            curl -v "$URL" -F Release=@${{ steps.get_apk.outputs.apk_path }}
           fi
 
       - name: Release apk
-        env:
-          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-        if: ${{ env.SIGNING_KEY != '' && github.ref_type == 'tag' }}
+        if: ${{ github.ref_type == 'tag' }}
         continue-on-error: true
         uses: ncipollo/release-action@v1
         with:
           token: ${{ github.token }}
           tag: ${{ steps.parse_version.outputs.VERSION }}
-          artifacts: ${{steps.sign_app.outputs.signedReleaseFile}}
+          artifacts: ${{ steps.get_apk.outputs.apk_path }}
           generateReleaseNotes: true
           makeLatest: true
           replacesArtifacts: true
